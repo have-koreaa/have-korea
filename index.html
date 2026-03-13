@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="6YSe4Dgn0dQ-veiH6_m_GCrHkEshg-NxCOkEHj4fA-o" />
-    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <title>هاڤێ کۆریا | have Korea - درامای کۆری بە ژێرنووسی کوردی</title>
     
     <meta name="description" content="هاڤێ کۆریا (have korea) - سایتی هاڤێ کۆریا، تایبەت بە نوێترین دراما و فیلمە کۆرییەکان بە باشترین کوالێتی و ژێرنووسی کوردی.">
@@ -301,18 +301,21 @@
         }
 
         .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 35px;
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            position: relative;
-        }
-        
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 35px;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+}
+.section-header span {
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif !important;
+}
         .section-header::after {
             content: ''; position: absolute; bottom: -1px; right: 0;
             width: 100px; height: 3px;
@@ -862,7 +865,7 @@
         <img src="logologo.png" alt="Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(179,102,255,0.6);box-shadow:0 0 18px rgba(140,0,255,0.45);">
         <div style="display:flex;flex-direction:column;line-height:1.2;">
             <span style="font-size:17px;font-weight:800;color:#fff;letter-spacing:1.5px;">HAVE KOREA</span>
-            <span style="font-size:10px;color:rgba(179,102,255,0.85);font-weight:500;letter-spacing:2px;">هاڤێ کۆریا</span>
+          <span style="font-family:'Noto Naskh Arabic',serif;font-size:15px;font-weight:700;letter-spacing:0px;background:linear-gradient(90deg,#ffffff,#c499ff,#8c00ff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shineText 4s linear infinite;">هاڤێ کۆریا</span>
         </div>
     </div>
 
@@ -2032,8 +2035,9 @@ app.init();
 
 .bn-item span {
     font-size: 10px;
-    font-family: Tahoma, sans-serif;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
     white-space: nowrap;
+    font-weight: 600;
 }
 
 .bn-item svg {
