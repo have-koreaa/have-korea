@@ -5,31 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="6YSe4Dgn0dQ-veiH6_m_GCrHkEshg-NxCOkEHj4fA-o" />
     
-    <title>have Korea | هاڤێ کۆریا - درامای کۆری بە ژێرنووسی کوردی</title>
+    <title>هاڤێ کۆریا | have Korea - درامای کۆری بە ژێرنووسی کوردی</title>
     
-    <meta name="description" content="سایتی هاڤێ کۆریا، تایبەت بە نوێترین دراما و فیلمە کۆرییەکان بە باشترین کوالێتی و ژێرنووسی کوردی.">
-    <meta name="keywords" content="kurdish subtitle, ژێرنووسی کوردی, درامای کۆری, فلیمی کۆری, kurdsub, have Korea, دراما و فیلم">
+    <meta name="description" content="هاڤێ کۆریا (have korea) - سایتی هاڤێ کۆریا، تایبەت بە نوێترین دراما و فیلمە کۆرییەکان بە باشترین کوالێتی و ژێرنووسی کوردی.">
+    <meta name="keywords" content="هاڤێ کۆریا, have korea, هاڤێ کۆریا ژێرنووسی کوردی, kurdish subtitle, ژێرنووسی کوردی, درامای کۆری, فلیمی کۆری, kurdsub, دراما و فیلم">
     <!-- ✅ SEO بۆ گەڕانی گووگڵ -->
     <script>
     window.updatePageMeta = function(drama) {
-        document.title = drama.title + " kurdish subtitle - ژێرنووسی کوردی | have Korea";
+        document.title = drama.title + " kurdish subtitle - ژێرنووسی کوردی | هاڤێ کۆریا";
         
         let metaDesc = document.querySelector('meta[name="description"]');
         if(metaDesc) {
-            metaDesc.content = drama.title + " kurdish subtitle, " + drama.title + " کوردی, " + drama.title + " ژێرنووسی کوردی - سەیری ئۆنلاین لە have Korea";
+            metaDesc.content = drama.title + " kurdish subtitle, " + drama.title + " کوردی, " + drama.title + " ژێرنووسی کوردی - سەیری ئۆنلاین لە هاڤێ کۆریا";
         }
         
         let metaKeywords = document.querySelector('meta[name="keywords"]');
         if(metaKeywords) {
-            metaKeywords.content = drama.title + " kurdish, " + drama.title + " کوردی, " + drama.title + " subtitle, kurdish drama, ژێرنووسی کوردی";
+            metaKeywords.content = drama.title + " kurdish, " + drama.title + " کوردی, " + drama.title + " subtitle, kurdish drama, هاڤێ کۆریا, ژێرنووسی کوردی";
         }
     };
     </script>
-    <meta name="author" content="have Korea">
+    <meta name="author" content="هاڤێ کۆریا">
     <meta name="robots" content="index, follow">
 
-    <meta property="og:title" content="have Korea | هاڤێ کۆریا">
-    <meta property="og:description" content="باشترین سەرچاوە بۆ بینینی دراما کۆرییەکان بە کوردی">
+    <meta property="og:title" content="هاڤێ کۆریا | have Korea">
+    <meta property="og:description" content="هاڤێ کۆریا - باشترین سەرچاوە بۆ بینینی دراما کۆرییەکان بە کوردی">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://have-korea.netlify.app/havelogo.png">
     <meta property="og:image:width" content="1200">
@@ -37,8 +37,8 @@
     <meta property="og:url" content="https://have-korea.netlify.app">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="have Korea | هاڤێ کۆریا">
-    <meta name="twitter:description" content="باشترین سەرچاوە بۆ بینینی دراما کۆرییەکان بە کوردی">
+    <meta name="twitter:title" content="هاڤێ کۆریا | have Korea">
+    <meta name="twitter:description" content="هاڤێ کۆریا - باشترین سەرچاوە بۆ بینینی دراما کۆرییەکان بە کوردی">
     <meta name="twitter:image" content="https://have-korea.netlify.app/havelogo.png">
 
     <link rel="icon" type="image/png" href="https://have-korea.netlify.app/havelogo.png" sizes="96x96">
@@ -2811,58 +2811,7 @@ app.init();
   }
 </style>
 
-<canvas id="bg-canvas"></canvas>
 
-<script>
-  const canvas = document.getElementById('bg-canvas');
-  const ctx = canvas.getContext('2d');
-
-  let particles = [];
-  const particleCount = 100; // ژمارەی خاڵەکان
-
-  function init() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5, // قەبارەی خاڵەکان
-        speed: Math.random() * 1 + 0.2, // خێرایی چوون بۆ سەرەوە
-        opacity: Math.random()
-      });
-    }
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = 'rgba(255, 255, 255,'; // ڕەنگی سپی خاڵەکان
-
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
-      ctx.fill();
-
-      p.y -= p.speed; // لێرەدا خاڵەکان دەچن بۆ سەرەوە
-
-      // ئەگەر خاڵەکە گەیشتە سەرەوە، دووبارە لە خوارەوە دەست پێ بکاتەوە
-      if (p.y < 0) {
-        p.y = canvas.height;
-        p.x = Math.random() * canvas.width;
-      }
-    });
-    requestAnimationFrame(animate);
-  }
-
-  window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-
-  init();
-  animate();
-</script>
 
 
 
