@@ -74,12 +74,17 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
+       body {
+    background-color: var(--bg-main);
+    background-image: 
+        radial-gradient(ellipse at 20% 50%, rgba(140, 0, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(140, 0, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(ellipse at 60% 80%, rgba(179, 102, 255, 0.06) 0%, transparent 45%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
 
         /* ئەنیمەیشنی سوڕانەوە بۆ بۆردەرەکان */
         @keyframes border-spin {
@@ -94,23 +99,22 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
 
         /* ================= HEADER & NAVBAR (Glass Style) ================= */
-        .navbar {
-            position: fixed;
-            top: 0; width: 100%;
-            height: 85px;
-            /* ستایلی شووشەیی بەهێز */
-            background: var(--glass-bg);
-            backdrop-filter: blur(25px) saturate(180%);
-            -webkit-backdrop-filter: blur(25px) saturate(180%);
-            border-bottom: 1px solid var(--glass-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 4%;
-            z-index: 1000;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-        }
+       .navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    height: 70px;
+    background: rgba(10, 5, 20, 0.97);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(140, 0, 255, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4%;
+    z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
 
       /* --- دیزاینی لۆگۆی شاهانە و پڕۆفیشناڵ --- */
         .logo {
@@ -814,24 +818,72 @@
         }
     </style>
 </head>
-<body>
 
-    <nav class="navbar">
-        <div class="logo" onclick="app.goHome()">
-            <img src="logologo.png" alt="Logo">
-            <span>HAVE KOREA</span>
+
+
+
+
+<body>
+<div class="bottom-navbar">
+
+    <button class="bn-item active" onclick="bnFilter('all', this)">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>هەمووی</span>
+</button>
+<button class="bn-item" onclick="bnFilter('drama', this)">
+    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+    <span>دراما</span>
+</button>
+<button class="bn-item" onclick="bnFilter('movie', this)">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+    <span>فیلم</span>
+</button>
+<button class="bn-item" onclick="bnFilter('chinese', this)">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z" stroke="none" fill="currentColor"/></svg>
+    <span>چینی</span>
+</button>
+
+<button class="bn-item" onclick="toggleColorPicker(event); this.classList.toggle('active')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/>
+        <line x1="12" y1="2" x2="12" y2="6"/>
+        <line x1="12" y1="18" x2="12" y2="22"/>
+        <line x1="2" y1="12" x2="6" y2="12"/>
+        <line x1="18" y1="12" x2="22" y2="12"/>
+    </svg>
+    <span>ڕەنگی سایت</span>
+</button>
+
+
+</div>
+   <nav class="navbar">
+    <div class="logo" onclick="app.goHome()" style="display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none;flex-shrink:0;">
+        <img src="logologo.png" alt="Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(179,102,255,0.6);box-shadow:0 0 18px rgba(140,0,255,0.45);">
+        <div style="display:flex;flex-direction:column;line-height:1.2;">
+            <span style="font-size:17px;font-weight:800;color:#fff;letter-spacing:1.5px;">HAVE KOREA</span>
+            <span style="font-size:10px;color:rgba(179,102,255,0.85);font-weight:500;letter-spacing:2px;">هاڤێ کۆریا</span>
         </div>
-        
+    </div>
+
+    <div style="display:flex;align-items:center;gap:10px;">
         <div class="search-box">
             <input type="text" class="search-input" placeholder="گەڕان..." onkeyup="app.search(this.value)">
             <i class="fas fa-search search-icon"></i>
         </div>
+        
+   
 
-        <div class="categories">
-    <button class="cat-btn active" onclick="app.filter('all', this)">هەمووی</button>
-    <button class="cat-btn" onclick="app.filter('drama', this)">دراما</button>
-    <button class="cat-btn" onclick="app.filter('movie', this)">فلیم</button>
-    <button class="cat-btn" onclick="app.filter('chinese', this)">چینی</button>
+<div class="color-picker-panel" id="colorPickerPanel">
+    <span class="color-label">🎨 هەڵبژاردنی ڕەنگی سایت</span>
+    <div class="color-swatches">
+        <button class="swatch active-swatch" style="background:#8c00ff" onclick="changeTheme('#8c00ff','#b366ff',this)" title="مۆر"></button>
+        <button class="swatch" style="background:#0099ff" onclick="changeTheme('#0099ff','#66c5ff',this)" title="شین"></button>
+        <button class="swatch" style="background:#ff2d55" onclick="changeTheme('#ff2d55','#ff6b87',this)" title="سووری"></button>
+        <button class="swatch" style="background:#ffd700" onclick="changeTheme('#ffd700','#ffe55c',this)" title="زەرد"></button>
+        <button class="swatch" style="background:#00bcd4" onclick="changeTheme('#00bcd4','#80deea',this)" title="فیرۆزەیی"></button>
+        <button class="swatch" style="background:#ff6f00" onclick="changeTheme('#ff6f00','#ffb300',this)" title="پەمەیی"></button>
+    </div>
 </div>
         <!-- ناڤباری فلتەر (تەنها بۆ دراما و فیلم) -->
 <div class="filter-navbar" id="filter-navbar" style="display: none;">
@@ -1781,10 +1833,333 @@ function toggleFilterSection(section) {
         }
     }
 }
+// داخستن و کردنەوەی پەنجەرەی رەنگ
+function toggleColorPicker(e) {
+    e.stopPropagation();
+    const panel = document.getElementById('colorPickerPanel');
+    panel.classList.toggle('show');
+    if (panel.classList.contains('show')) {
+        setTimeout(() => {
+            document.addEventListener('click', closePanelOutside);
+        }, 10);
+    }
+}
+
+function closePanelOutside(e) {
+    if (!e.target.closest('#colorPickerPanel') && !e.target.closest('.color-picker-btn')) {
+        document.getElementById('colorPickerPanel').classList.remove('show');
+        document.removeEventListener('click', closePanelOutside);
+    }
+}
+function changeTheme(mainColor, lightColor, btn) {
+    document.documentElement.style.setProperty('--accent-color', mainColor);
+    document.documentElement.style.setProperty('--accent-light', lightColor);
+    
+    const hex = mainColor.replace('#','');
+    const r = parseInt(hex.substring(0,2),16);
+    const g = parseInt(hex.substring(2,4),16);
+    const b = parseInt(hex.substring(4,6),16);
+
+    document.documentElement.style.setProperty('--bg-main',      `rgb(${Math.round(r*0.03)}, ${Math.round(g*0.02)}, ${Math.round(b*0.06)})`);
+    document.documentElement.style.setProperty('--bg-secondary', `rgb(${Math.round(r*0.07)}, ${Math.round(g*0.05)}, ${Math.round(b*0.11)})`);
+    document.documentElement.style.setProperty('--bg-card',      `rgb(${Math.round(r*0.09)}, ${Math.round(g*0.06)}, ${Math.round(b*0.14)})`);
+    document.documentElement.style.setProperty('--glass-bg',     `rgba(${Math.round(r*0.11)}, ${Math.round(g*0.07)}, ${Math.round(b*0.17)}, 0.75)`);
+    document.documentElement.style.setProperty('--glass-border', `rgba(${r}, ${g}, ${b}, 0.15)`);
+document.querySelectorAll('.bottom-navbar, .glass-sidebar, .navbar, .rating-wrapper, .rating-stars-section, .info-box, .helin-footer, .live-stats-container, .purple-glass-footer, .acc-card, .vip-staff-card, .credit-card, .result-card, .person-modal-content, .filter-dropdown, .color-picker-panel').forEach(el => {
+    el.style.background = `rgba(${Math.round(r*0.05)}, ${Math.round(g*0.03)}, ${Math.round(b*0.09)}, 0.97)`;
+});
+
+// بۆ بۆردەرەکانیش
+document.querySelectorAll('.rating-wrapper, .credit-card, .vip-staff-card, .acc-card, .result-card, .action-btn.active, .cat-btn.active').forEach(el => {
+    el.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
+});
+
+// بۆ دوگمە ئەکتیڤەکان
+document.querySelectorAll('.action-btn.active, .cat-btn.active, .filter-main-btn.active').forEach(el => {
+    el.style.background = `rgba(${r}, ${g}, ${b}, 0.2)`;
+    el.style.boxShadow = `0 0 20px rgba(${r}, ${g}, ${b}, 0.4)`;
+});
+
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active-swatch'));
+    btn.classList.add('active-swatch');
+
+    // گۆڕینی باگراوندی بلوور
+    document.body.style.backgroundImage = `
+        radial-gradient(ellipse at 20% 50%, rgba(${r}, ${g}, ${b}, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(${r}, ${g}, ${b}, 0.05) 0%, transparent 40%),
+        radial-gradient(ellipse at 60% 80%, rgba(${r}, ${g}, ${b}, 0.06) 0%, transparent 45%)
+    `;
+
+    // گۆڕینی بۆردەری کاردەکان
+    let styleTag = document.getElementById('dynamic-card-style');
+    if (!styleTag) {
+        styleTag = document.createElement('style');
+        styleTag.id = 'dynamic-card-style';
+        document.head.appendChild(styleTag);
+    }
+    styleTag.textContent = `
+        .card::before {
+            background: conic-gradient(transparent, transparent, transparent, rgba(${r}, ${g}, ${b}, 1)) !important;
+        }
+        .card:hover::before {
+            background: conic-gradient(transparent, transparent, rgba(${r}, ${g}, ${b}, 0.6), rgba(${r}, ${g}, ${b}, 1)) !important;
+        }
+    `;
+    
+    localStorage.setItem('hk-theme-color', mainColor);
+    localStorage.setItem('hk-theme-light', lightColor);
+    localStorage.setItem('hk-theme-r', r);
+    localStorage.setItem('hk-theme-g', g);
+    localStorage.setItem('hk-theme-b', b);
+    
+    setTimeout(() => {
+        document.getElementById('colorPickerPanel').classList.remove('show');
+        document.removeEventListener('click', closePanelOutside);
+    }, 350);
+}
+
+// هێنانەوەی ڕەنگی پاشەکەوتکراو کاتی کردنەوەی سایت
+// ئەمەی نوێ
+(function() {
+    const saved = localStorage.getItem('hk-theme-color');
+    const savedLight = localStorage.getItem('hk-theme-light');
+    const r = localStorage.getItem('hk-theme-r');
+    const g = localStorage.getItem('hk-theme-g');
+    const b = localStorage.getItem('hk-theme-b');
+    
+    if (saved && savedLight) {
+        document.documentElement.style.setProperty('--accent-color', saved);
+        document.documentElement.style.setProperty('--accent-light', savedLight);
+    }
+    if (r && g && b) {
+        document.documentElement.style.setProperty('--bg-main',      `rgb(${Math.round(r*0.03)}, ${Math.round(g*0.02)}, ${Math.round(b*0.06)})`);
+        document.documentElement.style.setProperty('--bg-secondary', `rgb(${Math.round(r*0.07)}, ${Math.round(g*0.05)}, ${Math.round(b*0.11)})`);
+        document.documentElement.style.setProperty('--bg-card',      `rgb(${Math.round(r*0.09)}, ${Math.round(g*0.06)}, ${Math.round(b*0.14)})`);
+        document.documentElement.style.setProperty('--glass-bg',     `rgba(${Math.round(r*0.11)}, ${Math.round(g*0.07)}, ${Math.round(b*0.17)}, 0.75)`);
+        document.documentElement.style.setProperty('--glass-border', `rgba(${r}, ${g}, ${b}, 0.15)`);
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+        if (r && g && b) {
+         document.querySelectorAll('.bottom-navbar, .glass-sidebar, .navbar').forEach(el => {
+                el.style.background = `rgba(${Math.round(r*0.05)}, ${Math.round(g*0.03)}, ${Math.round(b*0.09)}, 0.97)`;
+            });
+
+            // گۆڕینی blur/glow ی خوارەوەی پەیج
+            const blurEl = document.querySelector('.bottom-glow') || document.querySelector('[class*="glow"]') || document.querySelector('[class*="blur"]');
+            if (blurEl) {
+                blurEl.style.background = `radial-gradient(ellipse, rgba(${r}, ${g}, ${b}, 0.3) 0%, transparent 70%)`;
+            }
+        }
+    });
+})();
+
+
+function bnFilter(type, btn) {
+    document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const topBtn = document.querySelector(`.cat-btn[onclick="app.filter('${type}', this)"]`);
+    if (topBtn) {
+        app.filter(type, topBtn);
+    } else {
+        app.filter(type, { classList: { add: ()=>{}, remove: ()=>{} } });
+        app.renderGrid(type === 'all' ? app.data : app.data.filter(i => i.type === type));
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function bnMenu(btn) {
+    const sidebar = document.getElementById('modern-sidebar');
+    const trigger = document.getElementById('sidebar-trigger');
+    
+    sidebar.classList.toggle('active');
+    trigger.classList.toggle('active');
+    
+    if (sidebar.classList.contains('active')) {
+        document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    } else {
+        document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+        document.querySelector('.bn-item:first-child').classList.add('active');
+    }
+}
 app.init();
+
+
+
+
+
+
+
+
+
+
+
 </script>
     
+
 <style>
+/* ناڤباری خوارەوە */
+.bottom-navbar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 68px;
+    background: rgba(8, 8, 14, 0.97);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-top: 1px solid rgba(140, 0, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    z-index: 10002;
+}
+
+.bn-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #555;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 14px;
+    transition: all 0.25s ease;
+    min-width: 58px;
+    border: none;
+    background: transparent;
+}
+
+.bn-item span {
+    font-size: 10px;
+    font-family: Tahoma, sans-serif;
+    white-space: nowrap;
+}
+
+.bn-item svg {
+    width: 22px;
+    height: 22px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all 0.25s ease;
+}
+
+.bn-item.active {
+    color: var(--accent-color);
+}
+
+.bn-item.active svg {
+    filter: drop-shadow(0 0 6px var(--accent-color));
+}
+
+.bn-item:hover:not(.active) {
+    color: #888;
+}
+
+/* بۆ ئەوەی ناوەڕۆکەکە لە ژێر ناڤبارەکە نەمێنێت */
+body {
+    padding-bottom: 75px;
+}
+    .categories { position: relative; }
+
+.color-picker-btn { padding: 10px 16px !important; font-size: 16px; }
+
+.color-picker-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(12, 12, 20, 0.98);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 20px 24px;
+    z-index: 9999;
+    min-width: 240px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+    text-align: center;
+}
+
+.color-picker-panel.show {
+    display: block;
+    animation: fadeDropIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeDropIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-8px) scale(0.96); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+.color-label {
+    display: block;
+    color: #aaa;
+    font-size: 12px;
+    margin-bottom: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.color-swatches {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    outline: none;
+}
+
+.swatch:hover {
+    transform: scale(1.3);
+    border-color: rgba(255,255,255,0.8);
+    box-shadow: 0 0 18px rgba(255,255,255,0.3);
+}
+
+.swatch.active-swatch {
+    border-color: #fff;
+    transform: scale(1.15);
+    box-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+.swatch.active-swatch::after {
+    content: '✓';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 900;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .color-picker-panel {
+        left: auto;
+        right: 0;
+        transform: none;
+    }
+    .color-picker-panel.show {
+        animation: fadeDropInMobile 0.3s ease;
+    }
+    @keyframes fadeDropInMobile {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+}
     /* ئەگەر فۆنتەکەت لە فۆڵدەرێکی دیاریکراوە لێرە بانگی بکە، ئەگەر نا ئەم بەشە لاببە */
     @font-face {
         font-family: 'K24';
@@ -2708,88 +3083,6 @@ app.init();
 
    
 </script>
-<style>
-    /* دروستکردنی پاشبنەمایەکی زیندوو */
-    .magic-bg-motion {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        pointer-events: none;
-        overflow: hidden;
-        background: radial-gradient(circle at 50% 50%, #0a0a0f 0%, #050508 100%);
-    }
-
-    .blob {
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(112, 0, 255, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        filter: blur(80px);
-        animation: moveBlobs 20s linear infinite;
-    }
-
-    .blob-2 {
-        background: radial-gradient(circle, rgba(0, 200, 255, 0.1) 0%, transparent 70%);
-        animation: moveBlobs 25s linear infinite reverse;
-        right: 0;
-        bottom: 0;
-    }
-
-    @keyframes moveBlobs {
-        0% { transform: translate(0, 0) scale(1); }
-        33% { transform: translate(10vw, 20vh) scale(1.2); }
-        66% { transform: translate(-5vw, 10vh) scale(0.8); }
-        100% { transform: translate(0, 0) scale(1); }
-    }
-
-    .particle {
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        background: white;
-        border-radius: 50%;
-        animation: twinkle 5s infinite;
-    }
-    
-    @keyframes twinkle {
-        0%, 100% { opacity: 0; }
-        50% { opacity: 0.5; }
-    }
-</style>
-<div class="magic-bg-motion">
-    <div class="blob"></div>
-    <div class="blob blob-2"></div>
-</div>
-<script>
-    // دروستکردنی ئەستێرەکان بە شێوەی هەڕەمەکی
-    function createParticles() {
-        const bg = document.getElementById('magicBg');
-        for (let i = 0; i < 40; i++) {
-            let particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            // قەبارەی هەڕەمەکی
-            let size = Math.random() * 3 + 'px';
-            particle.style.width = size;
-            particle.style.height = size;
-            
-            // شوێنی هەڕەمەکی
-            particle.style.left = Math.random() * 100 + 'vw';
-            particle.style.top = Math.random() * 100 + 'vh';
-            
-            // کاتی ئەنیمەیشنی جیاواز
-            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            particle.style.animationDelay = (Math.random() * 10) + 's';
-            
-            bg.appendChild(particle);
-        }
-    }
-    createParticles();
-</script>
 
 <style>
   /* ڕێکخستنی بنەڕەتی باکگراوەند */
@@ -2799,16 +3092,7 @@ app.init();
     overflow-x: hidden;
   }
 
-  /* دروستکردنی کانیڤاسی باکگراوەند */
-  #bg-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* بۆ ئەوەی بکەوێتە پشت کۆدەکانت */
-    pointer-events: none;
-  }
+  
 </style>
 
 
@@ -3038,9 +3322,9 @@ app.init();
 
 
 
-
-
-
+<!-- =============================================
+   دوگمەی کردنەوە
+   ============================================= -->
 <div class="vertical-bars-btn" id="sidebar-trigger">
     <div class="bars-wrapper">
         <span class="bar-1"></span>
@@ -3049,208 +3333,446 @@ app.init();
     </div>
 </div>
 
+<!-- =============================================
+   سایدبار
+   ============================================= -->
 <div id="modern-sidebar" class="glass-sidebar">
     <div class="sidebar-inner">
         <div class="sidebar-header-title">HAVE KOREA</div>
         
-        <div class="accordion-menu">
-            <div class="acc-card active" id="account-section">
-                <div class="acc-head" onclick="toggleMenu(this)">
-                    <span><i class="fas fa-user-circle"></i> هەژمارەکەم</span>
-                    <i class="fas fa-chevron-left arrow-icon"></i>
-                </div>
-                <div class="acc-body">
-                    <div id="auth-form" class="auth-container">
-                        <div class="profile-upload">
-                            <label for="imageInput">
-                                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="previewImg">
-                                <div class="upload-overlay"><i class="fas fa-camera"></i></div>
-                            </label>
-                            <input type="file" id="imageInput" hidden accept="image/*">
-                        </div>
-                        <input type="text" id="userName" placeholder="ناو بنووسە...">
-                        <input type="email" id="userEmail" placeholder="گیمێڵ بنووسە...">
-                        <button onclick="createAccount()" class="btn-create">دروستکردن</button>
-                    </div>
-
-                    <div id="user-profile" class="profile-container" style="display: none;">
-                        <div class="profile-header">
-                            <div class="avatar-wrapper">
-                                <img id="displayImg" src="">
-                                <label for="editImage" class="edit-btn"><i class="fas fa-pen"></i></label>
-                                <input type="file" id="editImage" hidden accept="image/*" onchange="updateImage(this)">
-                            </div>
-                            <h3 id="displayName">ناوەکەت</h3>
-                            <p id="displayEmail">ئیمەیڵەکەت</p>
-                        </div>
-                        <div class="profile-actions">
-                            <button onclick="editName()" class="action-btn"><i class="fas fa-edit"></i> گۆڕینی ناو</button>
-                            <button onclick="deleteAccount()" class="action-btn delete"><i class="fas fa-trash-alt"></i> سڕینەوەی هەژمار</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="acc-card">
-                <div class="acc-head" onclick="toggleMenu(this)">
-                    <span><i class="fas fa-file-signature"></i> بوون بە وەرگێر </span>
-                    <i class="fas fa-chevron-left arrow-icon"></i>
-                </div>
-                <div class="acc-body">
-                    <form id="volunteerForm" class="auth-container">
-                        <input type="text" name="Full_Name" placeholder="ناوی سیانی" required>
-                        
-                        <input type="number" name="Age" placeholder="تەمەن (١٤ - ٥٠)" min="14" max="50" required style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(140, 0, 255, 0.3); padding: 12px; border-radius: 12px; color: white; margin-bottom: 12px; box-sizing: border-box;">
-
-                        <select name="Gender" required style="width: 100%; background: #2a2a35; color: white; padding: 12px; border-radius: 12px; border: 1px solid rgba(140, 0, 255, 0.3); margin-bottom: 12px; box-sizing: border-box;">
-                            <option value="">ڕەگەز هەڵبژێرە</option>
-                            <option value="Male">نێر</option>
-                            <option value="Female">مێ</option>
-                        </select>
-
-                        <select name="Skill" required style="width: 100%; background: #2a2a35; color: white; padding: 12px; border-radius: 12px; border: 1px solid rgba(140, 0, 255, 0.3); margin-bottom: 12px; box-sizing: border-box;">
-                            <option value="">شارەزایت لە چیدا هەیە؟</option>
-                            <option value="Designer">دیزاینەر</option>
-                            <option value="Translator">وەرگێڕ</option>
-                            <option value="Technician">تەکنیکار</option>
-                            <option value="Editor">ئیدیتەر</option>
-                        </select>
-
-                        <select name="Contact_Method" required style="width: 100%; background: #2a2a35; color: white; padding: 12px; border-radius: 12px; border: 1px solid rgba(140, 0, 255, 0.3); margin-bottom: 12px; box-sizing: border-box;">
-                            <option value="">لە کوێ پەیوەندیت پێوە بکەین؟</option>
-                            <option value="Email">ئیمێڵ</option>
-                            <option value="WhatsApp">وەتس ئەپ</option>
-                            <option value="Telegram">تیلیگرام</option>
-                             <option value="TikTok">تیکتۆک</option>
-                        </select>
-
-                        <input type="text" name="Contact_Details" placeholder="ناونیشان (یوسەر یان ئیمێڵ یان ژمارە...)" required>
-
-                        <input type="text" name="Languages" placeholder="چی زمانێک دەزانیت؟" required>
-
-                        <input type="text" name="Availability" placeholder="ڕۆژانە چەند کاتت هەیە؟" required>
-
-                        <textarea name="Reason" placeholder="بۆچی دەتەوێت ببیتە ئەندام؟" rows="3" required style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(140, 0, 255, 0.3); padding: 12px; border-radius: 12px; color: white; margin-bottom: 12px; box-sizing: border-box; font-family: inherit;"></textarea>
-
-                        <p style="font-size: 11px; color: #aaa; margin-bottom: 15px; text-align: justify;">
-                            * تێبینی : شێوازی ماڵپەڕی "هاڤێ کۆریا" خۆبەخشییە. ئەگەر لە داهاتوودا داهاتی هەبێت، بۆ سەرجەم ئەندامەکان بەردەست دەبێت.
-                        </p>
-
-                        <button type="submit" id="submitFormBtn" class="btn-create">ناردنی داواکاری</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="acc-card">
-                <div class="acc-head" onclick="toggleMenu(this)">
-                    <span><i class="fas fa-crown"></i> ستافی وەرگێڕان</span>
-                    <i class="fas fa-chevron-left arrow-icon"></i>
-                </div>
-                <div class="acc-body">
-                    <div class="vip-staff-card">
-                        <div class="staff-avatar-box">
-                            <img src="admin1.png" alt="Staff 1">
-                            <div class="online-badge"></div>
-                        </div>
-                        <div class="staff-details">
-                            <h4>هێلین</h4>
-                            <span>سەرپەرشتیار و وەرگێڕ</span>
-                            <div class="staff-socials">
-                                <a href="https://www.instagram.com/helin.jill?utm_source=qr&igsh=dnNsb2FnZXZxN3l2"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="vip-staff-card">
-                        <div class="staff-avatar-box">
-                            <img src="سانا.png" alt="Staff 2"> <div class="online-badge"></div>
-                        </div>
-                        <div class="staff-details">
-                            <h4>سەنا ئەحمەد </h4>
-                            <span>وەرگێڕی سەرەکی</span>
-                            <div class="staff-socials">
-                                <a href="https://www.instagram.com/sana.sa_n4?igsh=MXh0azgzdXcwYjgxdg%3D%3D&utm_source=qr"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
- <div class="vip-staff-card">
-                        <div class="staff-avatar-box">
-                            <img src="admin2.png" alt="Staff 2"> <div class="online-badge"></div>
-                        </div>
-                        <div class="staff-details">
-                            <h4>کێڵوا </h4>
-                            <span>وەرگێڕ</span>
-                            <div class="staff-socials">
-                                <a href="https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
-
-
-<div class="acc-card">
-    <div class="acc-head" onclick="toggleMenu(this)">
-        <span><i class="fas fa-cogs"></i> تەکنیکار</span>
-        <i class="fas fa-chevron-left arrow-icon"></i>
-    </div>
-    <div class="acc-body">
-        <div class="vip-staff-card">
-            <div class="staff-avatar-box">
-                <img src="admin2.png" alt="Technician">
-                <div class="online-badge"></div>
-            </div>
-            <div class="staff-details">
-                <h4>کێڵوا </h4>
+        <div class="menu-grid">
+            <button class="menu-item" onclick="openMenuModal('account')">
+                <div class="menu-icon-wrap"><i class="fas fa-user-circle"></i></div>
+                <span>هەژمارەکەم</span>
+            </button>
+            <button class="menu-item" onclick="openMenuModal('volunteer')">
+                <div class="menu-icon-wrap"><i class="fas fa-file-signature"></i></div>
+                <span>بوون بە وەرگێر</span>
+            </button>
+            <button class="menu-item" onclick="openMenuModal('staff')">
+                <div class="menu-icon-wrap"><i class="fas fa-crown"></i></div>
+                <span>ستافی وەرگێڕان</span>
+            </button>
+            <button class="menu-item" onclick="openMenuModal('technician')">
+                <div class="menu-icon-wrap"><i class="fas fa-cogs"></i></div>
                 <span>تەکنیکار</span>
-                <div class="staff-socials">
-                   <a href="https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
+            </button>
+            <button class="menu-item" onclick="openMenuModal('about')">
+                <div class="menu-icon-wrap"><i class="fas fa-info-circle"></i></div>
+                <span>دەربارەی ماڵپەڕ</span>
+            </button>
+            <button class="menu-item" onclick="openMenuModal('suggest')">
+                <div class="menu-icon-wrap"><i class="fas fa-lightbulb"></i></div>
+                <span>پێشنیار بکە</span>
+            </button>
         </div>
     </div>
 </div>
 
-
-
-
-
-
-
-            <div class="acc-card">
-    <div class="acc-head" onclick="toggleMenu(this)">
-        <span><i class="fas fa-info-circle"></i> دەربارەی ماڵپەڕ</span>
-        <i class="fas fa-chevron-left arrow-icon"></i>
-    </div>
-    <div class="acc-body">
-        <p class="about-txt">هاڤێ کۆریا؛ خێراترین و باشترین سەرچاوەی کوردی بۆ فیلم و دراما کۆرییەکان بە بەرزترین کوالێتی</p>
-        
-        <div class="social-container">
-            <a href="https://www.tiktok.com/@have.korea?_r=1&_t=ZS-93VQbM8aGOb" target="_blank" class="glass-btn">
-                <span class="border-line"></span>
-                <div class="content">
-                    <i class="fab fa-tiktok"></i>
-                    <span>TikTok</span>
-                </div>
-            </a>
-
-            <a href="https://www.instagram.com/have.korea?igsh=d3M5ajB3enpvOWZx" target="_blank" class="glass-btn">
-                <span class="border-line"></span>
-                <div class="content">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </div>
-            </a>
-        </div>
+<!-- =============================================
+   مۆداڵ
+   ============================================= -->
+<div id="menu-modal-overlay" class="menu-modal-overlay" onclick="closeMenuModal()">
+    <div class="menu-modal-box" onclick="event.stopPropagation()">
+        <button class="modal-x-btn" onclick="closeMenuModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div id="menu-modal-content"></div>
     </div>
 </div>
 
+
+<!-- =============================================
+   CSS
+   ============================================= -->
 <style>
-    .social-container {
+    :root { 
+        --primary-glow: #8c00ff; 
+        --accent-color: #8c00ff;
+        --accent-light: #b366ff;
+        --vip-gold: #ffcc00; 
+    }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; direction: rtl; }
+
+    /* ========== دوگمەی کردنەوە ========== */
+    .vertical-bars-btn { 
+        position: fixed; 
+        top: 100px; 
+        left: 2%; 
+        z-index: 10001; 
+        background: rgba(140, 0, 255, 0.25); 
+        backdrop-filter: blur(20px); 
+        padding: 16px; 
+        border-radius: 16px; 
+        border: 1.5px solid rgba(140, 0, 255, 0.4); 
+        cursor: pointer; 
+        transition: all 0.4s ease; 
+        box-shadow: 0 4px 15px rgba(140, 0, 255, 0.2); 
+    }
+    .vertical-bars-btn:hover { 
+        transform: translateY(-3px); 
+        box-shadow: 0 6px 25px rgba(140, 0, 255, 0.4); 
+    }
+    .vertical-bars-btn.active { 
+        top: 25px !important; 
+        background: rgba(255, 50, 50, 0.25); 
+        border-color: rgba(255, 50, 50, 0.5); 
+    }
+    .bars-wrapper { 
+        display: flex; 
+        gap: 5px; 
+        width: 20px; 
+        height: 22px; 
+        justify-content: center; 
+        position: relative; 
+    }
+    .bars-wrapper span { 
+        width: 3px; 
+        height: 22px; 
+        background: #fff; 
+        border-radius: 10px; 
+        transition: 0.4s; 
+        box-shadow: 0 0 10px var(--primary-glow); 
+    }
+    .vertical-bars-btn.active .bar-1 { transform: rotate(45deg) translate(5.5px, 0); position: absolute; }
+    .vertical-bars-btn.active .bar-2 { opacity: 0; }
+    .vertical-bars-btn.active .bar-3 { transform: rotate(-45deg) translate(-5.5px, 0); position: absolute; }
+
+    /* ========== سایدبار ========== */
+    .glass-sidebar { 
+        position: fixed; 
+        top: 0; 
+        left: -320px; 
+        width: 310px; 
+        height: 100vh; 
+        background: rgba(8, 8, 14, 0.98); 
+        backdrop-filter: blur(35px); 
+        z-index: 10000; 
+        transition: 0.5s; 
+        border-right: 1px solid rgba(140, 0, 255, 0.2); 
+        padding-top: 100px; 
+        overflow-y: auto; 
+    }
+    .glass-sidebar.active { left: 0; }
+    .glass-sidebar::-webkit-scrollbar { width: 4px; }
+    .glass-sidebar::-webkit-scrollbar-thumb { background: rgba(140,0,255,0.4); border-radius: 10px; }
+
+    .sidebar-header-title { 
+        color: #fff; 
+        text-align: center; 
+        font-weight: 900; 
+        margin-bottom: 35px; 
+        text-shadow: 0 0 15px var(--primary-glow); 
+        font-size: 18px; 
+        letter-spacing: 2px; 
+    }
+
+    /* ========== مۆبایل ========== */
+    @media (max-width: 768px) {
+        .vertical-bars-btn { top: 15px !important; left: 15px !important; padding: 14px !important; }
+        .vertical-bars-btn.active { top: 15px !important; }
+        .glass-sidebar { width: 280px; }
+        .menu-modal-box { padding: 50px 18px 25px; border-radius: 22px; max-height: 88vh; }
+        .menu-grid { gap: 12px; }
+        .menu-item { padding: 18px 8px 14px; border-radius: 16px; }
+        .menu-icon-wrap { width: 44px; height: 44px; font-size: 18px; }
+        .menu-item span { font-size: 11px; }
+    }
+
+    /* ========== گرید مێنیو ========== */
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        padding: 5px 15px 20px;
+    }
+
+    .menu-item {
+        position: relative;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1.5px solid rgba(140, 0, 255, 0.2);
+        border-radius: 20px;
+        padding: 22px 10px 18px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+        font-family: Tahoma, sans-serif;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+    }
+
+    .menu-item::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(140, 0, 255, 0.15), rgba(179, 102, 255, 0.08));
+        opacity: 0;
+        transition: opacity 0.3s;
+        border-radius: 18px;
+    }
+
+    .menu-item:hover::before,
+    .menu-item:active::before { opacity: 1; }
+
+    .menu-item:hover {
+        border-color: rgba(140, 0, 255, 0.7);
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 10px 30px rgba(140, 0, 255, 0.25), 0 0 0 1px rgba(140, 0, 255, 0.15);
+    }
+
+    .menu-item:active { transform: scale(0.96); }
+
+    .menu-icon-wrap {
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        background: linear-gradient(135deg, rgba(140, 0, 255, 0.3), rgba(179, 102, 255, 0.2));
+        border: 1px solid rgba(140, 0, 255, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #c499ff;
+        transition: all 0.35s ease;
+        box-shadow: 0 5px 15px rgba(140, 0, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .menu-item:hover .menu-icon-wrap {
+        background: linear-gradient(135deg, rgba(140, 0, 255, 0.5), rgba(179, 102, 255, 0.35));
+        border-color: rgba(140, 0, 255, 0.8);
+        color: #fff;
+        box-shadow: 0 8px 25px rgba(140, 0, 255, 0.4), 0 0 20px rgba(140, 0, 255, 0.3);
+        transform: scale(1.1) rotate(-5deg);
+    }
+
+    .menu-item span {
+        text-align: center;
+        color: #d0b8ff;
+        transition: color 0.3s;
+        position: relative;
+        z-index: 1;
+        line-height: 1.3;
+    }
+
+    .menu-item:hover span {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(140, 0, 255, 0.5);
+    }
+
+    /* ========== مۆداڵ ========== */
+    .menu-modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 20000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        animation: overlayFadeIn 0.3s ease;
+    }
+
+    .menu-modal-overlay.active { display: flex; }
+
+    @keyframes overlayFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .menu-modal-box {
+        background: linear-gradient(145deg, rgba(15, 8, 30, 0.98), rgba(25, 12, 45, 0.97));
+        backdrop-filter: blur(30px);
+        border: 1.5px solid rgba(140, 0, 255, 0.4);
+        border-radius: 28px;
+        padding: 50px 25px 30px;
+        width: 100%;
+        max-width: 480px;
+        max-height: 85vh;
+        overflow-y: auto;
+        position: relative;
+        box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 60px rgba(140, 0, 255, 0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+        animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes modalSlideUp {
+        from { opacity: 0; transform: translateY(40px) scale(0.95); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .menu-modal-box::-webkit-scrollbar { width: 6px; }
+    .menu-modal-box::-webkit-scrollbar-thumb { background: rgba(140,0,255,0.5); border-radius: 10px; }
+
+    .modal-x-btn {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: rgba(255,50,50,0.15);
+        border: 1px solid rgba(255,50,50,0.4);
+        color: #fff;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        z-index: 10;
+    }
+    .modal-x-btn:hover {
+        background: rgba(255,50,50,0.35);
+        transform: rotate(90deg);
+        box-shadow: 0 0 20px rgba(255,50,50,0.4);
+    }
+
+    /* ناوەڕۆکی مۆداڵ */
+    #menu-modal-content h2 {
+        color: #fff;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(140,0,255,0.2);
+        text-shadow: 0 0 15px rgba(140,0,255,0.4);
+    }
+
+    #menu-modal-content input,
+    #menu-modal-content textarea,
+    #menu-modal-content select {
+        width: 100%;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(140, 0, 255, 0.3);
+        padding: 12px;
+        border-radius: 12px;
+        color: white;
+        margin-bottom: 12px;
+        outline: none;
+        text-align: right;
+        box-sizing: border-box;
+        font-family: Tahoma, sans-serif;
+        font-size: 14px;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    #menu-modal-content input:focus,
+    #menu-modal-content textarea:focus,
+    #menu-modal-content select:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px rgba(140,0,255,0.2);
+    }
+    #menu-modal-content select { background: rgba(20, 10, 35, 0.95); }
+    #menu-modal-content textarea { resize: vertical; min-height: 80px; }
+
+    /* پرۆفایل */
+    .modal-profile-upload {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        position: relative;
+        cursor: pointer;
+    }
+    .modal-profile-upload img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--accent-color);
+    }
+    .modal-upload-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: 0.3s;
+        color: white;
+    }
+    .modal-profile-upload:hover .modal-upload-overlay { opacity: 1; }
+
+    /* دوگمەی دروستکردن */
+    .btn-modal-create {
+        background: linear-gradient(135deg, #6b00cc, #8c00ff);
+        color: white;
+        border: none;
+        padding: 13px;
+        border-radius: 12px;
+        cursor: pointer;
+        width: 100%;
+        font-weight: 800;
+        font-size: 15px;
+        font-family: Tahoma, sans-serif;
+        transition: all 0.3s;
+        box-shadow: 0 8px 20px rgba(140,0,255,0.3);
+        margin-bottom: 8px;
+    }
+    .btn-modal-create:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(140,0,255,0.5);
+    }
+    .btn-modal-create:disabled {
+        background: #3e3e4e;
+        box-shadow: none;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    /* ستاف */
+    .modal-staff-card {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(140,0,255,0.2);
+        padding: 15px;
+        border-radius: 16px;
+        margin-bottom: 12px;
+        transition: all 0.3s;
+    }
+    .modal-staff-card:hover {
+        background: rgba(140,0,255,0.18);
+        border-color: rgba(140,0,255,0.5);
+        transform: translateX(-4px);
+    }
+    .modal-staff-card img {
+        width: 55px;
+        height: 55px;
+        border-radius: 14px;
+        object-fit: cover;
+        border: 2px solid var(--accent-color);
+        flex-shrink: 0;
+    }
+    .modal-staff-info h4 { color: #fff; margin: 0 0 4px; font-size: 15px; }
+    .modal-staff-info span { color: #b366ff; font-size: 12px; display: block; margin-bottom: 8px; }
+    .modal-staff-socials a {
+        color: #fff;
+        background: rgba(255,255,255,0.1);
+        width: 28px; height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        font-size: 13px;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+    .modal-staff-socials a:hover { background: #e1306c; }
+
+    /* سۆشیاڵ دوگمەکان - وەک کۆدی کۆنەکەت */
+    .modal-socials {
         display: flex;
         justify-content: center;
         gap: 20px;
@@ -3258,7 +3780,7 @@ app.init();
         padding-bottom: 10px;
     }
 
-    .glass-btn {
+    .modal-social-btn {
         position: relative;
         width: 120px;
         height: 50px;
@@ -3269,202 +3791,152 @@ app.init();
         text-decoration: none;
         overflow: hidden;
         transition: 0.5s;
-        border-radius: 8px; /* چوارگۆشە بە لێوارێکی کەمێک خڕ */
+        border-radius: 8px;
     }
 
-    /* جوڵەی ڕەنگە مۆرەکە لە دەوری چوارگۆشەکە */
-    .glass-btn .border-line {
+    .modal-social-btn .border-line {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
         display: block;
     }
 
-    .glass-btn .border-line::before {
+    .modal-social-btn .border-line::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
+        top: 0; left: 0;
+        width: 100%; height: 2px;
         background: linear-gradient(90deg, transparent, #8e44ad, #9b59b6);
         animation: animate1 2s linear infinite;
     }
-
     @keyframes animate1 {
         0% { transform: translateX(-100%); }
         100% { transform: translateX(100%); }
     }
 
-    .glass-btn .border-line::after {
+    .modal-social-btn .border-line::after {
         content: '';
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 2px;
-        height: 100%;
+        top: 0; right: 0;
+        width: 2px; height: 100%;
         background: linear-gradient(180deg, transparent, #8e44ad, #9b59b6);
         animation: animate2 2s linear infinite;
         animation-delay: 1s;
     }
-
     @keyframes animate2 {
         0% { transform: translateY(-100%); }
         100% { transform: translateY(100%); }
     }
 
-    /* بەشەکانی تری لاکان */
-    .glass-btn::before {
+    .modal-social-btn::before {
         content: '';
         position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
+        bottom: 0; left: 0;
+        width: 100%; height: 2px;
         background: linear-gradient(270deg, transparent, #8e44ad, #9b59b6);
         animation: animate3 2s linear infinite;
     }
-
     @keyframes animate3 {
         0% { transform: translateX(100%); }
         100% { transform: translateX(-100%); }
     }
 
-    .glass-btn::after {
+    .modal-social-btn::after {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 2px;
-        height: 100%;
+        top: 0; left: 0;
+        width: 2px; height: 100%;
         background: linear-gradient(360deg, transparent, #8e44ad, #9b59b6);
         animation: animate4 2s linear infinite;
         animation-delay: 1s;
     }
-
     @keyframes animate4 {
         0% { transform: translateY(100%); }
         100% { transform: translateY(-100%); }
     }
 
-    /* ناوەڕۆکی ناو دوگمەکە */
-    .glass-btn .content {
+    .modal-social-btn .content {
         display: flex;
         align-items: center;
         gap: 8px;
-        color: #ffffff !important; /* ڕەنگی نووسینەکە مۆر */
+        color: #ffffff !important;
         font-weight: bold;
         font-size: 14px;
         z-index: 1;
         transition: 0.5s;
     }
-
-    .glass-btn:hover .content {
+    .modal-social-btn:hover .content {
         color: #ffffff !important;
         text-shadow: 0 0 10px #9b59b6;
     }
-
-    .glass-btn:hover {
+    .modal-social-btn:hover {
         background: #8e44ad;
         box-shadow: 0 0 20px #8e44ad;
     }
-</style>
-    </div>
-</div>
 
-<style>
-    :root { --primary-glow: #8c00ff; --vip-gold: #ffcc00; }
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; direction: rtl; }
+    /* about text */
+    .about-txt { 
+        color: #ccc; 
+        font-size: 13px; 
+        line-height: 1.8; 
+        text-align: justify; 
+        margin-bottom: 5px;
+    }
 
-    /* Sidebar Base */
-    .vertical-bars-btn { position: fixed; top: 100px; left: 2%; z-index: 10001; background: rgba(140, 0, 255, 0.25); backdrop-filter: blur(20px); padding: 16px; border-radius: 16px; border: 1.5px solid rgba(140, 0, 255, 0.4); cursor: pointer; transition: all 0.4s ease; box-shadow: 0 4px 15px rgba(140, 0, 255, 0.2); }
-    .vertical-bars-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 25px rgba(140, 0, 255, 0.4); }
-    .vertical-bars-btn.active { top: 25px !important; background: rgba(255, 50, 50, 0.25); border-color: rgba(255, 50, 50, 0.5); }
-    .bars-wrapper { display: flex; gap: 5px; width: 20px; height: 22px; justify-content: center; position: relative; }
-    .bars-wrapper span { width: 3px; height: 22px; background: #fff; border-radius: 10px; transition: 0.4s; box-shadow: 0 0 10px var(--primary-glow); }
-    .vertical-bars-btn.active .bar-1 { transform: rotate(45deg) translate(5.5px, 0); position: absolute; }
-    .vertical-bars-btn.active .bar-2 { opacity: 0; }
-    .vertical-bars-btn.active .bar-3 { transform: rotate(-45deg) translate(-5.5px, 0); position: absolute; }
-    
-    .glass-sidebar { position: fixed; top: 0; left: -320px; width: 310px; height: 100vh; background: rgba(8, 8, 14, 0.98); backdrop-filter: blur(35px); z-index: 10000; transition: 0.5s; border-right: 1px solid rgba(140, 0, 255, 0.2); padding-top: 100px; overflow-y: auto; }
-    .glass-sidebar.active { left: 0; }
-    .sidebar-header-title { color: #fff; text-align: center; font-weight: 900; margin-bottom: 35px; text-shadow: 0 0 15px var(--primary-glow); font-size: 18px; letter-spacing: 2px; }
-    
-    /* بۆ مۆبایل و ئایفۆن */
-    @media (max-width: 768px) {
-        .vertical-bars-btn { top: 15px !important; left: 15px !important; padding: 14px !important; }
-        .vertical-bars-btn.active { top: 15px !important; }
+    /* پێشنیار - ئینپوت */
+    .proposal-input-wrapper {
+        position: relative;
+        margin-bottom: 15px;
     }
-    /* Accordion */
-    .acc-card { background: rgba(255,255,255,0.03); border-radius: 20px; margin: 0 15px 15px 15px; border: 1px solid rgba(255,255,255,0.06); overflow: hidden; transition: 0.3s; }
-    .acc-head { padding: 18px; display: flex; justify-content: space-between; cursor: pointer; color: #fff; font-size: 15px; align-items: center; }
-    .acc-body { max-height: 0; overflow: hidden; transition: 0.5s ease; background: rgba(0,0,0,0.3); }
-    .acc-card.active .acc-body { max-height: 1200px; padding: 20px 15px; }
-    .arrow-icon { color: var(--primary-glow); transition: 0.3s; font-size: 12px; }
-    .acc-card.active .arrow-icon { transform: rotate(-90deg); }
+    .proposal-input-wrapper i {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(140,0,255,0.6);
+        font-size: 16px;
+        pointer-events: none;
+    }
+    #modal-drama-name-input {
+        width: 100%;
+        padding: 14px 42px 14px 15px;
+        border-radius: 14px;
+        border: 1.5px solid rgba(140,0,255,0.3);
+        background: rgba(10,5,20,0.8);
+        color: white;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.3s ease;
+        font-family: inherit;
+        box-sizing: border-box;
+        text-align: right;
+        margin-bottom: 15px;
+    }
+    #modal-drama-name-input:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 20px rgba(140,0,255,0.2);
+    }
+    #modal-drama-name-input::placeholder { color: rgba(255,255,255,0.3); }
 
-    /* Staff Card */
-    .vip-staff-card { 
-        display: flex; 
-        align-items: center; 
-        gap: 15px; 
-        background: rgba(255, 255, 255, 0.05); 
-        padding: 12px; 
-        border-radius: 18px; 
-        margin-bottom: 15px; 
-        border: 1px solid rgba(140, 0, 255, 0.2);
-        transition: 0.3s;
+    #modal-proposal-result {
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        text-align: center;
+        font-weight: 700;
     }
-    .vip-staff-card:hover { 
-        background: rgba(140, 0, 255, 0.1); 
-        transform: translateX(-5px); 
-        border-color: var(--primary-glow);
-    }
-    .staff-avatar-box { 
-        position: relative; 
-        width: 60px; 
-        height: 60px; 
-        flex-shrink: 0; 
-    }
-    .staff-avatar-box img { 
-        width: 100%; 
-        height: 100%; 
-        border-radius: 15px; 
-        object-fit: cover; 
-        border: 2px solid var(--primary-glow);
-    }
-    .online-badge { 
-        position: absolute; 
-        bottom: -2px; 
-        right: -2px; 
-        width: 12px; 
-        height: 12px; 
-        background: #00ff88; 
-        border-radius: 50%; 
-        border: 2px solid #000; 
-    }
-    .staff-details h4 { color: #fff; margin: 0 0 4px 0; font-size: 15px; }
-    .staff-details span { color: #aaa; font-size: 11px; display: block; margin-bottom: 8px; }
-    .staff-socials a { color: #fff; background: rgba(255,255,255,0.1); width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 14px; transition: 0.3s; }
-    .staff-socials a:hover { background: #e1306c; color: #fff; }
-
-    /* Profile Styles */
-    .profile-upload, .avatar-wrapper { width: 85px; height: 85px; margin: 0 auto 20px; position: relative; }
-    .profile-upload img, .avatar-wrapper img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-glow); }
-    .auth-container input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(140, 0, 255, 0.3); padding: 12px; border-radius: 12px; color: white; margin-bottom: 12px; outline: none; text-align: center; box-sizing: border-box; }
-    .btn-create { background: var(--primary-glow); color: white; border: none; padding: 12px; border-radius: 12px; cursor: pointer; width: 100%; font-weight: bold; }
-    .about-txt { color: #ccc; font-size: 13px; line-height: 1.6; text-align: justify; }
 </style>
 
+
+<!-- =============================================
+   JavaScript
+   ============================================= -->
 <script>
+    // ========== کردنەوە / داخستنی سایدبار ==========
     window.onload = () => {
         const savedData = localStorage.getItem('userAccount');
-        if (savedData) {
-            const user = JSON.parse(savedData);
-            showProfile(user.name, user.email, user.img);
-        }
+        // داتا پاراستراوە بۆ کاتی کردنەوەی مۆداڵ
     };
 
     const trigger = document.getElementById('sidebar-trigger');
@@ -3474,271 +3946,350 @@ app.init();
         sidebar.classList.toggle('active');
         trigger.classList.toggle('active');
         e.stopPropagation();
-    };
 
-    function toggleMenu(header) {
-        const item = header.parentElement;
-        const isActive = item.classList.contains('active');
-        
-        // ئەم بەشە زیادکراوە بۆ داخستنی هەموو لیستەکانی تر کاتێک یەکێکیان دەکەیتەوە
-        document.querySelectorAll('.acc-card').forEach(i => {
-            if(i !== item) {
-                i.classList.remove('active');
+        const menuBn = document.querySelector('.bn-item:last-child');
+        if (menuBn) {
+            if (sidebar.classList.contains('active')) {
+                document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+                menuBn.classList.add('active');
+            } else {
+                document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+                const first = document.querySelector('.bn-item:first-child');
+                if (first) first.classList.add('active');
             }
-        });
-        
-        // کردنەوە یان داخستنی ئەوەی کلیکت لێکردووە
-        if (isActive) {
-            item.classList.remove('active');
-        } else {
-            item.classList.add('active');
         }
-    }
-
-    const imageInput = document.getElementById('imageInput');
-    const previewImg = document.getElementById('previewImg');
-    imageInput.onchange = (e) => {
-        const reader = new FileReader();
-        reader.onload = () => previewImg.src = reader.result;
-        reader.readAsDataURL(e.target.files[0]);
     };
 
-    function createAccount() {
-        const name = document.getElementById('userName').value;
-        const email = document.getElementById('userEmail').value;
-        const img = previewImg.src;
-        if (name && email) {
-            const userData = { name, email, img };
-            localStorage.setItem('userAccount', JSON.stringify(userData));
-            showProfile(name, email, img);
-        } else {
-            alert("تکایە خانەکان پڕ بکەرەوە!");
+    document.addEventListener('click', (e) => {
+        if (sidebar.classList.contains('active') &&
+            !sidebar.contains(e.target) &&
+            !trigger.contains(e.target)) {
+            sidebar.classList.remove('active');
+            trigger.classList.remove('active');
+        }
+    });
+
+    // ========== مۆداڵ ==========
+    function openMenuModal(type) {
+        const overlay = document.getElementById('menu-modal-overlay');
+        const content = document.getElementById('menu-modal-content');
+
+        const templates = {
+
+            account: `
+                <h2><i class="fas fa-user-circle" style="color:var(--accent-light)"></i> هەژمارەکەم</h2>
+                <div id="modal-auth-form">
+                    <div class="modal-profile-upload">
+                        <label for="modal-imageInput">
+                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="modal-previewImg">
+                            <div class="modal-upload-overlay"><i class="fas fa-camera"></i></div>
+                        </label>
+                        <input type="file" id="modal-imageInput" hidden accept="image/*">
+                    </div>
+                    <input type="text" id="modal-userName" placeholder="ناو بنووسە...">
+                    <input type="email" id="modal-userEmail" placeholder="گیمێڵ بنووسە...">
+                    <button class="btn-modal-create" onclick="modalCreateAccount()">دروستکردن</button>
+                </div>
+                <div id="modal-user-profile" style="display:none; text-align:center;">
+                    <div class="modal-profile-upload" style="cursor:default;">
+                        <img id="modal-displayImg" src="">
+                        <label for="modal-editImage" class="modal-upload-overlay" style="opacity:0; cursor:pointer;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                            <i class="fas fa-pen"></i>
+                        </label>
+                        <input type="file" id="modal-editImage" hidden accept="image/*" onchange="modalUpdateImage(this)">
+                    </div>
+                    <h3 id="modal-displayName" style="color:#fff; margin-bottom:5px;"></h3>
+                    <p id="modal-displayEmail" style="color:#b366ff; font-size:13px; margin-bottom:20px;"></p>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn-modal-create" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2);" onclick="modalEditName()">
+                            <i class="fas fa-edit"></i> گۆڕینی ناو
+                        </button>
+                        <button class="btn-modal-create" style="background:rgba(255,50,50,0.2); border:1px solid rgba(255,50,50,0.4);" onclick="modalDeleteAccount()">
+                            <i class="fas fa-trash-alt"></i> سڕینەوە
+                        </button>
+                    </div>
+                </div>
+            `,
+
+            volunteer: `
+                <h2><i class="fas fa-file-signature" style="color:var(--accent-light)"></i> بوون بە وەرگێر</h2>
+                <form id="modal-volunteerForm">
+                    <input type="text" name="Full_Name" placeholder="ناوی سیانی" required>
+                    <input type="number" name="Age" placeholder="تەمەن (١٤ - ٥٠)" min="14" max="50" required>
+                    <select name="Gender" required>
+                        <option value="">ڕەگەز هەڵبژێرە</option>
+                        <option value="Male">نێر</option>
+                        <option value="Female">مێ</option>
+                    </select>
+                    <select name="Skill" required>
+                        <option value="">شارەزایت لە چیدا هەیە؟</option>
+                        <option value="Designer">دیزاینەر</option>
+                        <option value="Translator">وەرگێڕ</option>
+                        <option value="Technician">تەکنیکار</option>
+                        <option value="Editor">ئیدیتەر</option>
+                    </select>
+                    <select name="Contact_Method" required>
+                        <option value="">لە کوێ پەیوەندیت پێوە بکەین؟</option>
+                        <option value="Email">ئیمێڵ</option>
+                        <option value="WhatsApp">وەتس ئەپ</option>
+                        <option value="Telegram">تیلیگرام</option>
+                        <option value="TikTok">تیکتۆک</option>
+                    </select>
+                    <input type="text" name="Contact_Details" placeholder="ناونیشان (یوسەر یان ئیمێڵ یان ژمارە...)" required>
+                    <input type="text" name="Languages" placeholder="چی زمانێک دەزانیت؟" required>
+                    <input type="text" name="Availability" placeholder="ڕۆژانە چەند کاتت هەیە؟" required>
+                    <textarea name="Reason" placeholder="بۆچی دەتەوێت ببیتە ئەندام؟" rows="3" required></textarea>
+                    <p style="font-size:11px; color:#aaa; margin-bottom:15px; text-align:justify;">
+                        * تێبینی: شێوازی ماڵپەڕی "هاڤێ کۆریا" خۆبەخشییە. ئەگەر لە داهاتوودا داهاتی هەبێت، بۆ سەرجەم ئەندامەکان بەردەست دەبێت.
+                    </p>
+                    <button type="submit" id="modal-submitFormBtn" class="btn-modal-create">ناردنی داواکاری</button>
+                </form>
+            `,
+
+            staff: `
+                <h2><i class="fas fa-crown" style="color:#ffd700"></i> ستافی وەرگێڕان</h2>
+                <div class="modal-staff-card">
+                    <img src="admin1.png" alt="هێلین">
+                    <div class="modal-staff-info">
+                        <h4>هێلین</h4>
+                        <span>سەرپەرشتیار و وەرگێڕ</span>
+                        <div class="modal-staff-socials">
+                            <a href="https://www.instagram.com/helin.jill?utm_source=qr&igsh=dnNsb2FnZXZxN3l2" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-staff-card">
+                    <img src="سانا.png" alt="سەنا">
+                    <div class="modal-staff-info">
+                        <h4>سەنا ئەحمەد</h4>
+                        <span>وەرگێڕی سەرەکی</span>
+                        <div class="modal-staff-socials">
+                            <a href="https://www.instagram.com/sana.sa_n4?igsh=MXh0azgzdXcwYjgxdg%3D%3D&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-staff-card">
+                    <img src="admin2.png" alt="کێڵوا">
+                    <div class="modal-staff-info">
+                        <h4>کێڵوا</h4>
+                        <span>وەرگێڕ</span>
+                        <div class="modal-staff-socials">
+                            <a href="https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            `,
+
+            technician: `
+                <h2><i class="fas fa-cogs" style="color:var(--accent-light)"></i> تەکنیکار</h2>
+                <div class="modal-staff-card">
+                    <img src="admin2.png" alt="کێڵوا">
+                    <div class="modal-staff-info">
+                        <h4>کێڵوا</h4>
+                        <span>تەکنیکار</span>
+                        <div class="modal-staff-socials">
+                            <a href="https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            `,
+
+            about: `
+                <h2><i class="fas fa-info-circle" style="color:var(--accent-light)"></i> دەربارەی ماڵپەڕ</h2>
+                <p class="about-txt">هاڤێ کۆریا؛ خێراترین و باشترین سەرچاوەی کوردی بۆ فیلم و دراما کۆرییەکان بە بەرزترین کوالێتی و ژێرنووسی پڕۆفیشناڵی کوردی.</p>
+                <div class="modal-socials">
+                    <a href="https://www.tiktok.com/@have.korea?_r=1&_t=ZS-93VQbM8aGOb" target="_blank" class="modal-social-btn">
+                        <span class="border-line"></span>
+                        <div class="content">
+                            <i class="fab fa-tiktok"></i>
+                            <span>TikTok</span>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/have.korea?igsh=d3M5ajB3enpvOWZx" target="_blank" class="modal-social-btn">
+                        <span class="border-line"></span>
+                        <div class="content">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </div>
+                    </a>
+                </div>
+            `,
+
+            suggest: `
+                <h2><i class="fas fa-lightbulb" style="color:#ffd700"></i> پێشنیار بکە</h2>
+                <p style="color:#c499ff; font-size:13px; text-align:center; margin-bottom:20px;">
+                    ناوی ئەو درامایەی دەتەوێت وەرگێڕانی بۆ بکەین بنووسە
+                </p>
+                <form id="modal-drama-proposal-form">
+                    <div class="proposal-input-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="modal-drama-name-input" name="drama_name" placeholder="بۆ نموونە: My Name 2021..." required>
+                    </div>
+                    <button type="submit" id="modal-proposal-submit-btn" class="btn-modal-create">
+                        <i class="fas fa-paper-plane"></i> ناردنی پێشنیار
+                    </button>
+                </form>
+                <div id="modal-proposal-result" style="display:none;"></div>
+            `
+        };
+
+        content.innerHTML = templates[type] || '';
+        overlay.classList.add('active');
+
+        // هەژمار
+        if (type === 'account') {
+            const saved = localStorage.getItem('userAccount');
+            if (saved) {
+                const user = JSON.parse(saved);
+                document.getElementById('modal-auth-form').style.display = 'none';
+                document.getElementById('modal-user-profile').style.display = 'block';
+                document.getElementById('modal-displayName').innerText = user.name;
+                document.getElementById('modal-displayEmail').innerText = user.email;
+                document.getElementById('modal-displayImg').src = user.img;
+            }
+            const imgInput = document.getElementById('modal-imageInput');
+            if (imgInput) {
+                imgInput.onchange = (e) => {
+                    const reader = new FileReader();
+                    reader.onload = () => document.getElementById('modal-previewImg').src = reader.result;
+                    reader.readAsDataURL(e.target.files[0]);
+                };
+            }
+        }
+
+        // فۆرمی وەرگێر
+        if (type === 'volunteer') {
+            document.getElementById('modal-volunteerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = document.getElementById('modal-submitFormBtn');
+                btn.innerText = 'جاری ناردن...';
+                btn.disabled = true;
+                const formData = new FormData(this);
+                const form = this;
+                Promise.all([
+                    fetch('https://formspree.io/f/xojwqwzg', { method: 'POST', body: formData, headers: {'Accept': 'application/json'} }),
+                    fetch('https://formspree.io/f/xkobnbvj', { method: 'POST', body: formData, headers: {'Accept': 'application/json'} })
+                ]).then(res => {
+                    if (res.every(r => r.ok)) {
+                        btn.innerText = '✅ بە سەرکەوتوویی نێردرا!';
+                        form.reset();
+                        setTimeout(() => closeMenuModal(), 2500);
+                    } else {
+                        btn.innerText = 'کێشەیەک ڕوویدا';
+                        btn.disabled = false;
+                    }
+                }).catch(() => {
+                    btn.innerText = 'کێشەی ئینتەرنێت';
+                    btn.disabled = false;
+                });
+            });
+        }
+
+        // فۆرمی پێشنیار
+        if (type === 'suggest') {
+            document.getElementById('modal-drama-proposal-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = document.getElementById('modal-proposal-submit-btn');
+                const result = document.getElementById('modal-proposal-result');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> چاوەڕوانبە...';
+                btn.disabled = true;
+                const formData = new FormData(this);
+                const form = this;
+                Promise.all([
+                    fetch('https://formspree.io/f/xojwqwzg', { method: 'POST', body: formData, headers: {'Accept': 'application/json'} }),
+                    fetch('https://formspree.io/f/xkobnbvj', { method: 'POST', body: formData, headers: {'Accept': 'application/json'} })
+                ]).then(res => {
+                    result.style.display = 'block';
+                    if (res.every(r => r.ok)) {
+                        result.style.cssText = 'display:block; background:rgba(46,204,113,0.15); color:#2ecc71; border:1px solid rgba(46,204,113,0.3); padding:12px; border-radius:12px; text-align:center; font-weight:700;';
+                        result.innerHTML = '✅ پێشنیارەکەت گەیشت! سوپاس.';
+                        form.reset();
+                        btn.innerHTML = '<i class="fas fa-check"></i> نێردرا!';
+                        setTimeout(() => closeMenuModal(), 2500);
+                    } else {
+                        result.style.cssText = 'display:block; background:rgba(231,76,60,0.15); color:#e74c3c; border:1px solid rgba(231,76,60,0.3); padding:12px; border-radius:12px; text-align:center; font-weight:700;';
+                        result.innerHTML = '❌ هەڵەیەک ڕوویدا.';
+                        btn.innerHTML = '<i class="fas fa-paper-plane"></i> ناردنی پێشنیار';
+                        btn.disabled = false;
+                    }
+                }).catch(() => {
+                    result.style.cssText = 'display:block; background:rgba(231,76,60,0.15); color:#e74c3c; padding:12px; border-radius:12px; text-align:center;';
+                    result.innerHTML = '⚠️ کێشەی ئینتەرنێت هەیە.';
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> ناردنی پێشنیار';
+                    btn.disabled = false;
+                });
+            });
         }
     }
 
-    function showProfile(name, email, img) {
-        document.getElementById('displayName').innerText = name;
-        document.getElementById('displayEmail').innerText = email;
-        document.getElementById('displayImg').src = img;
-        document.getElementById('auth-form').style.display = 'none';
-        document.getElementById('user-profile').style.display = 'block';
+    function closeMenuModal() {
+        document.getElementById('menu-modal-overlay').classList.remove('active');
     }
 
-    function updateImage(input) {
+    // ========== فانکشنەکانی هەژمار ==========
+    function modalCreateAccount() {
+        const name = document.getElementById('modal-userName').value;
+        const email = document.getElementById('modal-userEmail').value;
+        const img = document.getElementById('modal-previewImg').src;
+        if (!name || !email) { alert('تکایە خانەکان پڕ بکەرەوە!'); return; }
+        localStorage.setItem('userAccount', JSON.stringify({ name, email, img }));
+        document.getElementById('modal-auth-form').style.display = 'none';
+        document.getElementById('modal-user-profile').style.display = 'block';
+        document.getElementById('modal-displayName').innerText = name;
+        document.getElementById('modal-displayEmail').innerText = email;
+        document.getElementById('modal-displayImg').src = img;
+    }
+
+    function modalEditName() {
+        const current = document.getElementById('modal-displayName').innerText;
+        const newName = prompt('ناوی نوێ بنووسە:', current);
+        if (newName) {
+            document.getElementById('modal-displayName').innerText = newName;
+            const data = JSON.parse(localStorage.getItem('userAccount'));
+            data.name = newName;
+            localStorage.setItem('userAccount', JSON.stringify(data));
+        }
+    }
+
+    function modalUpdateImage(input) {
         if (input.files && input.files[0]) {
             const reader = new FileReader();
             reader.onload = (e) => {
-                const newImg = e.target.result;
-                document.getElementById('displayImg').src = newImg;
-                updateStorage('img', newImg);
+                document.getElementById('modal-displayImg').src = e.target.result;
+                const data = JSON.parse(localStorage.getItem('userAccount'));
+                data.img = e.target.result;
+                localStorage.setItem('userAccount', JSON.stringify(data));
             };
             reader.readAsDataURL(input.files[0]);
         }
     }
 
-    function editName() {
-        const currentName = document.getElementById('displayName').innerText;
-        const newName = prompt("ناوی نوێ بنووسە:", currentName);
-        if (newName) {
-            document.getElementById('displayName').innerText = newName;
-            updateStorage('name', newName);
-        }
-    }
-
-    function updateStorage(key, value) {
-        const data = JSON.parse(localStorage.getItem('userAccount'));
-        data[key] = value;
-        localStorage.setItem('userAccount', JSON.stringify(data));
-    }
-
-    function deleteAccount() {
-        if (confirm("دڵنیای لە سڕینەوە؟")) {
+    function modalDeleteAccount() {
+        if (confirm('دڵنیای لە سڕینەوە؟')) {
             localStorage.removeItem('userAccount');
-            location.reload();
+            closeMenuModal();
         }
     }
 
-    // --- سکریپتی نوێ بۆ ناردنی فۆرمەکە بۆ هەردووکتان ---
-    document.getElementById('volunteerForm').addEventListener('submit', function(e) {
-        e.preventDefault(); // ڕێگری لە ڕیلۆدکردن
-        
-        var form = this;
-        var btn = document.getElementById('submitFormBtn');
-        var originalBtnText = btn.innerText;
-        btn.innerText = "جاری ناردن...";
-        btn.disabled = true;
+    // ========== هاوکێشەی bnMenu ==========
+    function bnMenu(btn) {
+        sidebar.classList.toggle('active');
+        trigger.classList.toggle('active');
+        if (sidebar.classList.contains('active')) {
+            document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        } else {
+            document.querySelectorAll('.bn-item').forEach(b => b.classList.remove('active'));
+            const first = document.querySelector('.bn-item:first-child');
+            if (first) first.classList.add('active');
+        }
+    }
 
-        var formData = new FormData(form);
-
-        // لینکەکانت لێرە دانراون
-        var url1 = "https://formspree.io/f/xojwqwzg"; // هی تۆ
-        var url2 = "https://formspree.io/f/xkobnbvj"; // هی هاوڕێکەت
-
-        // ناردن بۆ هەردوو لینکەکە بە یەک کات
-        Promise.all([
-            fetch(url1, { method: 'POST', body: formData, headers: {'Accept': 'application/json'} }),
-            fetch(url2, { method: 'POST', body: formData, headers: {'Accept': 'application/json'} })
-        ]).then(function (responses) {
-            if (responses.every(r => r.ok)) {
-                alert("بە سەرکەوتوویی نێردرا! سوپاس بۆ پەیوەندیکردنت.");
-                form.reset();
-            } else {
-                alert("کێشەیەک ڕوویدا لە ناردنی فۆرمەکە.");
-            }
-        }).catch(function (error) {
-            alert("کێشەیەک لە پەیوەندی ئینتەرنێت هەیە.");
-        }).finally(function() {
-            btn.innerText = originalBtnText;
-            btn.disabled = false;
-        });
+    // داخستنی مۆداڵ بە ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenuModal();
     });
-    
-
-    
 </script>
-<div class="acc-card active">
-    <div class="acc-head" onclick="toggleMenu(this)" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(157, 78, 221, 0.1); border-radius: 12px;">
-        <span><i class="fas fa-plus-circle"></i> پێشنیار بکە</span>
-        <i class="fas fa-chevron-left arrow-icon"></i>
-    </div>
-    <div class="acc-body" id="acc-body-content">
-        <div class="proposal-container" style="text-align: center; padding: 10px;">
-            <p style="color: #c77dff; font-size: 13px; margin-bottom: 15px;">ناوی ئەو درامایەی دەتەوێت وەرگێڕانی بۆ بکەین لێرە بینووسە</p>
-           <form id="drama-proposal-form">
-    <input type="text" id="drama-name-input" name="drama_name" class="purple-input" placeholder="ناوی دراما یان فیلم..." required 
-    style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid rgba(157, 78, 221, 0.4); background: rgba(0,0,0,0.5); color: white; text-align: center; outline: none; margin-bottom: 15px;">
-    <button type="submit" id="proposal-submit-btn" class="purple-btn">ناردنی پێشنیار</button>
-</form>
-<p id="proposal-result" style="margin-top: 15px; font-weight: bold; display: none; font-size: 14px;"></p>
-        </div>
-    </div>
-</div>
-
-
-
-
-<style>
-    /* دیزاینی گشتی */
-    body {
-        background-color: #0d0015;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        direction: rtl; /* بۆ ڕێکخستنی زمانە کوردییەکە */
-    }
-
-    .acc-body { transition: 0.3s ease; }
-
-    /* دیزاینی فۆرمە مۆرەکە */
-    .purple-glass-footer {
-        margin: 50px auto; max-width: 450px; padding: 40px 20px;
-        background: rgba(30, 10, 60, 0.4); backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-radius: 30px; border: 1px solid rgba(157, 78, 221, 0.3);
-        text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    }
-    
-    .purple-title { color: #e0aaff; margin-bottom: 10px; }
-
-    .purple-input {
-        width: 85%; padding: 12px; border-radius: 12px;
-        border: 1px solid rgba(157, 78, 221, 0.4); background: rgba(0,0,0,0.5);
-        color: white; text-align: center; outline: none;
-        transition: 0.3s;
-    }
-    .purple-input:focus {
-        border-color: #c77dff;
-        box-shadow: 0 0 10px rgba(199, 125, 255, 0.2);
-    }
-
-    .purple-btn {
-        position: relative; background: transparent; color: white;
-        border: none; padding: 12px 40px; border-radius: 12px;
-        margin-top: 25px; cursor: pointer; font-weight: bold;
-        font-size: 16px; overflow: hidden; z-index: 1;
-        transition: 0.3s; letter-spacing: 1px;
-    }
-
-    .purple-btn::before {
-        content: ''; position: absolute;
-        top: -50%; left: -50%; width: 200%; height: 200%;
-        background: conic-gradient(from 0deg, transparent 0%, transparent 30%, #9d4edd 50%, #e0aaff 55%, #9d4edd 60%, transparent 100%);
-        animation: rotate-border 3s linear infinite; z-index: -2;
-    }
-
-    .purple-btn::after {
-        content: ''; position: absolute; inset: 3px;
-        background: #240046; border-radius: 10px; z-index: -1; transition: 0.3s;
-    }
-
-    .purple-btn:hover { transform: scale(1.05); color: #fff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-    .purple-btn:hover::after { background: #3c096c; }
-
-    @keyframes rotate-border {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    
-    .purple-btn:disabled { opacity: 0.7; cursor: not-allowed; }
-    .purple-btn:disabled::before { animation: none; background: #555; }
-
-    
-</style>
-<script>
-    // ئەمە فۆرمەکە بەستراوەتەوە بە Formspree کە زۆر جێگیرترە
-    document.getElementById('drama-proposal-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        var form = this;
-        var btn = document.getElementById('proposal-submit-btn');
-        var resultMsg = document.getElementById('proposal-result');
-        var originalBtnText = btn.innerText;
-
-        btn.innerText = "جاری ناردن...";
-        btn.disabled = true;
-
-        var formData = new FormData(form);
-
-        // لینکەکانی Formspree کە بۆ بەشەکەی تریش بەکارت هێناوە
-        var url1 = "https://formspree.io/f/xojwqwzg"; // ئایدی تۆ
-        var url2 = "https://formspree.io/f/xkobnbvj"; // ئایدی هاوڕێکەت
-
-        Promise.all([
-            fetch(url1, { method: 'POST', body: formData, headers: {'Accept': 'application/json'} }),
-            fetch(url2, { method: 'POST', body: formData, headers: {'Accept': 'application/json'} })
-        ]).then(function (responses) {
-            resultMsg.style.display = "block";
-            if (responses.every(r => r.ok)) {
-                resultMsg.style.color = "#2ecc71";
-                resultMsg.textContent = "✅ پێشنیارەکەت گەیشت! سوپاس.";
-                form.reset();
-                btn.style.display = "none"; // دوگمەکە دەشارێتەوە دوای ناردن
-            } else {
-                resultMsg.style.color = "#ff4d4d";
-                resultMsg.textContent = "هەڵەیەک ڕوویدا، تکایە دووبارە هەوڵ بدەرەوە.";
-                btn.disabled = false;
-                btn.innerText = originalBtnText;
-            }
-        }).catch(function (error) {
-            resultMsg.style.display = "block";
-            resultMsg.style.color = "#ff4d4d";
-            resultMsg.textContent = "کێشەی هێڵ هەیە، تکایە ئینتەرنێتەکەت بپشکنە.";
-            btn.disabled = false;
-            btn.innerText = originalBtnText;
-        });
-    });
-
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4280,7 +4831,11 @@ app.setupRatingEvents = function(item, hasVoted) {
 };
 </script>
 
-<!-- لە کۆتایی فایل، پێش </body> زیادی بکە -->
+
+
+
+
+
 
 <!-- SEO Content - Auto-generated from database -->
 <div id="auto-seo" style="display:none;"></div>
