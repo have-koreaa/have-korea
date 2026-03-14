@@ -886,6 +886,19 @@
         <button class="swatch" style="background:#ffd700" onclick="changeTheme('#ffd700','#ffe55c',this)" title="زەرد"></button>
         <button class="swatch" style="background:#00bcd4" onclick="changeTheme('#00bcd4','#80deea',this)" title="فیرۆزەیی"></button>
         <button class="swatch" style="background:#ff6f00" onclick="changeTheme('#ff6f00','#ffb300',this)" title="پەمەیی"></button>
+<!-- ✅ ١٠ ڕەنگی نوێ -->
+<button class="swatch" style="background:#00c853" onclick="changeTheme('#00c853','#69f0ae',this)" title="سووز"></button>
+<button class="swatch" style="background:#e91e63" onclick="changeTheme('#e91e63','#f48fb1',this)" title="گوڵەبەیی"></button>
+<button class="swatch" style="background:#3949ab" onclick="changeTheme('#3949ab','#7986cb',this)" title="مووی"></button>
+<button class="swatch" style="background:#00bfa5" onclick="changeTheme('#00bfa5','#64ffda',this)" title="فیرۆزە تۆخ"></button>
+<button class="swatch" style="background:#aa00ff" onclick="changeTheme('#aa00ff','#e040fb',this)" title="بەنەفش"></button>
+<button class="swatch" style="background:#d50000" onclick="changeTheme('#d50000','#ff5252',this)" title="سووری تۆخ"></button>
+<button class="swatch" style="background:#1565c0" onclick="changeTheme('#1565c0','#42a5f5',this)" title="شینی شاهانە"></button>
+<button class="swatch" style="background:#f9a825" onclick="changeTheme('#f9a825','#ffd54f',this)" title="زەردی زێڕین"></button>
+<button class="swatch" style="background:#ffffff; border:1px solid #ddd;" onclick="changeTheme('#ffffff','#f2f2f2',this)" title="سپی"></button>
+
+<button class="swatch" style="background:#ff66b2" onclick="changeTheme('#ff66b2','#ffb3d9',this)" title="پینک"></button>
+
     </div>
 </div>
         <!-- ناڤباری فلتەر (تەنها بۆ دراما و فیلم) -->
@@ -1863,8 +1876,71 @@ function changeTheme(mainColor, lightColor, btn) {
     document.documentElement.style.setProperty('--bg-card',      `rgb(${Math.round(r*0.09)}, ${Math.round(g*0.06)}, ${Math.round(b*0.14)})`);
     document.documentElement.style.setProperty('--glass-bg',     `rgba(${Math.round(r*0.11)}, ${Math.round(g*0.07)}, ${Math.round(b*0.17)}, 0.75)`);
     document.documentElement.style.setProperty('--glass-border', `rgba(${r}, ${g}, ${b}, 0.15)`);
-document.querySelectorAll('.bottom-navbar, .glass-sidebar, .navbar, .rating-wrapper, .rating-stars-section, .info-box, .helin-footer, .live-stats-container, .purple-glass-footer, .acc-card, .vip-staff-card, .credit-card, .result-card, .person-modal-content, .filter-dropdown, .color-picker-panel').forEach(el => {
-    el.style.background = `rgba(${Math.round(r*0.05)}, ${Math.round(g*0.03)}, ${Math.round(b*0.09)}, 0.97)`;
+// باگراوندی هەموو بەشەکان
+document.querySelectorAll('.bottom-navbar, .glass-sidebar, .navbar, .rating-wrapper, .rating-stars-section, .info-box, .helin-footer, .purple-glass-footer, .acc-card, .vip-staff-card, .credit-card, .result-card, .person-modal-content, .filter-dropdown, .color-picker-panel, .menu-modal-box, .back-btn, .home-random-section, .filter-toggle-btn, .action-btn, .cat-btn, .search-input, .player-content').forEach(el => {
+    el.style.background = `rgba(${Math.round(r*0.05)}, ${Math.round(g*0.03)}, ${Math.round(b*0.09)}, 0.95)`;
+});
+
+// بۆردەرەکان
+document.querySelectorAll('.bottom-navbar, .navbar, .glass-sidebar, .info-box, .helin-footer, .credit-card, .result-card, .rating-wrapper, .filter-toggle-btn, .home-random-section').forEach(el => {
+    el.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.35)`;
+});
+
+// box-shadow بۆ بەشە گرنگەکان
+document.querySelectorAll('.navbar, .bottom-navbar').forEach(el => {
+    el.style.boxShadow = `0 0 30px rgba(${r}, ${g}, ${b}, 0.2)`;
+});
+
+// گۆڕینی ڕەنگی نووسینی دووەمیانە
+document.querySelectorAll('.credit-role, .result-label, .rating-subtitle, .home-random-sub, .managed-by').forEach(el => {
+    el.style.color = `rgba(${r}, ${g}, ${b}, 0.9)`;
+});
+
+// گۆڕینی section-header خەتی
+document.querySelectorAll('.section-header::after').forEach(el => {
+    el.style.background = `rgba(${r}, ${g}, ${b}, 1)`;
+});
+
+// گۆڕینی card border
+document.querySelectorAll('.card').forEach(el => {
+    el.style.boxShadow = `0 10px 30px rgba(${r}, ${g}, ${b}, 0.2)`;
+});
+
+// گۆڕینی دوگمە ئەکتیڤەکان
+document.querySelectorAll('.action-btn.active, .cat-btn.active').forEach(el => {
+    el.style.background = `rgba(${r}, ${g}, ${b}, 0.25)`;
+    el.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.8)`;
+    el.style.boxShadow = `0 0 20px rgba(${r}, ${g}, ${b}, 0.4)`;
+});
+
+// گۆڕینی search input focus color بە CSS variable
+document.querySelector('.search-input') && (document.querySelector('.search-input').style.borderColor = `rgba(${r}, ${g}, ${b}, 0.3)`);
+
+// گۆڕینی player modal باگراوند
+const playerModal = document.getElementById('player-modal');
+if (playerModal) playerModal.style.background = `rgba(${Math.round(r*0.02)}, ${Math.round(g*0.01)}, ${Math.round(b*0.04)}, 0.97)`;
+
+// گۆڕینی هین-فووتەر گلۆ
+const footerGlow = document.querySelector('.helin-footer::before');
+if (footerGlow) footerGlow.style.background = `rgba(${r}, ${g}, ${b}, 0.3)`;
+
+// گۆڕینی vertical-bars-btn
+const sidebarTrigger = document.getElementById('sidebar-trigger');
+if (sidebarTrigger) {
+    sidebarTrigger.style.background = `rgba(${r}, ${g}, ${b}, 0.25)`;
+    sidebarTrigger.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
+}
+
+// گۆڕینی home-rand-btn
+document.querySelectorAll('.home-rand-btn').forEach(el => {
+    el.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.35)`;
+    el.style.background = `rgba(${r}, ${g}, ${b}, 0.12)`;
+    el.style.color = `rgba(${r*0.8 + 200}, ${g*0.3 + 150}, ${b*0.8 + 200}, 1)`;
+});
+
+// گۆڕینی bn-item active
+document.querySelectorAll('.bn-item.active').forEach(el => {
+    el.style.color = `rgb(${r}, ${g}, ${b})`;
 });
 
 // بۆ بۆردەرەکانیش
@@ -1909,12 +1985,16 @@ document.querySelectorAll('.action-btn.active, .cat-btn.active, .filter-main-btn
     localStorage.setItem('hk-theme-r', r);
     localStorage.setItem('hk-theme-g', g);
     localStorage.setItem('hk-theme-b', b);
-    
+    localStorage.setItem('hk-theme-r', r);
+localStorage.setItem('hk-theme-g', g);
+localStorage.setItem('hk-theme-b', b);
     setTimeout(() => {
         document.getElementById('colorPickerPanel').classList.remove('show');
         document.removeEventListener('click', closePanelOutside);
     }, 350);
 }
+
+
 
 // هێنانەوەی ڕەنگی پاشەکەوتکراو کاتی کردنەوەی سایت
 // ئەمەی نوێ
@@ -3059,12 +3139,48 @@ body {
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     transition: 0.3s;
 }
-
 .work-card:hover .work-title {
     color: var(--accent-light);
     text-shadow: 0 0 10px rgba(140, 0, 255, 0.7);
 }
 
+/* ← لێرە ئەم ستایلانە زیاد بکە */
+.works-person-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(140,0,255,0.25);
+    color: #c499ff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: Tahoma, sans-serif;
+    transition: all 0.3s ease;
+}
+.works-person-btn:hover {
+    background: rgba(140,0,255,0.15);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+.works-person-btn.active {
+    background: rgba(140,0,255,0.25);
+    border-color: var(--accent-light);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(140,0,255,0.3);
+}
+.works-count-badge {
+    background: rgba(140,0,255,0.4);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 20px;
+    min-width: 20px;
+    text-align: center;
+}
 /* چارەسەری تایبەت بۆ مۆبایل */
 @media (max-width: 768px) {
     .person-modal {
@@ -3151,6 +3267,21 @@ body {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 <footer class="helin-footer">
@@ -3162,8 +3293,8 @@ body {
                 <div class="home-random-left">
                     <div class="home-random-icon">🎲</div>
                     <div>
-                        <div class="home-random-title">نەزانی چی سەیر بکەیت؟</div>
-                        <div class="home-random-sub">بەهەڕەمەکی دراما یان فیلمێک بۆت هەڵدەبژێرین!</div>
+                        <div class="home-random-title">نازانی چی سەیر بکەیت؟</div>
+                        <div class="home-random-sub">بەهەڕەمەکی دراما یان فیلمێکت بۆ هەڵدەبژێرین  ! </div>
                     </div>
                 </div>
                 <div class="home-random-btns">
@@ -3350,21 +3481,33 @@ body {
                 <div class="menu-icon-wrap"><i class="fas fa-cogs"></i></div>
                 <span>تەکنیکار</span>
             </button>
-            <button class="menu-item" onclick="openMenuModal('about')">
-                <div class="menu-icon-wrap"><i class="fas fa-info-circle"></i></div>
-                <span>دەربارەی ماڵپەڕ</span>
-            </button>
+           
             <button class="menu-item" onclick="openMenuModal('suggest')">
                 <div class="menu-icon-wrap"><i class="fas fa-lightbulb"></i></div>
                 <span>پێشنیار بکە</span>
             </button>
+            <button class="menu-item" onclick="openMenuModal('works')">
+    <div class="menu-icon-wrap"><i class="fas fa-photo-film"></i></div>
+    <span>کارەکان</span>
+</button>
             <button class="menu-item" onclick="openMenuModal('random')">
     <div class="menu-icon-wrap"><i class="fas fa-random"></i></div>
     <span>هەڕەمەکیانە</span>
 </button>
+
+ <button class="menu-item" onclick="openMenuModal('about')">
+                <div class="menu-icon-wrap"><i class="fas fa-info-circle"></i></div>
+                <span>دەربارەی ماڵپەڕ</span>
+            </button>
         </div>
     </div>
 </div>
+
+
+
+
+
+
 
 <!-- =============================================
    مۆداڵ
@@ -4072,6 +4215,40 @@ body {
         const content = document.getElementById('menu-modal-content');
 
         const templates = {
+
+works: `
+    <h2><i class="fas fa-photo-film" style="color:var(--accent-light)"></i> کارەکان</h2>
+    <p style="color:#c499ff; font-size:13px; text-align:center; margin-bottom:20px;">
+        کارەکانی هەر ئەندامێک بۆ ستافی وەرگێڕان یان تەکنیکار
+    </p>
+    
+    <div style="display:flex; gap:10px; margin-bottom:25px; flex-wrap:wrap; justify-content:center;">
+     <button class="works-person-btn active" data-role="translator" data-name="هێلین" data-avatar="admin1.png" onclick="filterWorksModal(this)">
+    <img src="admin1.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid var(--accent-color);">
+    هێلین
+    <span class="works-count-badge" id="badge-هێلین-translator">0</span>
+</button>
+<button class="works-person-btn" data-role="translator" data-name="سەنا ئەحمەد" data-avatar="سانا.png" onclick="filterWorksModal(this)">
+    <img src="سانا.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid var(--accent-color);">
+    سەنا
+    <span class="works-count-badge" id="badge-سەنا-translator">0</span>
+</button>
+<button class="works-person-btn" data-role="translator" data-name="کێڵوا" data-avatar="admin2.png" onclick="filterWorksModal(this)">
+    <img src="admin2.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid var(--accent-color);">
+    کێڵوا (وەرگێڕ)
+    <span class="works-count-badge" id="badge-کێڵوا-translator">0</span>
+</button>
+<button class="works-person-btn" data-role="technician" data-name="کێڵوا" data-avatar="admin2.png" onclick="filterWorksModal(this)">
+    <img src="admin2.png" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid var(--accent-color);">
+    کێڵوا (تەکنیکار)
+    <span class="works-count-badge" id="badge-کێڵوا-technician">0</span>
+</button>
+</div>
+
+    <div id="works-modal-grid" class="person-works-grid" style="padding:0;"></div>
+`,
+
+
 random: `
     <h2><i class="fas fa-random" style="color:var(--accent-light)"></i> هەڵبژاردنی هەڕەمەکیانە</h2>
     <p style="color:#c499ff; font-size:13px; text-align:center; margin-bottom:20px;">
@@ -4239,26 +4416,65 @@ random: `
                 </div>
             `,
 
-            about: `
-                <h2><i class="fas fa-info-circle" style="color:var(--accent-light)"></i> دەربارەی ماڵپەڕ</h2>
-                <p class="about-txt">هاڤێ کۆریا؛ خێراترین و باشترین سەرچاوەی کوردی بۆ فیلم و دراما کۆرییەکان بە بەرزترین کوالێتی و ژێرنووسی پڕۆفیشناڵی کوردی.</p>
-                <div class="modal-socials">
-                    <a href="https://www.tiktok.com/@have.korea?_r=1&_t=ZS-93VQbM8aGOb" target="_blank" class="modal-social-btn">
-                        <span class="border-line"></span>
-                        <div class="content">
-                            <i class="fab fa-tiktok"></i>
-                            <span>TikTok</span>
-                        </div>
-                    </a>
-                    <a href="https://www.instagram.com/have.korea?igsh=d3M5ajB3enpvOWZx" target="_blank" class="modal-social-btn">
-                        <span class="border-line"></span>
-                        <div class="content">
-                            <i class="fab fa-instagram"></i>
-                            <span>Instagram</span>
-                        </div>
-                    </a>
-                </div>
-            `,
+          about: `
+    <h2><i class="fas fa-info-circle" style="color:var(--accent-light)"></i> دەربارەی ماڵپەڕ</h2>
+    
+    <!-- لۆگۆ و ناوی سایت -->
+    <div style="text-align:center; margin-bottom:25px; padding-bottom:20px; border-bottom:1px solid rgba(140,0,255,0.2);">
+        <div style="position:relative; width:90px; height:90px; margin:0 auto 15px;">
+            <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(#8c00ff, #b366ff, transparent 70%); animation:rotateBorder 3s linear infinite;"></div>
+            <img src="logologo.png" style="position:absolute; inset:3px; width:calc(100% - 6px); height:calc(100% - 6px); border-radius:50%; object-fit:cover; background:var(--bg-card);">
+        </div>
+        <div style="font-size:18px; font-weight:900; color:#fff; letter-spacing:2px; margin-bottom:4px;">HAVE KOREA</div>
+        <div style="font-family:'Noto Kufi Arabic',Tahoma,sans-serif; font-size:14px; font-weight:700; background:linear-gradient(90deg,#fff,#c499ff,#8c00ff); background-size:200% auto; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; animation:shineText 4s linear infinite;">هاڤێ کۆریا</div>
+    </div>
+
+    <!-- کارتی کورتەی دەربارەی سایت -->
+    <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.25); border-radius:18px; padding:20px; margin-bottom:20px; position:relative; overflow:hidden;">
+        <div style="position:absolute; top:-30px; right:-30px; width:120px; height:120px; background:radial-gradient(circle, rgba(140,0,255,0.15), transparent 70%); border-radius:50%;"></div>
+        <div style="display:flex; align-items:flex-start; gap:12px; position:relative; z-index:1;">
+            <div style="width:40px; height:40px; border-radius:12px; background:rgba(140,0,255,0.25); border:1px solid rgba(140,0,255,0.4); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <i class="fas fa-tv" style="color:#c499ff; font-size:16px;"></i>
+            </div>
+            <div>
+                <div style="font-size:13px; font-weight:800; color:#fff; margin-bottom:6px; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">دەربارەی هاڤێ کۆریا</div>
+                <p style="color:#ccc; font-size:12px; line-height:1.8; margin:0; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">هاڤێ کۆریا؛ خێراترین و باشترین سەرچاوەی کوردی بۆ فیلم و دراما کۆرییەکان بە بەرزترین کوالێتی و ژێرنووسی پڕۆفیشناڵی کوردی.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ئامارەکان -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:20px;">
+        <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
+            <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='drama').length}</div>
+            <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">دراما</div>
+        </div>
+        <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
+            <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='movie').length}</div>
+            <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">فیلم</div>
+        </div>
+        <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
+            <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='chinese').length}</div>
+            <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">چینی</div>
+        </div>
+    </div>
+
+    <!-- سۆشیاڵ میدیا -->
+    <div style="display:flex; gap:12px;">
+        <a href="https://www.tiktok.com/@have.korea?_r=1&_t=ZS-93VQbM8aGOb" target="_blank" 
+           style="flex:1; display:flex; align-items:center; justify-content:center; gap:10px; padding:14px; border-radius:14px; background:rgba(0,0,0,0.3); border:1.5px solid rgba(255,255,255,0.1); color:#fff; text-decoration:none; font-weight:700; font-size:14px; transition:all 0.3s ease;"
+           onmouseover="this.style.background='rgba(0,0,0,0.6)'; this.style.borderColor='rgba(255,255,255,0.4)'; this.style.transform='translateY(-3px)'"
+           onmouseout="this.style.background='rgba(0,0,0,0.3)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.transform='translateY(0)'">
+            <i class="fab fa-tiktok" style="font-size:18px;"></i> TikTok
+        </a>
+        <a href="https://www.instagram.com/have.korea?igsh=d3M5ajB3enpvOWZx" target="_blank"
+           style="flex:1; display:flex; align-items:center; justify-content:center; gap:10px; padding:14px; border-radius:14px; background:rgba(193,53,132,0.15); border:1.5px solid rgba(193,53,132,0.3); color:#fff; text-decoration:none; font-weight:700; font-size:14px; transition:all 0.3s ease;"
+           onmouseover="this.style.background='rgba(193,53,132,0.3)'; this.style.borderColor='rgba(193,53,132,0.6)'; this.style.transform='translateY(-3px)'"
+           onmouseout="this.style.background='rgba(193,53,132,0.15)'; this.style.borderColor='rgba(193,53,132,0.3)'; this.style.transform='translateY(0)'">
+            <i class="fab fa-instagram" style="font-size:18px;"></i> Instagram
+        </a>
+    </div>
+`,
 
             suggest: `
                 <h2><i class="fas fa-lightbulb" style="color:#ffd700"></i> پێشنیار بکە</h2>
@@ -4280,7 +4496,12 @@ random: `
 
         content.innerHTML = templates[type] || '';
         overlay.classList.add('active');
-
+if (type === 'works') {
+    setTimeout(() => {
+        const firstBtn = document.querySelector('.works-person-btn');
+        if (firstBtn) filterWorksModal(firstBtn);
+    }, 50);
+}
         // هەژمار
         if (type === 'account') {
             const saved = localStorage.getItem('userAccount');
@@ -4428,15 +4649,57 @@ random: `
             const first = document.querySelector('.bn-item:first-child');
             if (first) first.classList.add('active');
         }
+ }
+// ========== فانکشنی کارەکان ==========
+function filterWorksModal(btn) {
+    document.querySelectorAll('.works-person-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const role = btn.dataset.role;
+    const name = btn.dataset.name;
+
+    const works = app.data.filter(item => {
+        if (role === 'translator') {
+            return item.translators && item.translators.some(t => t.name === name);
+        } else if (role === 'technician') {
+            return item.technician && item.technician.name === name;
+        }
+        return false;
+    });
+
+    // نوێکردنەوەی هەموو بادجەکان
+    document.querySelectorAll('.works-person-btn').forEach(b => {
+        const bRole = b.dataset.role;
+        const bName = b.dataset.name;
+        const count = app.data.filter(item => {
+            if (bRole === 'translator') return item.translators && item.translators.some(t => t.name === bName);
+            if (bRole === 'technician') return item.technician && item.technician.name === bName;
+            return false;
+        }).length;
+        const badge = b.querySelector('.works-count-badge');
+        if (badge) badge.innerText = count;
+    });
+
+    const grid = document.getElementById('works-modal-grid');
+    if (!grid) return;
+
+    if (works.length === 0) {
+        grid.innerHTML = '<p style="color:#777;text-align:center;width:100%;">هیچ کارێک نەدۆزرایەوە</p>';
+        return;
     }
 
+    grid.innerHTML = works.map(work => `
+        <div class="work-card" onclick="app.openPlayer(app.data.find(d => d.id === ${work.id})); closeMenuModal(); document.getElementById('modern-sidebar').classList.remove('active'); document.getElementById('sidebar-trigger').classList.remove('active');">
+            <img src="${work.image}" alt="${work.title}">
+            <div class="work-title">${work.title}</div>
+        </div>
+    `).join('');
+}
     // داخستنی مۆداڵ بە ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenuModal();
     });
 </script>
-
-
 
 
 
