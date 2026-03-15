@@ -611,27 +611,62 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
+.back-btn {
+    position: relative;
+    background: rgba(140, 0, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 2px solid rgba(180, 100, 255, 0.9);
+    border-left: 2px solid rgba(140, 0, 255, 0.6);
+    border-right: 2px solid rgba(140, 0, 255, 0.6);
+    border-bottom: 2px solid rgba(100, 0, 200, 0.35);
+    color: white;
+    padding: 14px 35px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 
+        0 4px 20px rgba(140, 0, 255, 0.2),
+        0 0 0 1px rgba(140, 0, 255, 0.1),
+        inset 0 1px 0 rgba(200, 150, 255, 0.5),
+        inset 0 -1px 0 rgba(100, 0, 200, 0.3);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-/* بۆردەری جوڵاوی مۆر - لایەری یەکەم */
-.back-btn::before {
-    content: '';
-    position: absolute;
-    width: 150%;
-    height: 150%;
-    top: -25%;
-    left: -25%;
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        transparent 60deg,
-        #8c00ff 120deg,
-        #b366ff 180deg,
-        #8c00ff 240deg,
-        transparent 300deg,
-        transparent 360deg
-    );
-    animation: rotateBorder 3s linear infinite;
-    z-index: -2;
+.back-btn::before,
+.back-btn::after {
+    display: none;
+}
+
+.back-btn:hover {
+    background: rgba(140, 0, 255, 0.15);
+    border-top-color: rgba(200, 140, 255, 1);
+    border-left-color: rgba(160, 50, 255, 0.85);
+    border-right-color: rgba(160, 50, 255, 0.85);
+    border-bottom-color: rgba(120, 0, 220, 0.55);
+    box-shadow: 
+        0 8px 30px rgba(140, 0, 255, 0.35),
+        0 0 0 1px rgba(140, 0, 255, 0.2),
+        inset 0 1px 0 rgba(210, 160, 255, 0.6),
+        inset 0 -1px 0 rgba(100, 0, 200, 0.4);
+    transform: translateY(-2px);
+}
+
+.back-btn:active {
+    transform: translateY(0);
+    background: rgba(140, 0, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+    .back-btn {
+        padding: 12px 28px;
+        font-size: 14px;
+    }
 }
 
 /* لایەری دووەم - باگراوندی ناوەوە */
@@ -901,79 +936,72 @@
 
     </div>
 </div>
-        <!-- ناڤباری فلتەر (تەنها بۆ دراما و فیلم) -->
-<div class="filter-navbar" id="filter-navbar" style="display: none;">
-    <button class="filter-toggle-btn" onclick="toggleFilterMenu()">
-        <i class="fas fa-filter"></i> فلتەر
-        <i class="fas fa-chevron-down arrow-down"></i>
-    </button>
-    
-    <div class="filter-dropdown" id="filter-dropdown">
-    <div class="filter-dropdown-content">
-    <!-- دوگمەکانی سەرەکی: ژانەر و ساڵ -->
-    <div class="filter-main-buttons">
-        <button class="filter-main-btn" onclick="toggleFilterSection('genre')">
-            <i class="fas fa-film"></i> ژانەر
-            <i class="fas fa-chevron-left filter-arrow"></i>
-        </button>
-        <button class="filter-main-btn" onclick="toggleFilterSection('year')">
-            <i class="fas fa-calendar-alt"></i> ساڵ
-            <i class="fas fa-chevron-left filter-arrow"></i>
-        </button>
-    </div>
+     </div><!-- داخستنی div style="display:flex" -->
+</nav><!-- داخستنی navbar -->
 
-    <!-- بەشی ژانەر (شاراوە لە سەرەتا) -->
-    <div class="filter-section" id="genre-section" style="display: none;">
-        <div class="filter-options">
-            <label><input type="checkbox" value="ڕۆمانسی"> ڕۆمانسی</label>
-            <label><input type="checkbox" value="ئەکشن"> ئەکشن</label>
-            <label><input type="checkbox" value="کۆمیدی"> کۆمیدی</label>
-            <label><input type="checkbox" value="تاوانکاری"> تاوانکاری</label>
-            <label><input type="checkbox" value="خەیاڵی"> خەیاڵی</label>
-            <label><input type="checkbox" value="دراما"> دراما</label>
- <label><input type="checkbox" value="هەستبزوێن"> هەستبزوێن</label>
- <label><input type="checkbox" value="پزیشکی"> پزیشکی</label>
-  <label><input type="checkbox" value="سەرکێشی"> سەرکێشی</label>
-   
-
-
-
-        </div>
-    </div>
-
-    <!-- بەشی ساڵ (شاراوە لە سەرەتا) -->
-    <div class="filter-section" id="year-section" style="display: none;">
-        <div class="filter-options">
-            <label><input type="checkbox" value="2026"> 2026</label>
-            <label><input type="checkbox" value="2025"> 2025</label>
-            <label><input type="checkbox" value="2024"> 2024</label>
-            <label><input type="checkbox" value="2023"> 2023</label>
-            <label><input type="checkbox" value="2022"> 2022</label>
-            <label><input type="checkbox" value="2021"> 2021</label>
-            <label><input type="checkbox" value="2020"> 2020</label>
-            <label><input type="checkbox" value="2019"> 2019</label>
-            <label><input type="checkbox" value="2018"> 2018</label>
-            <label><input type="checkbox" value="2017"> 2017</label>
-        </div>
-    </div>
-    
-    <div class="filter-actions">
-        <button onclick="applyFilters()" class="apply-btn">جێبەجێکردن</button>
-        <button onclick="clearFilters()" class="clear-btn">سڕینەوە</button>
-    </div>
-</div>
-    </nav>
-
-   <div class="main-container" id="home-view">
+<div class="main-container" id="home-view">
     
     <div class="section-header">
         <i class="fas fa-bolt"></i>
         <span>نوێترین زیادکراوەکان</span>
     </div>
-    <div class="movie-grid" id="grid">
-        </div>
-</div>
 
+    <!-- ناڤباری فلتەر (تەنها بۆ دراما و فیلم) -->
+    <div class="filter-navbar" id="filter-navbar" style="display: none;">
+        <button class="filter-toggle-btn" onclick="toggleFilterMenu()">
+            <i class="fas fa-filter"></i> فلتەر
+            <i class="fas fa-chevron-down arrow-down"></i>
+        </button>
+        
+        <div class="filter-dropdown" id="filter-dropdown">
+            <div class="filter-dropdown-content">
+                <div class="filter-main-buttons">
+                    <button class="filter-main-btn" onclick="toggleFilterSection('genre')">
+                        <i class="fas fa-film"></i> ژانەر
+                        <i class="fas fa-chevron-left filter-arrow"></i>
+                    </button>
+                    <button class="filter-main-btn" onclick="toggleFilterSection('year')">
+                        <i class="fas fa-calendar-alt"></i> ساڵ
+                        <i class="fas fa-chevron-left filter-arrow"></i>
+                    </button>
+                </div>
+                <div class="filter-section" id="genre-section" style="display: none;">
+                    <div class="filter-options">
+                        <label data-genre="ڕۆمانسی"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="ڕۆمانسی"> ڕۆمانسی</label>
+                        <label data-genre="ئەکشن"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="ئەکشن"> ئەکشن</label>
+                        <label data-genre="کۆمیدی"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="کۆمیدی"> کۆمیدی</label>
+                        <label data-genre="تاوانکاری"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="تاوانکاری"> تاوانکاری</label>
+                        <label data-genre="خەیاڵی"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="خەیاڵی"> خەیاڵی</label>
+                        <label data-genre="دراما"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="دراما"> دراما</label>
+                        <label data-genre="هەستبزوێن"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="هەستبزوێن"> هەستبزوێن</label>
+                        <label data-genre="پزیشکی"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="پزیشکی"> پزیشکی</label>
+                        <label data-genre="سەرکێشی"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="سەرکێشی"> سەرکێشی</label>
+                    </div>
+                </div>
+                <div class="filter-section" id="year-section" style="display: none;">
+                    <div class="filter-options">
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2026"> 2026</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2025"> 2025</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2024"> 2024</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2023"> 2023</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2022"> 2022</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2021"> 2021</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2020"> 2020</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2019"> 2019</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2018"> 2018</label>
+                        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2017"> 2017</label>
+                    </div>
+                </div>
+                <div class="filter-actions">
+                    <button onclick="applyFilters()" class="apply-btn"><i class="fas fa-check"></i> جێبەجێکردن</button>
+                    <button onclick="clearFilters()" class="clear-btn"><i class="fas fa-times"></i> سڕینەوە</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="movie-grid" id="grid"></div>
+</div>
     <div id="player-modal">
         <div class="player-content">
             <button class="back-btn" onclick="app.goHome()">
@@ -1910,16 +1938,39 @@ function changeTheme(mainColor, lightColor, btn) {
     document.documentElement.style.setProperty('--bg-secondary', `rgb(${Math.round(r*0.07)}, ${Math.round(g*0.05)}, ${Math.round(b*0.11)})`);
     document.documentElement.style.setProperty('--bg-card',      `rgb(${Math.round(r*0.09)}, ${Math.round(g*0.06)}, ${Math.round(b*0.14)})`);
     document.documentElement.style.setProperty('--glass-bg',     `rgba(${Math.round(r*0.11)}, ${Math.round(g*0.07)}, ${Math.round(b*0.17)}, 0.75)`);
+   
     document.documentElement.style.setProperty('--glass-border', `rgba(${r}, ${g}, ${b}, 0.15)`);
-// باگراوندی هەموو بەشەکان
-document.querySelectorAll('.bottom-navbar, .glass-sidebar, .navbar, .rating-wrapper, .rating-stars-section, .info-box, .helin-footer, .purple-glass-footer, .acc-card, .vip-staff-card, .credit-card, .result-card, .person-modal-content, .filter-dropdown, .color-picker-panel, .menu-modal-box, .back-btn, .home-random-section, .filter-toggle-btn, .action-btn, .cat-btn, .search-input, .player-content').forEach(el => {
-    el.style.background = `rgba(${Math.round(r*0.05)}, ${Math.round(g*0.03)}, ${Math.round(b*0.09)}, 0.95)`;
+// گۆڕینی رەنگی back-btn
+let backBtnStyle = document.getElementById('hk-back-btn-style');
+if(!backBtnStyle){ 
+    backBtnStyle = document.createElement('style'); 
+    backBtnStyle.id = 'hk-back-btn-style'; 
+    document.head.appendChild(backBtnStyle); 
+}
+backBtnStyle.textContent = `
+    .back-btn {
+        border-top-color: rgba(${r},${g},${b},0.9) !important;
+        border-left-color: rgba(${r},${g},${b},0.6) !important;
+        border-right-color: rgba(${r},${g},${b},0.6) !important;
+        border-bottom-color: rgba(${r},${g},${b},0.35) !important;
+        box-shadow: 0 4px 20px rgba(${r},${g},${b},0.2) !important;
+    }
+    .back-btn:hover {
+        border-top-color: rgba(${r},${g},${b},1) !important;
+        box-shadow: 0 8px 30px rgba(${r},${g},${b},0.35) !important;
+    }
+`;
+
+    // باگراوندی هەموو بەشەکان
+
+document.querySelectorAll('.bottom-navbar, .glass-sidebar, .navbar, .rating-wrapper, .rating-stars-section, .info-box, .helin-footer, .purple-glass-footer, .acc-card, .vip-staff-card, .credit-card, .result-card, .person-modal-content, .filter-dropdown, .color-picker-panel, .menu-modal-box, .home-random-section, .filter-toggle-btn, .action-btn, .cat-btn, .search-input, .player-content').forEach(el => {    el.style.background = `rgba(${Math.round(r*0.05)}, ${Math.round(g*0.03)}, ${Math.round(b*0.09)}, 0.95)`;
 });
 
 // بۆردەرەکان
 document.querySelectorAll('.bottom-navbar, .navbar, .glass-sidebar, .info-box, .helin-footer, .credit-card, .result-card, .rating-wrapper, .filter-toggle-btn, .home-random-section').forEach(el => {
     el.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.35)`;
 });
+
 
 // box-shadow بۆ بەشە گرنگەکان
 document.querySelectorAll('.navbar, .bottom-navbar').forEach(el => {
@@ -1964,6 +2015,26 @@ const sidebarTrigger = document.getElementById('sidebar-trigger');
 if (sidebarTrigger) {
     sidebarTrigger.style.background = `rgba(${r}, ${g}, ${b}, 0.25)`;
     sidebarTrigger.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
+}
+// گۆڕینی ڕەنگی ئایکۆنەکانی مینیو
+document.querySelectorAll('.menu-icon-wrap').forEach(el => {
+    el.style.background = `linear-gradient(135deg, rgba(${r}, ${g}, ${b}, 0.3), rgba(${r}, ${g}, ${b}, 0.15))`;
+    el.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
+    el.style.color = `rgba(${r}, ${g}, ${b}, 1)`;
+    el.style.boxShadow = `0 5px 15px rgba(${r}, ${g}, ${b}, 0.2)`;
+});
+// گۆڕینی ڕەنگی تێکستی مینیو
+document.querySelectorAll('.menu-item span').forEach(el => {
+    el.style.color = `rgba(${r}, ${g}, ${b}, 0.9)`;
+});
+// گۆڕینی بۆردەری مینیو ئایتەمەکان
+document.querySelectorAll('.menu-item').forEach(el => {
+    el.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.2)`;
+});
+// گۆڕینی سەردێڕی سایدبار
+const sidebarTitle = document.querySelector('.sidebar-header-title');
+if (sidebarTitle) {
+    sidebarTitle.style.textShadow = `0 0 15px rgba(${r}, ${g}, ${b}, 0.8)`;
 }
 
 // گۆڕینی home-rand-btn
@@ -2519,40 +2590,38 @@ body {
 /* ========================================
        ستایلی ناڤباری فلتەر - پڕۆفیشناڵ
        ======================================== */
-
-    .filter-navbar {
-        position: fixed;
-        top: 100px;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        z-index: 999;
-        padding: 15px;
-        transition: all 0.3s ease;
-    }
-
-    .filter-toggle-btn {
-        position: relative;
-        background: linear-gradient(135deg, rgba(140, 0, 255, 0.2), rgba(179, 102, 255, 0.15));
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        border: 2px solid rgba(140, 0, 255, 0.4);
-        color: white;
-        padding: 14px 35px;
-        border-radius: 50px;
-        cursor: pointer;
-        font-size: 15px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 10px 30px rgba(140, 0, 255, 0.25),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        overflow: hidden;
-    }
-
+.filter-navbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+    padding: 15px;
+    margin-top: -80px; /* ← ئەمە زیاد بکە */
+    transition: all 0.3s ease;
+}
+.filter-toggle-btn {
+    position: relative;
+    background: linear-gradient(135deg, rgba(140, 0, 255, 0.2), rgba(179, 102, 255, 0.15));
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 2px solid rgba(140, 0, 255, 0.4);
+    color: white;
+    padding: 9px 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 22px rgba(140, 0, 255, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
     .filter-toggle-btn::before {
         content: '';
         position: absolute;
@@ -2614,338 +2683,336 @@ body {
         padding: 30px;
     }
 
-    .filter-dropdown-content {
-        max-height: 420px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        padding-right: 10px;
-    }
-
-    .filter-dropdown-content::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    .filter-dropdown-content::-webkit-scrollbar-track {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        margin: 10px 0;
-    }
-
-    .filter-dropdown-content::-webkit-scrollbar-thumb {
-        background: linear-gradient(180deg, #8c00ff, #b366ff);
-        border-radius: 10px;
-        border: 2px solid rgba(30, 15, 50, 0.5);
-        transition: all 0.3s ease;
-    }
-
-    .filter-dropdown-content::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(180deg, #b366ff, #c77dff);
-        box-shadow: 0 0 10px rgba(140, 0, 255, 0.5);
-    }
-
-    .filter-dropdown-content {
-        scrollbar-width: thin;
-        scrollbar-color: #8c00ff rgba(0, 0, 0, 0.2);
-    }
-
-    .filter-section {
-        margin-bottom: 28px;
-    }
-
-    .filter-section:last-of-type {
-        margin-bottom: 0;
-    }
-
-    .filter-section h4 {
-        color: #fff;
-        font-size: 16px;
-        margin-bottom: 18px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding-bottom: 12px;
-        border-bottom: 2px solid rgba(140, 0, 255, 0.3);
-        text-shadow: 0 0 15px rgba(140, 0, 255, 0.5);
-        font-weight: 700;
-    }
-
-    .filter-section h4 i {
-        color: var(--accent-light);
-        font-size: 18px;
-        filter: drop-shadow(0 0 8px rgba(140, 0, 255, 0.6));
-    }
-
-    /* ستوونی بۆ هەڵبژاردنەکان - 3 ستوون بۆ هەموو ئامێرەکان */
-    .filter-options {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 12px;
-    }
-
-    .filter-options label {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        color: #e0e0e0;
-        font-size: 13px;
-        font-weight: 600;
-        cursor: pointer;
-        padding: 12px 10px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1.5px solid rgba(255, 255, 255, 0.08);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        text-align: center;
-    }
-
-    .filter-options label:hover {
-        background: rgba(140, 0, 255, 0.15);
-        border-color: rgba(140, 0, 255, 0.5);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(140, 0, 255, 0.2);
-    }
-
-    .filter-options input[type="checkbox"] {
-        appearance: none;
-        -webkit-appearance: none;
-        width: 20px;
-        height: 20px;
-        border: 2px solid rgba(140, 0, 255, 0.4);
-        border-radius: 6px;
-        background: rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-        position: relative;
-        transition: all 0.3s ease;
-        flex-shrink: 0;
-    }
-
-    .filter-options input[type="checkbox"]:checked {
-        background: linear-gradient(135deg, #8c00ff, #b366ff);
-        border-color: #b366ff;
-        box-shadow: 0 0 15px rgba(140, 0, 255, 0.6);
-    }
-
-    .filter-options input[type="checkbox"]:checked::after {
-        content: '✓';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: white;
-        font-size: 14px;
-        font-weight: bold;
-    }
-
-    .filter-options label:has(input:checked) {
-        background: rgba(140, 0, 255, 0.2);
-        border-color: var(--accent-color);
-        color: #fff;
-        box-shadow: 0 0 20px rgba(140, 0, 255, 0.3);
-    }
-
-    .filter-actions {
-        display: flex;
-        gap: 15px;
-        margin-top: 25px;
-        padding-top: 25px;
-        border-top: 2px solid rgba(140, 0, 255, 0.2);
-    }
-
-    .apply-btn, .clear-btn {
-        flex: 1;
-        padding: 14px;
-        border: none;
-        border-radius: 14px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-size: 14px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .apply-btn {
-        background: linear-gradient(135deg, #8c00ff, #b366ff);
-        color: white;
-        box-shadow: 0 8px 25px rgba(140, 0, 255, 0.35);
-        border: 2px solid rgba(179, 102, 255, 0.5);
-    }
-
-    .apply-btn::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-        transition: 0.5s;
-    }
-
-    .apply-btn:hover::before {
-        left: 100%;
-    }
-
-    .apply-btn:hover {
-        box-shadow: 0 12px 35px rgba(140, 0, 255, 0.5);
-        transform: translateY(-3px);
-    }
-
-    .clear-btn {
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        border: 2px solid rgba(255, 255, 255, 0.15);
-    }
-
-    .clear-btn:hover {
-        background: rgba(255, 50, 50, 0.25);
-        border-color: rgba(255, 50, 50, 0.6);
-        box-shadow: 0 8px 25px rgba(255, 50, 50, 0.3);
-        transform: translateY(-3px);
-    }
-
-    /* ڕێکخستن بۆ مۆبایل و ئەندرۆید */
-    @media (max-width: 768px) {
-        .filter-navbar {
-            top: 185px;
-        }
-        
-        .filter-dropdown {
-            width: 95vw;
-        }
-
-        .filter-dropdown.show {
-            padding: 20px 15px;
-        }
-
-        .filter-dropdown-content {
-            max-height: 350px;
-            padding-right: 5px;
-        }
-        
-        /* 3 ستوون بۆ ئەندرۆید و ئایفۆن */
-        .filter-options {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
-        
-        .filter-options label {
-            padding: 9px 5px;
-            font-size: 11px;
-            gap: 5px;
-        }
-
-        .filter-options input[type="checkbox"] {
-            width: 16px;
-            height: 16px;
-        }
-
-        .filter-options input[type="checkbox"]:checked::after {
-            font-size: 11px;
-        }
-        
-        .filter-toggle-btn {
-            padding: 12px 25px;
-            font-size: 13px;
-        }
-        
-        .filter-section h4 {
-            font-size: 14px;
-        }
-
-        .filter-actions {
-            gap: 10px;
-        }
-
-        .apply-btn, .clear-btn {
-            padding: 12px;
-            font-size: 13px;
-        }
-    }
-
-    /* بۆ شاشەی زۆر بچووک */
-    @media (max-width: 400px) {
-        .filter-options {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-        }
-        
-        .filter-options label {
-            padding: 8px 3px;
-            font-size: 10px;
-        }
-
-        .filter-options input[type="checkbox"] {
-            width: 14px;
-            height: 14px;
-        }
-    }
-
-/* بۆ شاشەی زۆر بچووک */
-    @media (max-width: 400px) {
-        .filter-options {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-        }
-        
-        .filter-options label {
-            padding: 8px 3px;
-            font-size: 10px;
-        }
-
-        .filter-options input[type="checkbox"] {
-            width: 14px;
-            height: 14px;
-        }
-    }
-
-    /* دوگمەکانی سەرەکی بۆ ژانەر و ساڵ */
-    .filter-main-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-bottom: 20px;
-    }
-
-    .filter-main-btn {
-        width: 100%;
-        background: rgba(140, 0, 255, 0.15);
-        border: 1.5px solid rgba(140, 0, 255, 0.3);
-        color: white;
-        padding: 14px 20px;
-        border-radius: 14px;
-        cursor: pointer;
-        font-size: 15px;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        transition: all 0.3s ease;
-    }
-
-    .filter-main-btn:hover {
-        background: rgba(140, 0, 255, 0.25);
-        border-color: var(--accent-color);
-        transform: translateX(-3px);
-    }
-
-    .filter-main-btn.active {
-        background: rgba(140, 0, 255, 0.3);
-        border-color: var(--accent-light);
-    }
-
-    .filter-arrow {
-        transition: transform 0.3s ease;
-        font-size: 12px;
-    }
-
-    .filter-main-btn.active .filter-arrow {
-        transform: rotate(-90deg);
-    }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== ناوەوەی فلتەر - دیزاینی نوێ ===== */
+
+.filter-dropdown-content {
+    max-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 4px 2px;
+}
+
+.filter-dropdown-content::-webkit-scrollbar { width: 4px; }
+.filter-dropdown-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 10px; }
+.filter-dropdown-content::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #8c00ff, #b366ff); border-radius: 10px; }
+
+/* دوگمەکانی سەرەکی */
+.filter-main-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+.filter-main-btn {
+    flex: 1;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(140,0,255,0.2);
+    color: rgba(255,255,255,0.6);
+    padding: 8px 12px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-main-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(140,0,255,0.15), rgba(179,102,255,0.08));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.filter-main-btn:hover::before,
+.filter-main-btn.active::before { opacity: 1; }
+
+.filter-main-btn:hover {
+    border-color: rgba(140,0,255,0.5);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.filter-main-btn.active {
+    border-color: rgba(179,102,255,0.7);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(140,0,255,0.2);
+}
+
+.filter-main-btn i:first-child {
+    color: var(--accent-light);
+    font-size: 12px;
+}
+
+.filter-arrow {
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    font-size: 10px;
+    opacity: 0.5;
+}
+
+.filter-main-btn.active .filter-arrow {
+    transform: rotate(-90deg);
+    opacity: 1;
+    color: var(--accent-light);
+}
+
+/* بەشەکان */
+.filter-section {
+    margin-bottom: 16px;
+    animation: sectionFadeIn 0.25s ease;
+}
+
+@keyframes sectionFadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ژانەر: گریدی ئایکۆندار --- */
+.filter-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+}
+
+.filter-options label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: rgba(255,255,255,0.65);
+    font-size: 10px;
+    font-weight: 700;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+    cursor: pointer;
+    padding: 8px 4px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+    text-align: center;
+    overflow: hidden;
+    user-select: none;
+}
+
+.filter-options label::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(140,0,255,0.18), rgba(179,102,255,0.1));
+    opacity: 0;
+    transition: opacity 0.25s;
+    border-radius: 13px;
+}
+
+.filter-options label:hover::before { opacity: 1; }
+
+.filter-options label:hover {
+    border-color: rgba(140,0,255,0.45);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(140,0,255,0.15);
+}
+
+/* ئایکۆنی ژانەر */
+.filter-options label::after {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 13px;
+    opacity: 0.7;
+    order: -1;
+    color: var(--accent-light);
+    transition: all 0.25s;
+}
+
+/* ئایکۆنی هەر ژانەرێک */
+.filter-options label[data-genre="ڕۆمانسی"]::after  { content: '\f004'; }
+.filter-options label[data-genre="ئەکشن"]::after      { content: '\f135'; }
+.filter-options label[data-genre="کۆمیدی"]::after     { content: '\f118'; }
+.filter-options label[data-genre="تاوانکاری"]::after  { content: '\f505'; }
+.filter-options label[data-genre="خەیاڵی"]::after     { content: '\f7e4'; }
+.filter-options label[data-genre="دراما"]::after      { content: '\f008'; }
+.filter-options label[data-genre="هەستبزوێن"]::after  { content: '\f570'; }
+.filter-options label[data-genre="پزیشکی"]::after     { content: '\f0f1'; }
+.filter-options label[data-genre="سەرکێشی"]::after    { content: '\f06d'; }
+
+/* چێکباکسی شاراوە */
+.filter-options input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+/* کاتی هەڵبژاردن */
+.filter-options label:has(input:checked) {
+    background: rgba(140,0,255,0.18);
+    border-color: rgba(179,102,255,0.7);
+    color: #fff;
+    box-shadow: 0 0 18px rgba(140,0,255,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+    transform: translateY(-2px);
+}
+
+.filter-options label:has(input:checked)::before { opacity: 1; }
+
+.filter-options label:has(input:checked)::after {
+    opacity: 1;
+    color: #fff;
+    filter: drop-shadow(0 0 6px rgba(179,102,255,0.8));
+}
+
+/* نیشانەی تیک */
+.filter-options label:has(input:checked) .check-dot {
+    display: flex;
+}
+
+.check-dot {
+    display: none;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    color: #fff;
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+/* --- ساڵ: پیلەی دەورگیراو --- */
+.filter-section#year-section .filter-options {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.filter-section#year-section .filter-options label {
+    flex-direction: row;
+    padding: 7px 4px;
+    font-size: 11px;
+    font-weight: 800;
+    gap: 0;
+    border-radius: 50px;
+    letter-spacing: 0.3px;
+}
+
+.filter-section#year-section .filter-options label::after {
+    display: none;
+}
+
+/* دوگمەکانی ئەنجامدان */
+.filter-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(140,0,255,0.12);
+}
+
+.apply-btn {
+    flex: 2;
+    padding: 9px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 11px;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+    background: linear-gradient(135deg, #6b00cc, var(--accent-color));
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(140,0,255,0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.apply-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: 0.5s;
+}
+
+.apply-btn:hover::before { left: 100%; }
+.apply-btn:hover {
+    box-shadow: 0 10px 30px rgba(140,0,255,0.45);
+    transform: translateY(-2px);
+}
+
+.clear-btn {
+    flex: 1;
+    padding: 9px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 11px;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.clear-btn:hover {
+    background: rgba(255,50,50,0.15);
+    border-color: rgba(255,50,50,0.4);
+    color: #ff8080;
+    transform: translateY(-2px);
+}
+
+/* مۆبایل */
+@media (max-width: 768px) {
+    .filter-options { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+    .filter-options label { padding: 8px 3px; font-size: 9.5px; }
+    .filter-options label::after { font-size: 12px; }
+    .filter-section#year-section .filter-options { grid-template-columns: repeat(5, 1fr); }
+    .filter-main-btn { padding: 7px 10px; font-size: 10px; }
+}
 /* ستایلی وەرگێر و تەکنیکار */
 .credits-wrapper {
     display: flex;
@@ -4514,7 +4581,7 @@ random: (() => {
     margin-bottom:10px;"
     onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 35px ${hexToRgba(ac,0.5)}'"
     onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 8px 25px ${hexToRgba(ac,0.35)}'">
-    <i class="fas fa-dice"></i> هەڵبژارانەوە
+    <i class="fas fa-dice"></i> هەڵبژێرە
   </button>
 
   <!-- دوگمەی سەیرکردن -->
@@ -5730,17 +5797,10 @@ function filterWorksModal(btn) {
     appearance: none;
     width: 100%;
     
-    /* دروستکردنی شەپۆلی رەنگەکان (مۆری تۆخ، مۆری ڕوون، و کەمێک پەمەیی بۆ جوانی) */
-    background: linear-gradient(
-        120deg, 
-        #5b00c4, 
-        #8800ff, 
-        #b54eff, 
-        #8800ff, 
-        #5b00c4
-    );
-    background-size: 300% 300%; /* گرنگە: باگراوندەکە گەورە دەکات بۆ ئەوەی بجوڵێت */
-    
+   background: linear-gradient(135deg, #6b00cc, #8c00ff);
+
+
+
     color: white;
     border: none;
     padding: 15px;
@@ -5753,25 +5813,13 @@ function filterWorksModal(btn) {
     cursor: pointer;
     
     /* جوڵەی باگراوند و سێبەر بەیەکەوە */
-    animation: windFlow 4s ease-in-out infinite;
+box-shadow: 0 8px 20px rgba(91, 0, 196, 0.4),
+            4px 0 15px rgba(140, 0, 255, 0.3),
+            -4px 0 15px rgba(140, 0, 255, 0.3);
     transition: transform 0.2s;
 }
 
-/* ئەمە بەرپرسە لە جوڵاندنی ڕەنگەکە و سێبەری لاکانی */
-@keyframes windFlow {
-    0% {
-        background-position: 0% 50%;
-        box-shadow: 0 8px 20px rgba(91, 0, 196, 0.4);
-    }
-    50% {
-        background-position: 100% 50%;
-        box-shadow: 0 10px 30px rgba(181, 78, 255, 0.6); /* سێبەرەکە گەورە دەبێت */
-    }
-    100% {
-        background-position: 0% 50%;
-        box-shadow: 0 8px 20px rgba(91, 0, 196, 0.4);
-    }
-}
+
 
 .submit-rating-btn:active {
     transform: scale(0.96);
