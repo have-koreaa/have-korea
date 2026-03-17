@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="6YSe4Dgn0dQ-veiH6_m_GCrHkEshg-NxCOkEHj4fA-o" />
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
     <title>هاڤێ کۆریا | have Korea - درامای کۆری بە ژێرنووسی کوردی</title>
     
     <meta name="description" content="هاڤێ کۆریا (have korea) - سایتی هاڤێ کۆریا، تایبەت بە نوێترین دراما و فیلمە کۆرییەکان بە باشترین کوالێتی و ژێرنووسی کوردی.">
@@ -92,12 +94,18 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* سکڕۆڵ باڕ */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-main); }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
-
+        ::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { 
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: rgba(255, 255, 255, 0.15);
+}
         /* ================= HEADER & NAVBAR (Glass Style) ================= */
        .navbar {
     position: fixed;
@@ -504,12 +512,15 @@
     text-align: right;
     opacity: 0;
     transition: opacity 0.3s ease;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
 }
 
 .card:hover .card-desc {
     opacity: 1;
 }
         .play-hint {
+                font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+
             font-size: 13px;
             color: #fff;
             background: var(--accent-color);
@@ -576,6 +587,12 @@
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 .back-btn {
+
+    font-weight: bold;
+    font-size: 12px;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+
+
     position: relative;
     background: rgba(140, 0, 255, 0.08);
     backdrop-filter: blur(20px);
@@ -890,8 +907,8 @@
             <input type="text" class="search-input" placeholder="گەڕان..." onkeyup="app.search(this.value)">
             <i class="fas fa-search search-icon"></i>
         </div>
-        
-   
+</div><!-- داخستنی div style="display:flex" -->
+</nav><!-- داخستنی navbar -->
 
 <div class="color-picker-panel" id="colorPickerPanel">
     <span class="color-label">🎨 هەڵبژاردنی ڕەنگی سایت</span>
@@ -902,24 +919,18 @@
         <button class="swatch" style="background:#ffd700" onclick="changeTheme('#ffd700','#ffe55c',this)" title="زەرد"></button>
         <button class="swatch" style="background:#00bcd4" onclick="changeTheme('#00bcd4','#80deea',this)" title="فیرۆزەیی"></button>
         <button class="swatch" style="background:#ff6f00" onclick="changeTheme('#ff6f00','#ffb300',this)" title="پەمەیی"></button>
-<!-- ✅ ١٠ ڕەنگی نوێ -->
-<button class="swatch" style="background:#00c853" onclick="changeTheme('#00c853','#69f0ae',this)" title="سووز"></button>
-<button class="swatch" style="background:#e91e63" onclick="changeTheme('#e91e63','#f48fb1',this)" title="گوڵەبەیی"></button>
-<button class="swatch" style="background:#3949ab" onclick="changeTheme('#3949ab','#7986cb',this)" title="مووی"></button>
-<button class="swatch" style="background:#00bfa5" onclick="changeTheme('#00bfa5','#64ffda',this)" title="فیرۆزە تۆخ"></button>
-<button class="swatch" style="background:#aa00ff" onclick="changeTheme('#aa00ff','#e040fb',this)" title="بەنەفش"></button>
-<button class="swatch" style="background:#d50000" onclick="changeTheme('#d50000','#ff5252',this)" title="سووری تۆخ"></button>
-<button class="swatch" style="background:#1565c0" onclick="changeTheme('#1565c0','#42a5f5',this)" title="شینی شاهانە"></button>
-<button class="swatch" style="background:#f9a825" onclick="changeTheme('#f9a825','#ffd54f',this)" title="زەردی زێڕین"></button>
-<button class="swatch" style="background:#ffffff; border:1px solid #ddd;" onclick="changeTheme('#ffffff','#f2f2f2',this)" title="سپی"></button>
-
-<button class="swatch" style="background:#ff66b2" onclick="changeTheme('#ff66b2','#ffb3d9',this)" title="پینک"></button>
-
+        <button class="swatch" style="background:#00c853" onclick="changeTheme('#00c853','#69f0ae',this)" title="سووز"></button>
+        <button class="swatch" style="background:#e91e63" onclick="changeTheme('#e91e63','#f48fb1',this)" title="گوڵەبەیی"></button>
+        <button class="swatch" style="background:#3949ab" onclick="changeTheme('#3949ab','#7986cb',this)" title="مووی"></button>
+        <button class="swatch" style="background:#00bfa5" onclick="changeTheme('#00bfa5','#64ffda',this)" title="فیرۆزە تۆخ"></button>
+        <button class="swatch" style="background:#aa00ff" onclick="changeTheme('#aa00ff','#e040fb',this)" title="بەنەفش"></button>
+        <button class="swatch" style="background:#d50000" onclick="changeTheme('#d50000','#ff5252',this)" title="سووری تۆخ"></button>
+        <button class="swatch" style="background:#1565c0" onclick="changeTheme('#1565c0','#42a5f5',this)" title="شینی شاهانە"></button>
+        <button class="swatch" style="background:#f9a825" onclick="changeTheme('#f9a825','#ffd54f',this)" title="زەردی زێڕین"></button>
+        <button class="swatch" style="background:#ffffff; border:1px solid #ddd;" onclick="changeTheme('#ffffff','#f2f2f2',this)" title="سپی"></button>
+        <button class="swatch" style="background:#ff66b2" onclick="changeTheme('#ff66b2','#ffb3d9',this)" title="پینک"></button>
     </div>
 </div>
-     </div><!-- داخستنی div style="display:flex" -->
-</nav><!-- داخستنی navbar -->
-
 <div class="main-container" id="home-view">
     
     <div class="section-header">
@@ -936,16 +947,20 @@
         
         <div class="filter-dropdown" id="filter-dropdown">
             <div class="filter-dropdown-content">
-                <div class="filter-main-buttons">
-                    <button class="filter-main-btn" onclick="toggleFilterSection('genre')">
-                        <i class="fas fa-film"></i> ژانەر
-                        <i class="fas fa-chevron-left filter-arrow"></i>
-                    </button>
-                    <button class="filter-main-btn" onclick="toggleFilterSection('year')">
-                        <i class="fas fa-calendar-alt"></i> ساڵ
-                        <i class="fas fa-chevron-left filter-arrow"></i>
-                    </button>
-                </div>
+              <div class="filter-main-buttons">
+    <button class="filter-main-btn" onclick="toggleFilterSection('genre')">
+        <i class="fas fa-film"></i> ژانەر
+        <i class="fas fa-chevron-left filter-arrow"></i>
+    </button>
+    <button class="filter-main-btn" onclick="toggleFilterSection('year')">
+        <i class="fas fa-calendar-alt"></i> ساڵ
+        <i class="fas fa-chevron-left filter-arrow"></i>
+    </button>
+    <button class="filter-main-btn" onclick="toggleFilterSection('rating')">
+        <i class="fas fa-star"></i> پلەبەندی
+        <i class="fas fa-chevron-left filter-arrow"></i>
+    </button>
+</div>
                 <div class="filter-section" id="genre-section" style="display: none;">
                     <div class="filter-options">
                         <label data-genre="ڕۆمانسی"><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="ڕۆمانسی"> ڕۆمانسی</label>
@@ -972,7 +987,55 @@
                         <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2018"> 2018</label>
                         <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="2017"> 2017</label>
                     </div>
+
                 </div>
+
+
+            
+<div class="filter-section" id="rating-section" style="display: none;">
+
+    <!-- IMDb -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(245,197,24,0.2);">
+        <svg width="36" height="18" viewBox="0 0 36 18">
+            <rect width="36" height="18" rx="3" fill="#f5c518"/>
+            <text x="18" y="13" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="9" fill="#000">IMDb</text>
+        </svg>
+    </div>
+    <div class="filter-options" style="grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:14px;">
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_1"> 1+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_2"> 2+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_3"> 3+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_4"> 4+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_5"> 5+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_6"> 6+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_7"> 7+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_8"> 8+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_9"> 9+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="imdb_10"> 10</label>
+    </div>
+
+    <!-- TMDB -->
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid rgba(1,180,228,0.2);">
+        <svg width="36" height="18" viewBox="0 0 36 18">
+            <rect width="36" height="18" rx="3" fill="#032541"/>
+            <text x="18" y="13" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="8" fill="#01b4e4">TMDB</text>
+        </svg>
+    </div>
+    <div class="filter-options" style="grid-template-columns:repeat(5,1fr);gap:5px;">
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_1"> 1+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_2"> 2+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_3"> 3+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_4"> 4+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_5"> 5+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_6"> 6+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_7"> 7+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_8"> 8+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_9"> 9+</label>
+        <label><span class="check-dot"><i class="fas fa-check"></i></span><input type="checkbox" value="tmdb_10"> 10</label>
+    </div>
+
+</div>
+
                 <div class="filter-actions">
                     <button onclick="applyFilters()" class="apply-btn"><i class="fas fa-check"></i> جێبەجێکردن</button>
                     <button onclick="clearFilters()" class="clear-btn"><i class="fas fa-times"></i> سڕینەوە</button>
@@ -1044,26 +1107,27 @@
         const database = [
             
     {
-        id: 2,
-        title: "S line 2025",
-        type: "drama",
-        genre: "ڕۆمانسی • خەیاڵی", 
-        desc: "   ",
-        image: "sline.png",
+    id: 2,
+    title: "S line 2025",
+    type: "drama",
+    genre: "ڕۆمانسی • خەیاڵی", 
+    desc: "   ",
+    image: "sline.png",
 
-
-// **زیادکردنی وەرگێر و تەکنیکار**
-        translators: [
-    {
+    translators: [
+        {
+            name: "هێلین",
+            avatar: "admin1.png"
+        }
+    ],
+    technician: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+    },
+    poster_designer: {
         name: "هێلین",
         avatar: "admin1.png"
-    }
-],
-        technician: {
-            name: "کێڵوا",
-            avatar: "admin2.png"
-        },
-
+    },
 
         episodes: [
             { 
@@ -1118,19 +1182,19 @@
             }
         ]
     },
-    {
+    
 
 
 
     
-        id: 3,
-        title: "trigger 2025",
-        type: "drama",
-        genre: " ئەکشن • سەرکێشی • تاوانکاری• ", 
-        desc: "لە وڵاتێکی وەک کۆریای باشووردا کە یاساکانی هەڵگرتنی چەک زۆر توندن و تاوانی تەقەکردن تێیدا دەگمەنە، لەناکاو کۆمەڵێک چەکی نایاسایی و بێ مۆڵەت بە وڵاتدا بڵاو دەبنەوە. ئەمەش دەبێتە هۆی دروستبوونی پشێوی و زیادبوونی تاوانە خوێناوییەکان.",
-        image: "trigger.png",
+        {
+    id: 3,
+    title: "trigger 2025",
+    type: "drama",
+    genre: " ئەکشن • سەرکێشی • تاوانکاری• ", 
+    desc: "لە وڵاتێکی وەک کۆریای باشووردا کە یاساکانی هەڵگرتنی چەک زۆر توندن و تاوانی تەقەکردن تێیدا دەگمەنە، لەناکاو کۆمەڵێک چەکی نایاسایی و بێ مۆڵەت بە وڵاتدا بڵاو دەبنەوە. ئەمەش دەبێتە هۆی دروستبوونی پشێوی و زیادبوونی تاوانە خوێناوییەکان.",
+    image: "trigger.png",
 
- // زیادکردنی لیستی وەرگێڕان (چەند کەسێک بێت)
     translators: [
         {
             name: "سەنا ئەحمەد",
@@ -1141,11 +1205,15 @@
             avatar: "admin1.png"
         }
     ],
-    
     technician: {
         name: "کێڵوا",
         avatar: "admin2.png"
     },
+    poster_designer: {
+        name: "هێلین",
+        avatar: "admin1.png"
+    },
+    
         episodes: [
             { 
                 ep: 1, 
@@ -1198,27 +1266,28 @@
             }
         ]
     },
-   {
-   
-        id: 6,
-        title: "Daddy you Daughter me 2017",
-        type: "movie",
-        genre: "کۆمیدی - خەیاڵی - خێزانی - دراما",
-        desc: " باوک و کچێکی کۆری بەهۆی ڕووداوێکی هاتوچۆوە جەستەیان دەگۆڕێت و بڕیار دەدەن ژیانی یەکتری تاقیبکەنەوە. بڕیار دەدەن دایکیان بەم بابەتە نەزانێت، بۆیە کچەکە لەجیاتی باوکی دەچێتە سەر کار و باوکەکەش لەجیاتی کچەکەی دەچێتە قوتابخانە.",
-        image: "dady.png",
+  {
+    id: 6,
+    title: "Daddy you Daughter me 2017",
+    type: "movie",
+    genre: "کۆمیدی - خەیاڵی - خێزانی - دراما",
+    desc: " باوک و کچێکی کۆری بەهۆی ڕووداوێکی هاتوچۆوە جەستەیان دەگۆڕێت و بڕیار دەدەن ژیانی یەکتری تاقیبکەنەوە. بڕیار دەدەن دایکیان بەم بابەتە نەزانێت، بۆیە کچەکە لەجیاتی باوکی دەچێتە سەر کار و باوکەکەش لەجیاتی کچەکەی دەچێتە قوتابخانە.",
+    image: "dady.png",
 
-// **زیادکردنی وەرگێر و تەکنیکار**
-        translators: [
-    {
-        name: "کێڵوا",
-            avatar: "admin2.png"
-    }
-],
-        technician: {
+    translators: [
+        {
             name: "کێڵوا",
             avatar: "admin2.png"
-        },
-
+        }
+    ],
+    technician: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+    },
+    poster_designer: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+    },
 
         episodes: [
             { 
@@ -1254,7 +1323,11 @@
             name: "کێڵوا",
             avatar: "admin2.png"
         },
-
+ 
+    poster_designer: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+    },
 
         episodes: [
             { 
@@ -1285,6 +1358,10 @@
     technician: {
       name: "کێڵوا",
       avatar: "admin2.png"
+     },
+    poster_designer: {
+        name: "هێلین",
+        avatar: "admin1.png"
     },
     episodes: [
       {
@@ -1335,6 +1412,10 @@
     ],
     
     technician: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+     },
+    poster_designer: {
         name: "کێڵوا",
         avatar: "admin2.png"
     },
@@ -1394,6 +1475,10 @@
     technician: {
         name: "کێڵوا",
         avatar: "admin2.png"
+     },
+    poster_designer: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
     },
     episodes: [
       {
@@ -1417,12 +1502,15 @@
             currentMovie: null,
             currentEpisodeIndex: 0,
 
-        init: function() {
-             this.currentFilter = 'all'; // ← ئەمە زیاد بکە لە سەرەتادا
+       init: function() {
+     this.currentFilter = 'all'; // ← ئەمە زیاد بکە لە سەرەتادا
     
                 // ڕێکخستنی داتا بەپێی ئایدی (لە گەورەوە بۆ بچووک)
                 this.data.sort((a, b) => b.id - a.id);
                 this.renderGrid(this.data);
+                
+                // ← هێنانی هەموو نمرەکان لە پشتەوە
+                this.prefetchAllRatings();
 
                 // --- لێرە کۆدە نوێیەکەی SEO بۆ دۆزینەوە لە گووگل زیاد کرا ---
                 const seoBox = document.createElement('div');
@@ -1485,12 +1573,13 @@ list.forEach(item => {
   </div>`;
 })()}
        <div class="card-overlay">
-    <div style="font-size:10px;font-weight:600;color:var(--accent-light);
-        white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-        margin-bottom:5px;opacity:0.9;text-align:right;">
-        ${item.genre || ''}
-    </div>
-    <div class="card-desc">${item.desc ? item.desc : ''}</div>
+   <div style="font-size:10px;font-weight:600;color:var(--accent-light);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    margin-bottom:5px;opacity:0.9;text-align:right;
+    font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">
+    ${item.genre || ''}
+</div>
+    <div class="card-desc" style="font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">${item.desc ? item.desc : ''}</div>
             <div class="play-hint">
                 <i class="fas fa-play-circle"></i> ئێستا سەیر بکە
             </div>
@@ -1507,12 +1596,13 @@ list.forEach(item => {
             border-radius:2px;margin-left:8px;flex-shrink:0;
         "></div>
         <div style="flex:1;overflow:hidden;">
-            <div style="font-size:13px;font-weight:700;color:#fff;
-                display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-                overflow:hidden;line-height:1.35;margin-bottom:5px;
-                text-shadow:0 2px 5px rgba(0,0,0,0.8);">
-                ${item.title}
-            </div>
+           <div style="font-size:15px;font-weight:700;color:#fff;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+    overflow:hidden;line-height:1.35;margin-bottom:5px;
+    text-shadow:0 2px 5px rgba(0,0,0,0.8);
+    font-family:'Rajdhani',sans-serif;letter-spacing:1px;">
+    ${item.title}
+</div>
             <div class="imdb-badge" style="
                 display:inline-flex;align-items:center;gap:5px;
                 background:rgba(0,0,0,0.35);
@@ -1525,6 +1615,8 @@ list.forEach(item => {
 `;
 
     app.fetchIMDB(item.title).then(({ imdb, tmdb }) => {
+        item._imdb = imdb;
+        item._tmdb = tmdb;
         if (!imdb && !tmdb) return;
         const badge = wrapper.querySelector('.imdb-badge');
         if (!badge) return;
@@ -1794,51 +1886,7 @@ list.forEach(item => {
     }
 })();
 
-app.fetchIMDB(item.title).then(({ imdb, tmdb }) => {
-    const existing = document.getElementById('player-imdb-badge');
-    if (existing) existing.remove();
-    if (!imdb && !tmdb) return;
-    const badge = document.createElement('div');
-    badge.id = 'player-imdb-badge';
-    badge.style.cssText = 'display:inline-flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap;';
-    if (imdb) {
-        const stars = Math.round(parseFloat(imdb) / 2);
-        const starStr = '★'.repeat(stars) + '☆'.repeat(5 - stars);
-        badge.innerHTML += `
-        <div style="display:inline-flex;align-items:center;gap:8px;
-            background:rgba(245,197,24,0.07);
-            border:1px solid rgba(245,197,24,0.25);
-            border-radius:50px;padding:6px 16px 6px 8px;">
-            <svg width="36" height="18" viewBox="0 0 36 18">
-                <rect width="36" height="18" rx="9" fill="#f5c518"/>
-                <text x="18" y="13" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="9" fill="#1a1000">IMDb</text>
-            </svg>
-            <span style="font-size:16px;font-weight:900;color:#f5c518;">${imdb}</span>
-            <span style="color:#555;font-size:11px;">/10</span>
-            <span style="color:#f5c518;font-size:12px;">${starStr}</span>
-        </div>`;
-    }
-    if (tmdb) {
-        const pct = Math.round(parseFloat(tmdb) * 10);
-        const col = pct >= 70 ? '#21d07a' : pct >= 50 ? '#d2d531' : '#db2360';
-        badge.innerHTML += `
-        <div style="display:inline-flex;align-items:center;gap:8px;
-            background:rgba(1,180,228,0.07);
-            border:1px solid rgba(1,180,228,0.25);
-            border-radius:50px;padding:6px 16px 6px 8px;">
-            <svg width="36" height="18" viewBox="0 0 36 18">
-                <rect width="36" height="18" rx="9" fill="#032541"/>
-                <text x="18" y="13" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="7.5" fill="#01b4e4">TMDB</text>
-            </svg>
-            <span style="font-size:16px;font-weight:900;color:${col};">${tmdb}</span>
-            <span style="color:#555;font-size:11px;">/10</span>
-            <span style="font-size:11px;color:${col};">${pct}%</span>
-        </div>`;
-    }
-    const titleEl = document.getElementById('movie-title');
-    titleEl.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:12px;';
-    titleEl.appendChild(badge);
-});
+
                 (function(){
     const ac  = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
     const hex = ac.replace('#','').trim();
@@ -1920,7 +1968,7 @@ renderCredits: function(item) {
                     <img src="${translator.avatar}" alt="${translator.name}">
                     <div class="credit-info">
                         <span class="credit-role">وەرگێڕ</span>
-                        <span class="credit-name">${translator.name}</span>
+                        <span class="credit-name" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">${translator.name}</span>
                     </div>
                 </div>
             `;
@@ -1934,7 +1982,20 @@ renderCredits: function(item) {
                 <img src="${item.technician.avatar}" alt="${item.technician.name}">
                 <div class="credit-info">
                     <span class="credit-role">تەکنیکار</span>
-                    <span class="credit-name">${item.technician.name}</span>
+                    <span class="credit-name" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">${item.technician.name}</span>
+                </div>
+            </div>
+        `;
+    }
+
+    // بۆ بەرگساز ← تازە زیادکراو
+    if (item.poster_designer) {
+        html += `
+            <div class="credit-card" onclick="app.showPersonWorks('poster_designer', '${item.poster_designer.name}')">
+                <img src="${item.poster_designer.avatar}" alt="${item.poster_designer.name}">
+                <div class="credit-info">
+                    <span class="credit-role">بەرگساز</span>
+                    <span class="credit-name" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">${item.poster_designer.name}</span>
                 </div>
             </div>
         `;
@@ -2080,10 +2141,7 @@ filter: function(type, btnElement) {
 
     if(document.getElementById('player-modal').style.display === 'block') this.goHome();
 },
-
-
 showPersonWorks: function(role, personName) {
-    // فانکشنێک بۆ دۆزینەوەی وێنەی کەس
     function getPersonAvatar(works, role, personName) {
         if (role === 'translator') {
             for (let work of works) {
@@ -2093,7 +2151,15 @@ showPersonWorks: function(role, personName) {
                 }
             }
         } else if (role === 'technician') {
-            return works[0].technician.avatar;
+            for (let work of works) {
+                if (work.technician && work.technician.name === personName)
+                    return work.technician.avatar;
+            }
+        } else if (role === 'poster_designer') {
+            for (let work of works) {
+                if (work.poster_designer && work.poster_designer.name === personName)
+                    return work.poster_designer.avatar;
+            }
         }
         return 'admin1.png';
     }
@@ -2103,15 +2169,25 @@ showPersonWorks: function(role, personName) {
             return item.translators && item.translators.some(t => t.name === personName);
         } else if (role === 'technician') {
             return item.technician && item.technician.name === personName;
+        } else if (role === 'poster_designer') {
+            return item.poster_designer && item.poster_designer.name === personName;
         }
         return false;
     });
-    
-    if (works.length === 0) {
-        alert('هیچ کارێک نەدۆزرایەوە بۆ ' + personName);
-        return;
-    }
-    
+
+    const roleMap = {
+        translator: { label: 'وەرگێر', icon: 'fa-language' },
+        technician: { label: 'تەکنیکار', icon: 'fa-cogs' },
+        poster_designer: { label: 'بەرگساز', icon: 'fa-palette' }
+    };
+    const roleInfo = roleMap[role] || { label: role, icon: 'fa-user' };
+    const avatar = getPersonAvatar(works, role, personName);
+    const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
+    const hex = ac.replace('#','').trim();
+    const r = parseInt(hex.substring(0,2),16);
+    const g = parseInt(hex.substring(2,4),16);
+    const b = parseInt(hex.substring(4,6),16);
+
     let modal = document.getElementById('person-works-modal');
     if (!modal) {
         modal = document.createElement('div');
@@ -2119,39 +2195,104 @@ showPersonWorks: function(role, personName) {
         modal.className = 'person-modal';
         document.body.appendChild(modal);
     }
-    
-    const roleText = role === 'translator' ? 'وەرگێڕ' : 'تەکنیکار';
-    
-    let html = `
+
+    const worksHTML = works.length === 0
+        ? `<div style="text-align:center;padding:40px 20px;color:rgba(255,255,255,0.3);font-size:14px;grid-column:1/-1;">هیچ کارێک نەدۆزرایەوە</div>`
+        : works.map(work => `
+            <div class="work-card" onclick="app.openPlayer(app.data.find(d => d.id === ${work.id})); document.getElementById('person-works-modal').style.display='none'; document.body.style.overflow='';">
+                <div class="work-card-img-wrap">
+                    <img src="${work.image}" alt="${work.title}" loading="lazy">
+                    <div class="work-ep-count">${work.type === 'movie' ? 'فیلم' : work.episodes ? work.episodes.length + ' ئەڵقە' : ''}</div>
+                    <div class="work-card-play">
+                        <i class="fas fa-play" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;background:rgba(${r},${g},${b},0.9);border-radius:50%;font-size:16px;color:#fff;box-shadow:0 0 20px rgba(${r},${g},${b},0.6);"></i>
+                    </div>
+                </div>
+<div class="work-title" style="font-family:'Rajdhani',sans-serif;letter-spacing:1px;">${work.title}</div>            </div>
+        `).join('');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    modal.innerHTML = `
         <div class="person-modal-content">
-            <button class="modal-close-btn" onclick="document.getElementById('person-works-modal').style.display='none'">
+            <button class="modal-close-btn" onclick="document.getElementById('person-works-modal').style.display='none';document.body.style.overflow='';">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="person-header">
-                <img src="${getPersonAvatar(works, role, personName)}" alt="${personName}">
-                <h2>${personName}</h2>
-                <p>${roleText}</p>
-                <span class="works-count">${works.length} کار</span>
+
+            <div class="pm-hero">
+                <div class="pm-avatar-ring">
+                    <img src="${avatar}" alt="${personName}">
+                </div>
+                <div class="pm-name">${personName}</div>
+                <div class="pm-role-badge" style="background:rgba(${r},${g},${b},0.18);border-color:rgba(${r},${g},${b},0.4);color:rgba(${r},${g},${b},1);">
+                    <i class="fas ${roleInfo.icon}"></i>
+                    ${roleInfo.label}
+                </div>
+                <div class="pm-stats-row">
+                    <div class="pm-stat">
+                        <div class="pm-stat-num">${works.length}</div>
+                        <div class="pm-stat-lbl">کار</div>
+                    </div>
+                    <div class="pm-stat">
+                        <div class="pm-stat-num">${works.filter(w=>w.type==='drama').length}</div>
+                        <div class="pm-stat-lbl">دراما</div>
+                    </div>
+                    <div class="pm-stat">
+                        <div class="pm-stat-num">${works.filter(w=>w.type==='movie').length}</div>
+                        <div class="pm-stat-lbl">فیلم</div>
+                    </div>
+                </div>
             </div>
-            <div class="person-works-grid">
-    `;
-    
-    works.forEach(work => {
-        html += `
-            <div class="work-card" onclick="app.openPlayer(app.data.find(d => d.id === ${work.id})); document.getElementById('person-works-modal').style.display='none';">
-                <img src="${work.image}" alt="${work.title}">
-                <div class="work-title">${work.title}</div>
-            </div>
-        `;
-    });
-    
-    html += `
+
+            <div style="padding:20px 8px 80px;">
+                <div class="pm-grid-label">
+                    <i class="fas fa-film" style="color:rgba(${r},${g},${b},0.8);"></i>
+                    کارەکان
+                </div>
+                <div class="person-works-grid">${worksHTML}</div>
             </div>
         </div>
     `;
-    
-    modal.innerHTML = html;
+
     modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prefetchAllRatings: function() {
+    this.data.forEach(item => {
+        this.fetchIMDB(item.title).then(({ imdb, tmdb }) => {
+            item._imdb = imdb;
+            item._tmdb = tmdb;
+        });
+    });
 }
 }
 // کۆدی فلتەر
@@ -2161,34 +2302,35 @@ function toggleFilterMenu() {
     dropdown.classList.toggle('show');
     btn.classList.toggle('active');
 }
-
-function applyFilters() {
+async function applyFilters() {
     const genreCheckboxes = document.querySelectorAll('.filter-options input[type="checkbox"]');
     const selectedGenres = [];
     const selectedYears = [];
-    
+    const ratingFilters = [];
+
     genreCheckboxes.forEach(checkbox => {
         if (checkbox.checked) {
             const value = checkbox.value;
             if (!isNaN(value)) {
                 selectedYears.push(value);
+            } else if (value.startsWith('imdb_')) {
+                ratingFilters.push({ type: 'imdb', min: parseFloat(value.split('_')[1]) });
+            } else if (value.startsWith('tmdb_')) {
+                ratingFilters.push({ type: 'tmdb', min: parseFloat(value.split('_')[1]) });
             } else {
                 selectedGenres.push(value);
             }
         }
     });
-    
 
     
     let currentType = app.currentFilter || 'all';
-    
-    // ئەگەر هیچ هەڵبژاردنێک نەبوو تەنها جۆرەکە نیشان بدە
-    if (selectedGenres.length === 0 && selectedYears.length === 0) {
-        let filtered = currentType === 'all' ? app.data : app.data.filter(item => item.type === currentType);
-        app.renderGrid(filtered);
-        toggleFilterMenu();
-        return;
-    }
+    if (selectedGenres.length === 0 && selectedYears.length === 0 && ratingFilters.length === 0) {
+    let filtered = currentType === 'all' ? app.data : app.data.filter(item => item.type === currentType);
+    app.renderGrid(filtered);
+    toggleFilterMenu();
+    return;
+}
     
     // دەستپێکردن لە هەموو داتاکان
     let filtered = app.data;
@@ -2212,8 +2354,34 @@ function applyFilters() {
         });
     }
     
+    
+ if (ratingFilters.length > 0) {
+    await Promise.all(app.data.map(item =>
+        app.fetchIMDB(item.title).then(({imdb, tmdb}) => {
+            item._imdb = imdb;
+            item._tmdb = tmdb;
+        })
+    ));
+
+    filtered = filtered.filter(item => {
+        if (!item._imdb && !item._tmdb) return false;
+
+        return ratingFilters.some(f => {
+            if (f.type === 'imdb') {
+                if (!item._imdb) return false;
+                return parseFloat(item._imdb) >= f.min;
+            }
+            if (f.type === 'tmdb') {
+                if (!item._tmdb) return false;
+                return parseFloat(item._tmdb) >= f.min;
+            }
+            return false;
+        });
+    });
+}
+
     app.renderGrid(filtered);
-    toggleFilterMenu(); // داخستنی مێنیوی فلتەر
+    toggleFilterMenu();
 }
 
 function clearFilters() {
@@ -2235,8 +2403,10 @@ function clearFilters() {
 function toggleFilterSection(section) {
     const genreSection = document.getElementById('genre-section');
     const yearSection = document.getElementById('year-section');
+    const ratingSection = document.getElementById('rating-section');
     const genreBtn = document.querySelector('.filter-main-btn:nth-child(1)');
     const yearBtn = document.querySelector('.filter-main-btn:nth-child(2)');
+    const ratingBtn = document.querySelector('.filter-main-btn:nth-child(3)');
     
     if (section === 'genre') {
         if (genreSection.style.display === 'none') {
@@ -2253,6 +2423,14 @@ function toggleFilterSection(section) {
         } else {
             yearSection.style.display = 'none';
             yearBtn.classList.remove('active');
+        }
+    } else if (section === 'rating') {
+        if (ratingSection.style.display === 'none') {
+            ratingSection.style.display = 'block';
+            ratingBtn.classList.add('active');
+        } else {
+            ratingSection.style.display = 'none';
+            ratingBtn.classList.remove('active');
         }
     }
 }
@@ -2314,11 +2492,21 @@ backBtnStyle.textContent = `
 
 document.querySelectorAll('.bottom-navbar, .glass-sidebar, .navbar, .rating-wrapper, .rating-stars-section, .info-box, .helin-footer, .purple-glass-footer, .acc-card, .vip-staff-card, .credit-card, .result-card, .person-modal-content, .filter-dropdown, .color-picker-panel, .menu-modal-box, .home-random-section, .filter-toggle-btn, .action-btn, .cat-btn, .search-input, .player-content').forEach(el => {    el.style.background = `rgba(${Math.round(r*0.05)}, ${Math.round(g*0.03)}, ${Math.round(b*0.09)}, 0.95)`;
 });
-
-// بۆردەرەکان
-document.querySelectorAll('.bottom-navbar, .navbar, .glass-sidebar, .info-box, .helin-footer, .credit-card, .result-card, .rating-wrapper, .filter-toggle-btn, .home-random-section').forEach(el => {
-    el.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.35)`;
+document.querySelectorAll('.bn-item svg').forEach(svg => {
+    svg.style.stroke = `rgba(${r},${g},${b},0.5)`;
 });
+document.querySelectorAll('.bn-item.active svg').forEach(svg => {
+    svg.style.stroke = `rgb(${r},${g},${b})`;
+    svg.style.filter = `drop-shadow(0 0 6px rgba(${r},${g},${b},0.8))`;
+});
+document.querySelectorAll('.bn-item span').forEach(span => {
+    span.style.color = 'rgba(255,255,255,0.45)';
+});
+document.querySelectorAll('.bn-item.active span').forEach(span => {
+    span.style.color = `rgb(${r},${g},${b})`;
+});
+document.querySelector('.bottom-navbar').style.borderTopColor = `rgba(${r},${g},${b},0.35)`;
+document.querySelector('.bottom-navbar').style.background = `rgba(${Math.round(r*0.04)}, ${Math.round(g*0.03)}, ${Math.round(b*0.08)}, 0.97)`;
 
 
 // box-shadow بۆ بەشە گرنگەکان
@@ -2656,7 +2844,10 @@ function quickRandom(type) {
 const OMDB_KEY = '87e20d0a';
 const TMDB_KEY = '1e5953c4d635318acd9b1cb9c7010caa';
 
+const ratingCache = {};
+
 app.fetchIMDB = async function(title) {
+    if (ratingCache[title]) return ratingCache[title];
     try {
         const clean = title.replace(/\d{4}/g, '').replace(/[^a-zA-Z0-9\s]/g, '').trim();
         const year = title.match(/\d{4}/)?.[0] || '';
@@ -2671,9 +2862,15 @@ app.fetchIMDB = async function(title) {
             const first = tmdbRes.value.results[0];
             tmdb = first.vote_average ? (Math.round(first.vote_average * 10) / 10).toFixed(1) : null;
         }
-        return { imdb, tmdb };
+        const result = { imdb, tmdb };
+        ratingCache[title] = result;
+        return result;
     } catch(e) { return { imdb: null, tmdb: null }; }
 };
+
+
+
+
 app.init();
 
 
@@ -2761,8 +2958,8 @@ body {
 
 .color-picker-panel {
     display: none;
-    position: absolute;
-    top: calc(100% + 12px);
+    position: fixed;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     background: rgba(12, 12, 20, 0.98);
@@ -2783,17 +2980,37 @@ body {
 }
 
 @keyframes fadeDropIn {
-    from { opacity: 0; transform: translateX(-50%) translateY(-8px) scale(0.96); }
+    from { opacity: 0; transform: translateX(-50%) translateY(8px) scale(0.96); }
     to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 }
 
 .color-label {
     display: block;
-    color: #aaa;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight: 800;
     margin-bottom: 16px;
-    font-weight: 700;
     letter-spacing: 1px;
+    
+    background: linear-gradient(90deg, #fff, var(--accent-light), var(--accent-color), var(--accent-light), #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: shineText 3s linear infinite;
+    
+    text-align: center;
+    position: relative;
+}
+
+.color-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+    margin: 6px auto 0;
+    border-radius: 10px;
 }
 
 .color-swatches {
@@ -2837,6 +3054,9 @@ body {
     text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     pointer-events: none;
 }
+
+
+
 
 @media (max-width: 768px) {
     .color-picker-panel {
@@ -3434,387 +3654,183 @@ body {
     font-size: 14px;
     color: #fff;
     font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+    letter-spacing: 0.5px;
 }
 
-/* مۆداڵی لیستی کارەکان - دیزاینی پڕۆفیشناڵ */
-.person-modal {
+    .person-modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.97);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    inset: 0;
+    background: rgba(0,0,0,0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     z-index: 3000;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     overflow-y: auto;
-    padding: 30px 15px;
-    animation: modalFadeIn 0.4s ease;
+    padding: 0 0 80px;
+    animation: modalFadeIn 0.3s ease;
 }
-
-@keyframes modalFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 .person-modal-content {
-    max-width: 1000px;
-    width: 92%;
-    max-height: 90vh;
-    background: linear-gradient(135deg, rgba(20, 10, 40, 0.98), rgba(30, 15, 50, 0.95));
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border-radius: 30px;
-    padding: 50px 35px 35px;
-    border: 2px solid rgba(140, 0, 255, 0.4);
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
+}
+.pm-hero {
     position: relative;
-    overflow-y: auto;
-    margin: auto;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9),
-                0 0 60px rgba(140, 0, 255, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes slideUp {
-    from { 
-        opacity: 0;
-        transform: translateY(50px) scale(0.95);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* سکرۆڵ باڕی جوان */
-.person-modal-content::-webkit-scrollbar {
-    width: 8px;
-}
-
-.person-modal-content::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
-
-.person-modal-content::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #8c00ff, #b366ff);
-    border-radius: 10px;
-    border: 2px solid rgba(30, 15, 50, 0.5);
-}
-
-.person-modal-content::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #b366ff, #c77dff);
-    box-shadow: 0 0 10px rgba(140, 0, 255, 0.6);
-}
-
-.modal-close-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgba(255, 50, 50, 0.15);
-    border: 2px solid rgba(255, 50, 50, 0.4);
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(10px);
-}
-
-.modal-close-btn:hover {
-    background: rgba(255, 50, 50, 0.3);
-    border-color: rgba(255, 50, 50, 0.7);
-    transform: rotate(90deg) scale(1.1);
-    box-shadow: 0 0 20px rgba(255, 50, 50, 0.5);
-}
-
-.person-header {
     text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-    padding-bottom: 25px;
-}
-
-.person-header::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, #8c00ff, transparent);
-    box-shadow: 0 0 15px rgba(140, 0, 255, 0.6);
-}
-
-.person-header img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    border: 4px solid var(--accent-color);
-    margin-bottom: 20px;
-    box-shadow: 0 0 40px rgba(140, 0, 255, 0.6),
-                0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: all 0.4s ease;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-.person-header img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 50px rgba(140, 0, 255, 0.8);
-}
-
-.person-header h2 {
-    color: #fff;
-    font-size: 28px;
-    margin-bottom: 10px;
-    font-weight: 800;
-    text-shadow: 0 0 20px rgba(140, 0, 255, 0.5);
-    letter-spacing: 1px;
-}
-
-.person-header p {
-    color: var(--accent-light);
-    font-size: 15px;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-.works-count {
-    background: linear-gradient(135deg, rgba(140, 0, 255, 0.3), rgba(179, 102, 255, 0.2));
-    padding: 8px 20px;
-    border-radius: 25px;
-    font-size: 14px;
-    color: #fff;
-    font-weight: 700;
-    display: inline-block;
-    border: 1px solid rgba(140, 0, 255, 0.4);
-    box-shadow: 0 0 20px rgba(140, 0, 255, 0.3);
-}
-
-.person-works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 25px;
-    padding: 0 10px;
-}
-
-.work-card {
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 16px;
+    padding: 50px 20px 30px;
+    background: linear-gradient(180deg, rgba(140,0,255,0.1) 0%, transparent 100%);
     overflow: hidden;
-    position: relative;
-    background: rgba(20, 20, 30, 0.6);
 }
-
-.work-card::before {
+.pm-hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(140, 0, 255, 0.1), rgba(179, 102, 255, 0.05));
-    opacity: 0;
-    transition: 0.4s;
-    z-index: 1;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(140,0,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
 }
-
-.work-card:hover::before {
-    opacity: 1;
+.pm-avatar-ring {
+    position: relative;
+    width: 100px; height: 100px;
+    margin: 0 auto 16px;
 }
-
-.work-card img {
-    width: 100%;
-    aspect-ratio: 2/3;
+.pm-avatar-ring img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
     object-fit: cover;
-    border-radius: 16px;
-    border: 2px solid rgba(140, 0, 255, 0.3);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 3px solid rgba(140,0,255,0.7);
+    box-shadow: 0 0 30px rgba(140,0,255,0.4), 0 0 60px rgba(140,0,255,0.15);
     display: block;
 }
-
-.work-card:hover {
-    transform: translateY(-8px) scale(1.03);
+.pm-avatar-ring::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: var(--accent-color);
+    border-right-color: var(--accent-light);
+    animation: spinRing 3s linear infinite;
+}
+@keyframes spinRing { to { transform: rotate(360deg); } }
+.pm-name {
+    font-size: 24px; font-weight: 900; color: #fff;
+    margin-bottom: 8px; letter-spacing: 0.5px;
+}
+.pm-role-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(140,0,255,0.18);
+    border: 1px solid rgba(140,0,255,0.4);
+    color: #c499ff; font-size: 12px; font-weight: 700;
+    padding: 5px 14px; border-radius: 50px; margin-bottom: 16px;
+}
+.pm-stats-row {
+    display: flex; justify-content: center; gap: 12px; margin-top: 4px;
+}
+.pm-stat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px; padding: 8px 20px; text-align: center;
+}
+.pm-stat-num { font-size: 20px; font-weight: 900; color: #fff; line-height: 1; margin-bottom: 2px; }
+.pm-stat-lbl { font-size: 11px; color: #a0a0b0; font-weight: 600; }
+.modal-close-btn {
+    position: fixed; top: 16px; left: 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: #fff; width: 40px; height: 40px;
+    border-radius: 50%; cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s; z-index: 100;
+    backdrop-filter: blur(10px);
+}
+.modal-close-btn:hover {
+    background: rgba(255,50,50,0.25);
+    border-color: rgba(255,50,50,0.5);
+    transform: rotate(90deg);
+}
+.pm-grid-label {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0 4px 12px; font-size: 12px; font-weight: 700;
+    color: rgba(255,255,255,0.4); letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 16px;
+}
+.person-works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px; padding: 0 2px;
+}
+.work-card {
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+    border-radius: 14px; overflow: hidden; position: relative;
+    background: rgba(20,20,30,0.6);
+    border: 1px solid rgba(255,255,255,0.07);
+}
+.work-card:hover { transform: translateY(-6px) scale(1.03); }
+.work-card-img-wrap {
+    position: relative; aspect-ratio: 2/3; overflow: hidden;
+}
+.work-card-img-wrap img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+.work-card:hover .work-card-img-wrap img {
+    transform: scale(1.06); filter: brightness(0.5);
+}
+.work-card-play {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s; z-index: 3;
+}
+.work-card:hover .work-card-play { opacity: 1; }
+.work-ep-count {
+    position: absolute; bottom: 8px; right: 7px;
+    background: rgba(140,0,255,0.85); color: #fff;
+    font-size: 9px; font-weight: 800; padding: 2px 7px;
+    border-radius: 5px; z-index: 4;
 }
 
-.work-card:hover img {
-    border-color: var(--accent-color);
-    box-shadow: 0 15px 35px rgba(140, 0, 255, 0.5),
-                0 0 30px rgba(140, 0, 255, 0.3);
-    filter: brightness(1.1);
-}
-
-.work-title {
-    text-align: center;
-    color: #fff;
-    font-size: 13px;
-    margin-top: 12px;
-    font-weight: 700;
-    padding: 0 5px;
-    line-height: 1.4;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    transition: 0.3s;
-}
-.work-card:hover .work-title {
-    color: var(--accent-light);
-    text-shadow: 0 0 10px rgba(140, 0, 255, 0.7);
-}
-
-/* ← لێرە ئەم ستایلانە زیاد بکە */
 .works-person-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex; align-items: center; gap: 8px;
     background: rgba(255,255,255,0.04);
     border: 1.5px solid rgba(140,0,255,0.25);
-    color: #c499ff;
-    padding: 8px 16px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 700;
-    font-family: Tahoma, sans-serif;
-    transition: all 0.3s ease;
+    color: #c499ff; padding: 8px 16px; border-radius: 50px;
+    cursor: pointer; font-size: 13px; font-weight: 700;
+    font-family: Tahoma, sans-serif; transition: all 0.3s ease;
 }
 .works-person-btn:hover {
     background: rgba(140,0,255,0.15);
-    border-color: var(--accent-color);
-    color: #fff;
+    border-color: var(--accent-color); color: #fff;
 }
 .works-person-btn.active {
     background: rgba(140,0,255,0.25);
-    border-color: var(--accent-light);
-    color: #fff;
+    border-color: var(--accent-light); color: #fff;
     box-shadow: 0 0 15px rgba(140,0,255,0.3);
 }
 .works-count-badge {
-    background: rgba(140,0,255,0.4);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 2px 8px;
-    border-radius: 20px;
-    min-width: 20px;
-    text-align: center;
+    background: rgba(140,0,255,0.4); color: #fff;
+    font-size: 11px; font-weight: 800; padding: 2px 8px;
+    border-radius: 20px; min-width: 20px; text-align: center;
 }
-/* چارەسەری تایبەت بۆ مۆبایل */
-@media (max-width: 768px) {
-    .person-modal {
-        padding: 15px 10px;
-        align-items: flex-start;
-    }
-    
-    .person-modal-content {
-        width: 96%;
-        max-height: 88vh;
-        padding: 55px 20px 25px;
-        margin-top: 10px;
-        border-radius: 25px;
-    }
-    
-    @media (max-width: 768px) {
-    .modal-close-btn {
-        top: 45px;  /* ⬅️ گۆڕدرا لە 15px بۆ 25px */
-        left: 15px;
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
-    }
+@media (max-width: 480px) {
+    .person-works-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .pm-name { font-size: 20px; }
+    .pm-avatar-ring { width: 85px; height: 85px; }
 }
-    
-    .person-header {
-        margin-bottom: 30px;
-        padding-bottom: 20px;
-    }
-    
-    .person-header img {
-        width: 85px;
-        height: 85px;
-    }
-    
-    .person-header h2 {
-        font-size: 22px;
-    }
-    
-    .person-header p {
-        font-size: 13px;
-    }
-    
-    .works-count {
-        font-size: 12px;
-        padding: 6px 16px;
-    }
-    
-    .person-works-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        padding: 0 5px;
-    }
-    
-    .work-title {
-        font-size: 11.5px;
-        margin-top: 8px;
-    }
+@media (max-width: 360px) {
+    .person-works-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* بۆ شاشەی زۆر بچووک */
-@media (max-width: 400px) {
-    .person-modal-content {
-        width: 98%;
-        padding: 50px 15px 20px;
-    }
-    
-    .person-header img {
-        width: 75px;
-        height: 75px;
-    }
-    
-    .person-header h2 {
-        font-size: 20px;
-    }
-    
-    .person-works-grid {
-        gap: 12px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 
 <footer class="helin-footer">
@@ -4010,10 +4026,14 @@ body {
                 <div class="menu-icon-wrap"><i class="fas fa-crown"></i></div>
                 <span>ستافی وەرگێڕان</span>
             </button>
-            <button class="menu-item" onclick="openMenuModal('technician')">
-                <div class="menu-icon-wrap"><i class="fas fa-cogs"></i></div>
-                <span>تەکنیکار</span>
-            </button>
+          <button class="menu-item" onclick="openMenuModal('technician')">
+    <div class="menu-icon-wrap"><i class="fas fa-cogs"></i></div>
+    <span>تەکنیکار</span>
+</button>
+<button class="menu-item" onclick="openMenuModal('poster_designer')">
+    <div class="menu-icon-wrap"><i class="fas fa-palette"></i></div>
+    <span>بەرگساز</span>
+</button>
            
             <button class="menu-item" onclick="openMenuModal('suggest')">
                 <div class="menu-icon-wrap"><i class="fas fa-lightbulb"></i></div>
@@ -4762,8 +4782,7 @@ document.addEventListener('click', (e) => {
         const overlay = document.getElementById('menu-modal-overlay');
         const content = document.getElementById('menu-modal-content');
 
-        const templates = {
-works: (() => {
+        const templates = {works: (() => {
   const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
   const al = getComputedStyle(document.documentElement).getPropertyValue('--accent-light').trim() || '#b366ff';
 
@@ -4784,8 +4803,7 @@ works: (() => {
     <div style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;">
       <div style="position:relative;display:flex;align-items:center;justify-content:center;
         width:58px;height:58px;border-radius:16px;margin-bottom:8px;
-        background:${hexToRgba(ac,0.12)};
-        border:1.5px solid ${hexToRgba(ac,0.4)};">
+        background:${hexToRgba(ac,0.12)};border:1.5px solid ${hexToRgba(ac,0.4)};">
         <i class="fas fa-photo-film" style="color:${ac};font-size:22px;filter:drop-shadow(0 0 8px ${hexToRgba(ac,0.6)});"></i>
         <div style="position:absolute;top:-1px;right:-1px;width:7px;height:7px;border-top:2px solid ${ac};border-right:2px solid ${ac};border-radius:0 4px 0 0;"></div>
         <div style="position:absolute;top:-1px;left:-1px;width:7px;height:7px;border-top:2px solid ${ac};border-left:2px solid ${ac};border-radius:4px 0 0 0;"></div>
@@ -4799,69 +4817,93 @@ works: (() => {
     <div style="position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:${ac};opacity:0.7;"></div>
   </div>
 
-  <!-- دوگمەکانی هەڵبژاردنی کەس -->
-  <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;justify-content:center;">
-
-    <button class="works-person-btn active" data-role="translator" data-name="هێلین" data-avatar="admin1.png" onclick="filterWorksModal(this)"
-      style="display:flex;align-items:center;gap:8px;
-      background:${hexToRgba(ac,0.15)};
-      border:1.5px solid ${hexToRgba(ac,0.4)};
-      color:#fff;padding:8px 14px;border-radius:50px;
-      cursor:pointer;font-size:12px;font-weight:700;
-      font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
-      <img src="admin1.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid ${hexToRgba(ac,0.6)};">
-      هێلین
-      <span class="works-count-badge" id="badge-هێلین-translator"
-        style="background:${hexToRgba(ac,0.4)};color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+  <!-- ٣ تاب -->
+  <div style="display:flex;gap:6px;margin-bottom:20px;background:${hexToRgba(ac,0.06)};border:1px solid ${hexToRgba(ac,0.2)};border-radius:14px;padding:5px;">
+    <button id="tab-btn-translator" onclick="switchWorksTab('translator')"
+      style="flex:1;padding:9px 4px;border-radius:10px;border:1px solid ${hexToRgba(ac,0.4)};cursor:pointer;
+      font-size:11px;font-weight:800;font-family:Tahoma,sans-serif;transition:all 0.3s ease;
+      background:${hexToRgba(ac,0.2)};color:#fff;
+      display:flex;flex-direction:column;align-items:center;gap:3px;">
+      <i class="fas fa-language" style="font-size:13px;"></i>
+      کاری وەرگێرەکان
     </button>
-
-    <button class="works-person-btn" data-role="translator" data-name="سەنا ئەحمەد" data-avatar="سانا.png" onclick="filterWorksModal(this)"
-      style="display:flex;align-items:center;gap:8px;
-      background:rgba(255,255,255,0.04);
-      border:1.5px solid rgba(255,255,255,0.12);
-      color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;
-      cursor:pointer;font-size:12px;font-weight:700;
-      font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
-      <img src="سانا.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
-      سەنا
-      <span class="works-count-badge" id="badge-سەنا-translator"
-        style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+    <button id="tab-btn-technician" onclick="switchWorksTab('technician')"
+      style="flex:1;padding:9px 4px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);cursor:pointer;
+      font-size:11px;font-weight:800;font-family:Tahoma,sans-serif;transition:all 0.3s ease;
+      background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.6);
+      display:flex;flex-direction:column;align-items:center;gap:3px;">
+      <i class="fas fa-cogs" style="font-size:13px;"></i>
+      کاری تەکنیکارەکان
     </button>
-
-    <button class="works-person-btn" data-role="translator" data-name="کێڵوا" data-avatar="admin2.png" onclick="filterWorksModal(this)"
-      style="display:flex;align-items:center;gap:8px;
-      background:rgba(255,255,255,0.04);
-      border:1.5px solid rgba(255,255,255,0.12);
-      color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;
-      cursor:pointer;font-size:12px;font-weight:700;
-      font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
-      <img src="admin2.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
-      کێڵوا (وەرگێڕ)
-      <span class="works-count-badge" id="badge-کێڵوا-translator"
-        style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+    <button id="tab-btn-poster_designer" onclick="switchWorksTab('poster_designer')"
+      style="flex:1;padding:9px 4px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);cursor:pointer;
+      font-size:11px;font-weight:800;font-family:Tahoma,sans-serif;transition:all 0.3s ease;
+      background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.6);
+      display:flex;flex-direction:column;align-items:center;gap:3px;">
+      <i class="fas fa-palette" style="font-size:13px;"></i>
+      کاری بەرگسازەکان
     </button>
-
-    <button class="works-person-btn" data-role="technician" data-name="کێڵوا" data-avatar="admin2.png" onclick="filterWorksModal(this)"
-      style="display:flex;align-items:center;gap:8px;
-      background:rgba(255,255,255,0.04);
-      border:1.5px solid rgba(255,255,255,0.12);
-      color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;
-      cursor:pointer;font-size:12px;font-weight:700;
-      font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
-      <img src="admin2.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
-      کێڵوا (تەکنیکار)
-      <span class="works-count-badge" id="badge-کێڵوا-technician"
-        style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
-    </button>
-
   </div>
 
-  <!-- گریدی کارەکان -->
-  <div id="works-modal-grid" class="person-works-grid" style="padding:0;"></div>
+  <!-- تابی وەرگێر -->
+  <div id="tab-content-translator">
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+      <button class="works-person-btn active" data-role="translator" data-name="هێلین" data-avatar="admin1.png" onclick="filterWorksModal(this)"
+        style="display:flex;align-items:center;gap:8px;background:${hexToRgba(ac,0.15)};border:1.5px solid ${hexToRgba(ac,0.4)};color:#fff;padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+        <img src="admin1.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid ${hexToRgba(ac,0.6)};">
+        هێلین
+        <span class="works-count-badge" style="background:${hexToRgba(ac,0.4)};color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+      </button>
+      <button class="works-person-btn" data-role="translator" data-name="سەنا ئەحمەد" data-avatar="سانا.png" onclick="filterWorksModal(this)"
+        style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+        <img src="سانا.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
+        سەنا
+        <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+      </button>
+      <button class="works-person-btn" data-role="translator" data-name="کێڵوا" data-avatar="admin2.png" onclick="filterWorksModal(this)"
+        style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+        <img src="admin2.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
+        کێڵوا
+        <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+      </button>
+    </div>
+    <div id="works-modal-grid" class="person-works-grid" style="padding:0;"></div>
+  </div>
+
+  <!-- تابی تەکنیکار -->
+  <div id="tab-content-technician" style="display:none;">
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+      <button class="works-person-btn-tech active" data-role="technician" data-name="کێڵوا" data-avatar="admin2.png" onclick="filterWorksTech(this)"
+        style="display:flex;align-items:center;gap:8px;background:${hexToRgba(ac,0.15)};border:1.5px solid ${hexToRgba(ac,0.4)};color:#fff;padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+        <img src="admin2.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid ${hexToRgba(ac,0.6)};">
+        کێڵوا
+        <span class="works-count-badge-tech" style="background:${hexToRgba(ac,0.4)};color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+      </button>
+    </div>
+    <div id="works-tech-grid" class="person-works-grid" style="padding:0;"></div>
+  </div>
+
+  <!-- تابی بەرگساز -->
+  <div id="tab-content-poster_designer" style="display:none;">
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+      <button class="works-person-btn-poster active" data-role="poster_designer" data-name="هێلین" data-avatar="admin1.png" onclick="filterWordsPoster(this)"
+        style="display:flex;align-items:center;gap:8px;background:${hexToRgba(ac,0.15)};border:1.5px solid ${hexToRgba(ac,0.4)};color:#fff;padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+        <img src="admin1.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid ${hexToRgba(ac,0.6)};">
+        هێلین
+        <span class="works-count-badge-poster" style="background:${hexToRgba(ac,0.4)};color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+      </button>
+      <button class="works-person-btn-poster" data-role="poster_designer" data-name="کێڵوا" data-avatar="admin2.png" onclick="filterWordsPoster(this)"
+        style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+        <img src="admin2.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
+        کێڵوا
+        <span class="works-count-badge-poster" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+      </button>
+    </div>
+    <div id="works-poster-grid" class="person-works-grid" style="padding:0;"></div>
+  </div>
 
 </div>`;
 })(),
-
 random: (() => {
   const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
   const al = getComputedStyle(document.documentElement).getPropertyValue('--accent-light').trim() || '#b366ff';
@@ -5548,7 +5590,123 @@ technician: (() => {
 
 </div>`;
 })(),
+poster_designer: (() => {
+  const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
+  const al = getComputedStyle(document.documentElement).getPropertyValue('--accent-light').trim() || '#b366ff';
+  
+  function hexToRgba(hex, alpha) {
+    hex = hex.replace('#','').trim();
+    if(hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+    const r = parseInt(hex.substring(0,2),16);
+    const g = parseInt(hex.substring(2,4),16);
+    const b = parseInt(hex.substring(4,6),16);
+    return `rgba(${r},${g},${b},${alpha})`;
+  }
 
+  const helin_poster_count = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.poster_designer&&d.poster_designer.name==='هێلین').length; })();
+  const kelwa_poster_count = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.poster_designer&&d.poster_designer.name==='کێڵوا').length; })();
+
+  return `
+<div style="direction:rtl;font-family:Tahoma,sans-serif;">
+
+  <!-- سەردێڕ -->
+  <div style="text-align:center;margin-bottom:28px;padding-bottom:22px;position:relative;">
+    <div style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;">
+      <div style="position:relative;display:flex;align-items:center;justify-content:center;
+        width:58px;height:58px;border-radius:16px;margin-bottom:8px;
+        background:${hexToRgba(ac,0.12)};
+        border:1.5px solid ${hexToRgba(ac,0.4)};">
+        <i class="fas fa-palette" style="color:${ac};font-size:24px;filter:drop-shadow(0 0 8px ${hexToRgba(ac,0.6)});"></i>
+        <div style="position:absolute;top:-1px;right:-1px;width:7px;height:7px;border-top:2px solid ${ac};border-right:2px solid ${ac};border-radius:0 4px 0 0;"></div>
+        <div style="position:absolute;top:-1px;left:-1px;width:7px;height:7px;border-top:2px solid ${ac};border-left:2px solid ${ac};border-radius:4px 0 0 0;"></div>
+        <div style="position:absolute;bottom:-1px;right:-1px;width:7px;height:7px;border-bottom:2px solid ${ac};border-right:2px solid ${ac};border-radius:0 0 4px 0;"></div>
+        <div style="position:absolute;bottom:-1px;left:-1px;width:7px;height:7px;border-bottom:2px solid ${ac};border-left:2px solid ${ac};border-radius:0 0 0 4px;"></div>
+      </div>
+      <span style="color:#fff;font-size:18px;font-weight:900;letter-spacing:0.5px;">بەرگساز</span>
+      <span style="color:${hexToRgba(ac,0.65)};font-size:11px;font-weight:700;letter-spacing:2px;">HAVE KOREA TEAM</span>
+    </div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,${hexToRgba(ac,0.45)},transparent);"></div>
+    <div style="position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:${ac};opacity:0.7;"></div>
+  </div>
+
+  <!-- هێلین -->
+  <div style="margin-bottom:12px;position:relative;border-radius:20px;overflow:hidden;
+    background:rgba(12,8,20,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border:1px solid ${hexToRgba(ac,0.2)};transition:all 0.35s cubic-bezier(0.4,0,0.2,1);"
+    onmouseover="this.style.borderColor='${hexToRgba(ac,0.6)}';this.style.transform='translateX(-5px)';this.style.background='rgba(18,12,30,0.85)';this.style.boxShadow='0 12px 40px ${hexToRgba(ac,0.1)}'"
+    onmouseout="this.style.borderColor='${hexToRgba(ac,0.2)}';this.style.transform='translateX(0)';this.style.background='rgba(12,8,20,0.7)';this.style.boxShadow='none'">
+    <div style="position:absolute;top:0;right:0;width:2px;height:100%;background:linear-gradient(180deg,transparent,${hexToRgba(ac,0.8)} 40%,${hexToRgba(ac,0.8)} 60%,transparent);"></div>
+    <div style="display:flex;align-items:center;gap:16px;padding:18px 20px 18px 18px;">
+      <div style="position:relative;flex-shrink:0;">
+        <div style="width:72px;height:72px;border-radius:18px;padding:2px;
+          background:linear-gradient(135deg,${hexToRgba(ac,0.75)},${hexToRgba(ac,0.15)},${hexToRgba(ac,0.65)});
+          box-shadow:0 0 20px ${hexToRgba(ac,0.2)};">
+          <img src="admin1.png" style="width:100%;height:100%;border-radius:16px;object-fit:cover;display:block;">
+        </div>
+        <div style="position:absolute;bottom:-2px;right:-2px;width:16px;height:16px;border-radius:50%;background:#00e676;border:2.5px solid rgba(8,5,15,0.95);box-shadow:0 0 8px rgba(0,230,118,0.5);"></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;flex-wrap:wrap;">
+          <span style="color:#fff;font-size:16px;font-weight:900;">هێلین</span>
+          <div style="display:flex;align-items:center;gap:5px;background:${hexToRgba(ac,0.09)};border:1px solid ${hexToRgba(ac,0.3)};border-radius:10px;padding:4px 10px;">
+            <i class="fas fa-play-circle" style="color:${ac};font-size:11px;"></i>
+            <span style="color:${ac};font-size:11px;font-weight:800;">${helin_poster_count} کار</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;">
+          <span style="background:${hexToRgba(ac,0.15)};color:${al};font-size:10px;font-weight:800;padding:3px 10px;border-radius:6px;border:1px solid ${hexToRgba(ac,0.35)};">
+            <i class="fas fa-star" style="font-size:8px;margin-left:3px;"></i>بەرگساز
+          </span>
+        </div>
+        <a href="https://www.instagram.com/helin.jill?utm_source=qr&igsh=dnNsb2FnZXZxN3l2" target="_blank"
+          style="display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:9px;background:rgba(193,53,132,0.1);border:1px solid rgba(193,53,132,0.25);color:rgba(255,255,255,0.7);font-size:11px;font-weight:700;text-decoration:none;transition:all 0.25s ease;"
+          onmouseover="this.style.background='rgba(193,53,132,0.28)';this.style.color='#fff'"
+          onmouseout="this.style.background='rgba(193,53,132,0.1)';this.style.color='rgba(255,255,255,0.7)'">
+          <i class="fab fa-instagram" style="color:#e1306c;font-size:13px;"></i> Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- کێڵوا -->
+  <div style="position:relative;border-radius:20px;overflow:hidden;
+    background:rgba(12,8,20,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border:1px solid ${hexToRgba(ac,0.2)};transition:all 0.35s cubic-bezier(0.4,0,0.2,1);"
+    onmouseover="this.style.borderColor='${hexToRgba(ac,0.6)}';this.style.transform='translateX(-5px)';this.style.background='rgba(18,12,30,0.85)';this.style.boxShadow='0 12px 40px ${hexToRgba(ac,0.1)}'"
+    onmouseout="this.style.borderColor='${hexToRgba(ac,0.2)}';this.style.transform='translateX(0)';this.style.background='rgba(12,8,20,0.7)';this.style.boxShadow='none'">
+    <div style="position:absolute;top:0;right:0;width:2px;height:100%;background:linear-gradient(180deg,transparent,${hexToRgba(ac,0.8)} 40%,${hexToRgba(ac,0.8)} 60%,transparent);"></div>
+    <div style="display:flex;align-items:center;gap:16px;padding:18px 20px 18px 18px;">
+      <div style="position:relative;flex-shrink:0;">
+        <div style="width:72px;height:72px;border-radius:18px;padding:2px;
+          background:linear-gradient(135deg,${hexToRgba(ac,0.75)},${hexToRgba(ac,0.15)},${hexToRgba(ac,0.65)});
+          box-shadow:0 0 20px ${hexToRgba(ac,0.2)};">
+          <img src="admin2.png" style="width:100%;height:100%;border-radius:16px;object-fit:cover;display:block;">
+        </div>
+        <div style="position:absolute;bottom:-2px;right:-2px;width:16px;height:16px;border-radius:50%;background:#00e676;border:2.5px solid rgba(8,5,15,0.95);box-shadow:0 0 8px rgba(0,230,118,0.5);"></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px;flex-wrap:wrap;">
+          <span style="color:#fff;font-size:16px;font-weight:900;">کێڵوا</span>
+          <div style="display:flex;align-items:center;gap:5px;background:${hexToRgba(ac,0.09)};border:1px solid ${hexToRgba(ac,0.3)};border-radius:10px;padding:4px 10px;">
+            <i class="fas fa-play-circle" style="color:${ac};font-size:11px;"></i>
+            <span style="color:${ac};font-size:11px;font-weight:800;">${kelwa_poster_count} کار</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;">
+          <span style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.65);font-size:10px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);">بەرگساز</span>
+        </div>
+        <a href="https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr" target="_blank"
+          style="display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:9px;background:rgba(193,53,132,0.1);border:1px solid rgba(193,53,132,0.25);color:rgba(255,255,255,0.7);font-size:11px;font-weight:700;text-decoration:none;transition:all 0.25s ease;"
+          onmouseover="this.style.background='rgba(193,53,132,0.28)';this.style.color='#fff'"
+          onmouseout="this.style.background='rgba(193,53,132,0.1)';this.style.color='rgba(255,255,255,0.7)'">
+          <i class="fab fa-instagram" style="color:#e1306c;font-size:13px;"></i> Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>`;
+})(),
           about: `
     <h2><i class="fas fa-info-circle" style="color:var(--accent-light)"></i> دەربارەی ماڵپەڕ</h2>
     
@@ -5855,6 +6013,137 @@ if (type === 'works') {
             if (first) first.classList.add('active');
         }
  }
+function switchWorksTab(tab) {
+    const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
+    const hex = ac.replace('#','').trim();
+    const r = parseInt(hex.substring(0,2),16);
+    const g = parseInt(hex.substring(2,4),16);
+    const b = parseInt(hex.substring(4,6),16);
+
+    ['translator','technician','poster_designer'].forEach(t => {
+        const el = document.getElementById('tab-content-' + t);
+        if(el) el.style.display = 'none';
+        const btn = document.getElementById('tab-btn-' + t);
+        if(btn) {
+            btn.style.background = 'rgba(255,255,255,0.04)';
+            btn.style.color = 'rgba(255,255,255,0.6)';
+            btn.style.border = '1px solid rgba(255,255,255,0.1)';
+        }
+    });
+
+    const activeContent = document.getElementById('tab-content-' + tab);
+    if(activeContent) activeContent.style.display = 'block';
+    const activeBtn = document.getElementById('tab-btn-' + tab);
+    if(activeBtn) {
+        activeBtn.style.background = `rgba(${r},${g},${b},0.2)`;
+        activeBtn.style.color = '#fff';
+        activeBtn.style.border = `1px solid rgba(${r},${g},${b},0.4)`;
+    }
+
+    if(tab === 'translator') {
+        const firstBtn = document.querySelector('.works-person-btn');
+        if(firstBtn) filterWorksModal(firstBtn);
+    } else if(tab === 'technician') {
+        const firstBtn = document.querySelector('.works-person-btn-tech');
+        if(firstBtn) filterWorksTech(firstBtn);
+    } else if(tab === 'poster_designer') {
+        const firstBtn = document.querySelector('.works-person-btn-poster');
+        if(firstBtn) filterWordsPoster(firstBtn);
+    }
+}
+
+function filterWorksTech(btn) {
+    const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
+    const hex = ac.replace('#','').trim();
+    const r = parseInt(hex.substring(0,2),16);
+    const g = parseInt(hex.substring(2,4),16);
+    const b = parseInt(hex.substring(4,6),16);
+
+    document.querySelectorAll('.works-person-btn-tech').forEach(b2 => {
+        b2.style.background = 'rgba(255,255,255,0.04)';
+        b2.style.borderColor = 'rgba(255,255,255,0.12)';
+        b2.style.color = 'rgba(255,255,255,0.7)';
+        const badge = b2.querySelector('.works-count-badge-tech');
+        if(badge) badge.style.background = 'rgba(255,255,255,0.15)';
+    });
+    btn.style.background = `rgba(${r},${g},${b},0.15)`;
+    btn.style.borderColor = `rgba(${r},${g},${b},0.5)`;
+    btn.style.color = '#fff';
+    const badge = btn.querySelector('.works-count-badge-tech');
+    if(badge) badge.style.background = `rgba(${r},${g},${b},0.45)`;
+
+    const name = btn.dataset.name;
+    const works = app.data.filter(item => item.technician && item.technician.name === name);
+
+    document.querySelectorAll('.works-person-btn-tech').forEach(b2 => {
+        const count = app.data.filter(item => item.technician && item.technician.name === b2.dataset.name).length;
+        const bd = b2.querySelector('.works-count-badge-tech');
+        if(bd) bd.innerText = count;
+    });
+
+    const grid = document.getElementById('works-tech-grid');
+    if(!grid) return;
+   grid.innerHTML = works.map(work => `
+    <div class="work-card" onclick="app.openPlayer(app.data.find(d=>d.id===${work.id}));closeMenuModal();document.getElementById('modern-sidebar').classList.remove('active');document.getElementById('sidebar-trigger').classList.remove('active');">
+        <div class="work-card-img-wrap">
+            <img src="${work.image}" alt="${work.title}" loading="lazy">
+            <div class="work-ep-count">${work.type === 'movie' ? 'فیلم' : work.episodes ? work.episodes.length + ' ئەڵقە' : ''}</div>
+            <div class="work-card-play">
+                <div style="width:42px;height:42px;background:rgba(140,0,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(140,0,255,0.6);">
+                    <i class="fas fa-play" style="color:#fff;font-size:14px;margin-right:-2px;"></i>
+                </div>
+            </div>
+        </div>
+<div class="work-title" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">${work.title}</div>    </div>`).join('');
+}
+
+function filterWordsPoster(btn) {
+    const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
+    const hex = ac.replace('#','').trim();
+    const r = parseInt(hex.substring(0,2),16);
+    const g = parseInt(hex.substring(2,4),16);
+    const b = parseInt(hex.substring(4,6),16);
+
+    document.querySelectorAll('.works-person-btn-poster').forEach(b2 => {
+        b2.style.background = 'rgba(255,255,255,0.04)';
+        b2.style.borderColor = 'rgba(255,255,255,0.12)';
+        b2.style.color = 'rgba(255,255,255,0.7)';
+        const badge = b2.querySelector('.works-count-badge-poster');
+        if(badge) badge.style.background = 'rgba(255,255,255,0.15)';
+    });
+    btn.style.background = `rgba(${r},${g},${b},0.15)`;
+    btn.style.borderColor = `rgba(${r},${g},${b},0.5)`;
+    btn.style.color = '#fff';
+    const badge = btn.querySelector('.works-count-badge-poster');
+    if(badge) badge.style.background = `rgba(${r},${g},${b},0.45)`;
+
+    const name = btn.dataset.name;
+    const works = app.data.filter(item => item.poster_designer && item.poster_designer.name === name);
+
+    document.querySelectorAll('.works-person-btn-poster').forEach(b2 => {
+        const count = app.data.filter(item => item.poster_designer && item.poster_designer.name === b2.dataset.name).length;
+        const bd = b2.querySelector('.works-count-badge-poster');
+        if(bd) bd.innerText = count;
+    });
+
+    const grid = document.getElementById('works-poster-grid');
+    if(!grid) return;
+   grid.innerHTML = works.length === 0
+    ? '<p style="color:#777;text-align:center;width:100%;padding:20px 0;">هیچ کارێک نەدۆزرایەوە</p>'
+    : works.map(work => `
+        <div class="work-card" onclick="app.openPlayer(app.data.find(d=>d.id===${work.id}));closeMenuModal();document.getElementById('modern-sidebar').classList.remove('active');document.getElementById('sidebar-trigger').classList.remove('active');">
+            <div class="work-card-img-wrap">
+                <img src="${work.image}" alt="${work.title}" loading="lazy">
+                <div class="work-ep-count">${work.type === 'movie' ? 'فیلم' : work.episodes ? work.episodes.length + ' ئەڵقە' : ''}</div>
+                <div class="work-card-play">
+                    <div style="width:42px;height:42px;background:rgba(140,0,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(140,0,255,0.6);">
+                        <i class="fas fa-play" style="color:#fff;font-size:14px;margin-right:-2px;"></i>
+                    </div>
+                </div>
+            </div>
+<div class="work-title" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">${work.title}</div>        </div>`).join('');
+}
+
 function filterWorksModal(btn) {
     const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
     
@@ -5889,12 +6178,13 @@ function filterWorksModal(btn) {
 
     const role = btn.dataset.role;
     const name = btn.dataset.name;
-
     const works = app.data.filter(item => {
         if (role === 'translator') {
             return item.translators && item.translators.some(t => t.name === name);
         } else if (role === 'technician') {
             return item.technician && item.technician.name === name;
+        } else if (role === 'poster_designer') {
+            return item.poster_designer && item.poster_designer.name === name;
         }
         return false;
     });
@@ -5905,6 +6195,7 @@ function filterWorksModal(btn) {
         const count = app.data.filter(item => {
             if (bRole === 'translator') return item.translators && item.translators.some(t => t.name === bName);
             if (bRole === 'technician') return item.technician && item.technician.name === bName;
+            if (bRole === 'poster_designer') return item.poster_designer && item.poster_designer.name === bName;
             return false;
         }).length;
         const badge = b.querySelector('.works-count-badge');
@@ -5918,15 +6209,21 @@ function filterWorksModal(btn) {
         grid.innerHTML = '<p style="color:#777;text-align:center;width:100%;padding:20px 0;">هیچ کارێک نەدۆزرایەوە</p>';
         return;
     }
-
-    grid.innerHTML = works.map(work => `
-        <div class="work-card" onclick="app.openPlayer(app.data.find(d => d.id === ${work.id})); closeMenuModal(); document.getElementById('modern-sidebar').classList.remove('active'); document.getElementById('sidebar-trigger').classList.remove('active');">
-            <img src="${work.image}" alt="${work.title}">
-            <div class="work-title">${work.title}</div>
+grid.innerHTML = works.map(work => `
+    <div class="work-card" onclick="app.openPlayer(app.data.find(d => d.id === ${work.id})); closeMenuModal(); document.getElementById('modern-sidebar').classList.remove('active'); document.getElementById('sidebar-trigger').classList.remove('active');">
+        <div class="work-card-img-wrap">
+            <img src="${work.image}" alt="${work.title}" loading="lazy">
+            <div class="work-ep-count">${work.type === 'movie' ? 'فیلم' : work.episodes ? work.episodes.length + ' ئەڵقە' : ''}</div>
+            <div class="work-card-play">
+                <div style="width:42px;height:42px;background:rgba(140,0,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(140,0,255,0.6);">
+                    <i class="fas fa-play" style="color:#fff;font-size:14px;margin-right:-2px;"></i>
+                </div>
+            </div>
         </div>
-    `).join('');
-
+<div class="work-title" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:0.5px;">${work.title}</div>    </div>
+`).join('');
 }
+
     // داخستنی مۆداڵ بە ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenuModal();
