@@ -447,7 +447,7 @@
     padding: 20px 15px;
     
     /* گۆڕینی ئەم بەهایە وادەکات ناوەکە بێتە سەرەوەتر لە دەرەوە */
-    transform: translateY(58%); 
+    transform: translateY(100%); 
     
     opacity: 1;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s;
@@ -492,41 +492,6 @@
     
     transition: all 0.3s ease;
 }
-
-/* کاتێک hover دەکەیت */
-.card:hover .card-title {
-    text-shadow: 0 0 12px rgba(140, 0, 255, 0.9),
-                 0 2px 8px rgba(0,0,0,0.9);
-    transform: scale(1.02);
-}
-
-/* بۆ مۆبایل */
-@media (max-width: 768px) {
-    .card-title {
-        font-size: 11.5px;
-        line-height: 1.3;
-        max-height: 2.6em;
-    }
-}
-
-
-/* ژانەرەکە لە دەرەوە بشارەوە و تەنها لە کاتی Hover نیشانی بدە */
-.card-genre {
-    color: var(--accent-light);
-    font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    text-align: right;
-    
-    opacity: 0; /* شاراوە لە دەرەوە */
-    transition: opacity 0.3s ease;
-}
-
-.card:hover .card-genre {
-    opacity: 1; /* دەرکەوتن لە کاتی Hover */
-}
-
-/* کورتە چیرۆکەکە لە دەرەوە بشارەوە و تەنها لە کاتی Hover نیشانی بدە */
 .card-desc {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -537,13 +502,12 @@
     color: #cccccc;
     line-height: 1.5;
     text-align: right;
-    
-    opacity: 0; /* شاراوە لە دەرەوە */
+    opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .card:hover .card-desc {
-    opacity: 1; /* دەرکەوتن لە کاتی Hover */
+    opacity: 1;
 }
         .play-hint {
             font-size: 13px;
@@ -780,15 +744,15 @@
             color: var(--text-secondary);
             font-size: 14px;
         }
-        
-        .info-desc {
-            color: #dcdcdc;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            padding-right: 25px;
-            font-size: 16px;
-            max-width: 800px;
-        }
+      .info-desc {
+    color: #dcdcdc;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    margin-top: 0;
+    padding-right: 0;
+    font-size: 16px;
+    max-width: 800px;
+}
 
         .section-label {
             font-size: 16px;
@@ -805,21 +769,38 @@
             margin-bottom: 30px;
         }
 
-        .action-btn {
-            background: rgba(255,255,255,0.04);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 14px 28px;
-            border-radius: 14px;
-            cursor: pointer;
-            transition: 0.3s;
-            min-width: 90px;
-            text-align: center;
-            font-weight: 500;
-            position: relative;
-            overflow: hidden;
-        }
+    .action-btn {
+    background: rgba(255,255,255,0.03);
+    color: rgba(255,255,255,0.65);
+    border: 1px solid rgba(255,255,255,0.07);
+    padding: 9px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    min-width: 70px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 13px;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+}
 
+.action-btn:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.15);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.action-btn.active {
+    background: rgba(var(--accent-color), 0.15);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 0 15px rgba(140,0,255,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+    color: white;
+    font-weight: 800;
+}
         .action-btn:hover {
             background: rgba(255,255,255,0.1);
             border-color: rgba(255,255,255,0.3);
@@ -1020,20 +1001,40 @@
                     <span>|</span>
                     <span id="movie-type-display">دراما</span>
                 </div>
-                <p id="movie-desc" class="info-desc">کورتەی چیرۆک لێرە دەردەکەوێت...</p>
-                <div id="episode-container" style="margin-bottom: 30px;">
-<div id="credits-container" style="margin-bottom: 30px;"></div>
-                    <span class="section-label"><i class="fas fa-list-ol"></i> هەڵبژاردنی ئەلقە:</span>
-                    <div class="btn-grid" id="episode-list"></div>
-                </div>
+               <p id="movie-desc" class="info-desc">کورتەی چیرۆک لێرە دەردەکەوێت...</p>
+<div id="credits-container" style="margin-bottom: 20px;"></div>
+<div id="episode-container" style="margin-bottom:24px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+       <div style="display:inline-flex;align-items:center;gap:8px;
+    background:rgba(140,0,255,0.08);
+    border:1px solid rgba(140,0,255,0.25);
+    border-radius:50px;
+    padding:6px 14px 6px 10px;">
+    <i class="fas fa-play-circle" style="color:var(--accent-color);font-size:13px;filter:drop-shadow(0 0 6px var(--accent-color));"></i>
+    <span style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.7);letter-spacing:1px;">ئەلقە</span>
+</div>
+    </div>
+    <div id="episode-list" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+</div>
 
-                <div>
-                    <span class="section-label"><i class="fas fa-server"></i> هەڵبژاردنی سێرڤەر:</span>
-                    <div class="btn-grid" id="server-list"></div>
-                </div>
+<div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;
+    background:rgba(140,0,255,0.08);
+    border:1px solid rgba(140,0,255,0.25);
+    border-radius:50px;
+    padding:6px 14px 6px 10px;">
+    <i class="fas fa-server" style="color:var(--accent-color);font-size:13px;filter:drop-shadow(0 0 6px var(--accent-color));"></i>
+    <span style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.7);letter-spacing:1px;">سێرڤەر</span>
+</div>
+    </div>
+    <div id="server-list" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+</div>
             </div>
         </div>
     </div>
+
+
 
     <script>
         // ========================================================
@@ -1321,7 +1322,7 @@
     type: "drama",
     genre: "ڕۆمانسی - درامایی",
     desc:"(لی کیۆنگ دۆ) کارمەندێکی ئاسایی ڕۆژنامەنووس کار دەکات، کاتێک تەمەنی ۲۰ سال بوو، له گروپی شانودا (سيۆ جی وۆ)ـی ناسی و عاشقی یەکتر بوون بەڵام بەهۆی بێئومێد بوونی (سیۆ جی وۆ) لە ژیان دووجار جیابوونەوە",
-    image: "sur.png",
+    image: "11.png",
     translators: [
         {
             name: "سەنا ئەحمەد",
@@ -1445,26 +1446,27 @@ if (helinFooter) helinFooter.classList.remove('hide-credits');
                     grid.innerHTML = '<p style="color:#777; width:100%;">هیچ ئەنجامێک نەدۆزرایەوە...</p>';
                     return;
                 }
+list.forEach(item => {
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = 'display:flex;flex-direction:column;gap:0;cursor:pointer;';
+    wrapper.onclick = () => this.openPlayer(item);
 
-                list.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.onclick = () => this.openPlayer(item);
-                    
-                    card.innerHTML = `
-                        <img src="${item.image}" alt="${item.title}" class="card-img" loading="lazy">
-                        ${(() => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.cursor = 'pointer';
+
+    card.innerHTML = `
+        <img src="${item.image}" alt="${item.title}" class="card-img" loading="lazy">
+        ${(() => {
   const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
   const hex = ac.replace('#','').trim();
   const r=parseInt(hex.substring(0,2),16), g=parseInt(hex.substring(2,4),16), b=parseInt(hex.substring(4,6),16);
-  
   const tagMap = {
     drama:   { label: 'Drama',   icon: 'fa-tv'     },
     movie:   { label: 'Movie',   icon: 'fa-film'   },
     chinese: { label: 'Chinese', icon: 'fa-dragon' }
   };
   const t = tagMap[item.type] || tagMap.drama;
-  
   return `<div data-tag="true" style="
     position:absolute;top:16px;left:6px;z-index:10;
     display:flex;align-items:center;gap:3px;
@@ -1474,34 +1476,91 @@ if (helinFooter) helinFooter.classList.remove('hide-credits');
     border-left:1px solid rgba(${r},${g},${b},0.3);
     border-right:1px solid rgba(${r},${g},${b},0.1);
     border-bottom:1px solid rgba(${r},${g},${b},0.1);
-    border-radius:5px;
-    padding:2px 5px;
-    box-shadow:0 2px 8px rgba(${r},${g},${b},0.2),
-               inset 0 1px 0 rgba(255,255,255,0.1);">
-    <i class="fas ${t.icon}" style="
-      font-size:7px;
-      color:rgba(${r},${g},${b},1);
+    border-radius:5px;padding:2px 5px;
+    box-shadow:0 2px 8px rgba(${r},${g},${b},0.2),inset 0 1px 0 rgba(255,255,255,0.1);">
+    <i class="fas ${t.icon}" style="font-size:7px;color:rgba(${r},${g},${b},1);
       filter:drop-shadow(0 0 4px rgba(${r},${g},${b},0.8));"></i>
-    <span style="
-      font-size:8px;font-weight:800;
-      color:#fff;
-      letter-spacing:0.4px;
+    <span style="font-size:8px;font-weight:800;color:#fff;letter-spacing:0.4px;
       text-shadow:0 0 5px rgba(${r},${g},${b},0.6);">${t.label}</span>
   </div>`;
 })()}
-                        <div class="card-overlay">
-                            <div class="card-title">${item.title}</div>
-                            
-                            <div class="card-genre">${item.genre ? item.genre : ''}</div>
-                            <div class="card-desc">${item.desc ? item.desc : ''}</div>
-                            
-                            <div class="play-hint">
-                                <i class="fas fa-play-circle"></i> ئێستا سەیر بکە
-                            </div>
-                        </div>
-                    `;
-                    grid.appendChild(card);
-                });
+       <div class="card-overlay">
+    <div style="font-size:10px;font-weight:600;color:var(--accent-light);
+        white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+        margin-bottom:5px;opacity:0.9;text-align:right;">
+        ${item.genre || ''}
+    </div>
+    <div class="card-desc">${item.desc ? item.desc : ''}</div>
+            <div class="play-hint">
+                <i class="fas fa-play-circle"></i> ئێستا سەیر بکە
+            </div>
+        </div>
+    `;
+
+    const info = document.createElement('div');
+    info.style.cssText = 'padding:8px 4px 0;';
+    info.innerHTML = `
+    <div style="display:flex;align-items:center;gap:0;padding:2px 0;">
+        <div style="
+            width:3px;height:36px;
+            background:linear-gradient(180deg,rgba(140,0,255,0),var(--accent-color) 35%,var(--accent-light) 65%,rgba(179,102,255,0));
+            border-radius:2px;margin-left:8px;flex-shrink:0;
+        "></div>
+        <div style="flex:1;overflow:hidden;">
+            <div style="font-size:13px;font-weight:700;color:#fff;
+                display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+                overflow:hidden;line-height:1.35;margin-bottom:5px;
+                text-shadow:0 2px 5px rgba(0,0,0,0.8);">
+                ${item.title}
+            </div>
+            <div class="imdb-badge" style="
+                display:inline-flex;align-items:center;gap:5px;
+                background:rgba(0,0,0,0.35);
+                border:1px solid rgba(245,197,24,0.25);
+                border-radius:6px;padding:3px 8px;
+                opacity:0;transition:opacity 0.4s ease;
+            "></div>
+        </div>
+    </div>
+`;
+
+    app.fetchIMDB(item.title).then(({ imdb, tmdb }) => {
+        if (!imdb && !tmdb) return;
+        const badge = wrapper.querySelector('.imdb-badge');
+        if (!badge) return;
+        badge.style.cssText = 'display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;opacity:1;';
+        if (imdb) {
+            badge.innerHTML += `
+            <div style="display:inline-flex;align-items:center;gap:4px;
+                background:rgba(0,0,0,0.35);border:1px solid rgba(245,197,24,0.3);
+                border-radius:6px;padding:2px 7px;">
+                <svg width="28" height="14" viewBox="0 0 28 14">
+                    <rect width="28" height="14" rx="2" fill="#f5c518"/>
+                    <text x="14" y="10.5" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="7.5" fill="#000">IMDb</text>
+                </svg>
+                <span style="font-size:11px;font-weight:800;color:#fff;">${imdb}</span>
+            </div>`;
+        }
+        if (tmdb) {
+            const pct = Math.round(parseFloat(tmdb) * 10);
+            const col = pct >= 70 ? '#21d07a' : pct >= 50 ? '#d2d531' : '#db2360';
+            badge.innerHTML += `
+            <div style="display:inline-flex;align-items:center;gap:4px;
+                background:rgba(0,0,0,0.35);border:1px solid rgba(1,180,228,0.3);
+                border-radius:6px;padding:2px 7px;">
+                <svg width="28" height="14" viewBox="0 0 28 14">
+                    <rect width="28" height="14" rx="2" fill="#032541"/>
+                    <text x="14" y="10.5" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="7" fill="#01b4e4">TMDB</text>
+                </svg>
+                <span style="font-size:11px;font-weight:800;color:${col};">${tmdb}</span>
+            </div>`;
+        }
+    });
+
+    wrapper.appendChild(card);
+    wrapper.appendChild(info);
+    grid.appendChild(wrapper);
+});
             },
 
            openPlayer: function(item) {
@@ -1541,8 +1600,305 @@ if (helinFooter) helinFooter.classList.remove('hide-credits');
     document.getElementById('player-modal').style.display = 'block';
                 
                 document.getElementById('movie-title').innerText = item.title;
-                document.getElementById('movie-genre').innerHTML = `<i class="fas fa-tags"></i> ژانەر: ${item.genre ? item.genre : 'دیاری نەکراوە'}`;
-                document.getElementById('movie-desc').innerText = item.desc ? item.desc : 'کورتەی چیرۆک بەردەست نییە.';
+                (function() {
+    const ac  = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
+    const al  = getComputedStyle(document.documentElement).getPropertyValue('--accent-light').trim() || '#b366ff';
+    const hex = ac.replace('#','').trim();
+    const r = parseInt(hex.substring(0,2),16);
+    const g = parseInt(hex.substring(2,4),16);
+    const b = parseInt(hex.substring(4,6),16);
+
+    const typeMap = {
+        drama:   { label:'دراما',  icon:'fa-tv',     color:'#7c3aed' },
+        movie:   { label:'فلیم',   icon:'fa-film',   color:'#0369a1' },
+        chinese: { label:'چینی',   icon:'fa-dragon', color:'#b91c1c' }
+    };
+
+    const genreIcons = {
+        'ڕۆمانسی':'fa-heart','ئەکشن':'fa-bolt','کۆمیدی':'fa-face-laugh',
+        'تاوانکاری':'fa-user-secret','خەیاڵی':'fa-wand-sparkles',
+        'دراما':'fa-masks-theater','هەستبزوێن':'fa-droplet',
+        'پزیشکی':'fa-stethoscope','سەرکێشی':'fa-fire',
+        'خێزانی':'fa-house-chimney-user'
+    };
+
+    const t       = typeMap[item.type] || typeMap.drama;
+    const genres  = (item.genre || '').split(/[•\-,،]/).map(x => x.trim()).filter(Boolean);
+
+    const genrePills = genres.map(gn => {
+        const ico = genreIcons[gn]
+            ? `<i class="fas ${genreIcons[gn]}"></i>`
+            : `<i class="fas fa-tag"></i>`;
+        return `
+        <span class="gn-pill">
+            ${ico} ${gn}
+        </span>`;
+    }).join('');
+
+    document.getElementById('movie-genre').innerHTML = `
+    <div class="genre-meta-row">
+
+        <!-- ڕیزی سەرەوە: جۆر + لێبڵێو -->
+        <div class="gn-top-row">
+
+            <div class="type-chip" style="--tc:${t.color};">
+                <i class="fas ${t.icon}"></i>
+                <span>${t.label}</span>
+            </div>
+
+            <div class="gn-section-label">
+                <i class="fas fa-tags"></i>
+                <span>ژانەر</span>
+            </div>
+
+        </div>
+
+        <!-- خەتی جیاکەرەوە -->
+        <div class="gn-full-divider"></div>
+
+        <!-- ژانەرەکان -->
+        <div class="genre-pills-wrap">
+            ${genrePills}
+        </div>
+
+    </div>`;
+
+    // شاردنەوەی عونصرە کۆنەکان
+    ['movie-type-display'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+    const sep = document.getElementById('movie-genre').nextElementSibling;
+    if (sep && sep.tagName === 'SPAN') sep.style.display = 'none';
+
+    // زیادکردنی CSS ئەگەر پێشتر نەبوو
+    if (!document.getElementById('genre-meta-style')) {
+        const s = document.createElement('style');
+        s.id = 'genre-meta-style';
+        s.textContent = `
+        .genre-meta-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 14px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            margin: 10px 0 18px;
+            backdrop-filter: blur(10px);
+        }
+        .type-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 16px;
+            border-radius: 50px;
+            background: color-mix(in srgb, var(--tc) 18%, transparent);
+            border: 1.5px solid color-mix(in srgb, var(--tc) 60%, transparent);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            box-shadow: 0 0 14px color-mix(in srgb, var(--tc) 25%, transparent);
+            flex-shrink: 0;
+        }
+        .type-chip i {
+            color: var(--tc);
+            font-size: 12px;
+            filter: drop-shadow(0 0 5px var(--tc));
+        }
+        .gn-divider {
+            width: 1px;
+            height: 28px;
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,0.2), transparent);
+            flex-shrink: 0;
+        }
+        .gn-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.35);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .gn-label i { font-size: 10px; }
+        .genre-pills-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            align-items: center;
+        }
+        .gn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 13px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.75);
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            cursor: default;
+        }
+        .gn-pill:hover {
+            background: rgba(${r},${g},${b},0.18);
+            border-color: rgba(${r},${g},${b},0.5);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(${r},${g},${b},0.2);
+        }
+      .gn-pill i {
+            font-size: 10px;
+            color: ${al};
+            opacity: 0.85;
+        }
+        .gn-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 4px;
+        }
+        .gn-section-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .gn-section-label i {
+            font-size: 10px;
+            color: rgba(${r},${g},${b},0.5);
+        }
+        .gn-full-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(${r},${g},${b},0.4), rgba(255,255,255,0.05), transparent);
+            margin-bottom: 4px;
+        }
+        @media (max-width: 600px) {
+            .genre-meta-row { padding: 12px 14px; gap: 8px; }
+            .gn-divider { display: none; }
+            .gn-label { display: none; }
+        }
+        `;
+        document.head.appendChild(s);
+    }
+})();
+
+app.fetchIMDB(item.title).then(({ imdb, tmdb }) => {
+    const existing = document.getElementById('player-imdb-badge');
+    if (existing) existing.remove();
+    if (!imdb && !tmdb) return;
+    const badge = document.createElement('div');
+    badge.id = 'player-imdb-badge';
+    badge.style.cssText = 'display:inline-flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap;';
+    if (imdb) {
+        const stars = Math.round(parseFloat(imdb) / 2);
+        const starStr = '★'.repeat(stars) + '☆'.repeat(5 - stars);
+        badge.innerHTML += `
+        <div style="display:inline-flex;align-items:center;gap:8px;
+            background:rgba(245,197,24,0.07);
+            border:1px solid rgba(245,197,24,0.25);
+            border-radius:50px;padding:6px 16px 6px 8px;">
+            <svg width="36" height="18" viewBox="0 0 36 18">
+                <rect width="36" height="18" rx="9" fill="#f5c518"/>
+                <text x="18" y="13" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="9" fill="#1a1000">IMDb</text>
+            </svg>
+            <span style="font-size:16px;font-weight:900;color:#f5c518;">${imdb}</span>
+            <span style="color:#555;font-size:11px;">/10</span>
+            <span style="color:#f5c518;font-size:12px;">${starStr}</span>
+        </div>`;
+    }
+    if (tmdb) {
+        const pct = Math.round(parseFloat(tmdb) * 10);
+        const col = pct >= 70 ? '#21d07a' : pct >= 50 ? '#d2d531' : '#db2360';
+        badge.innerHTML += `
+        <div style="display:inline-flex;align-items:center;gap:8px;
+            background:rgba(1,180,228,0.07);
+            border:1px solid rgba(1,180,228,0.25);
+            border-radius:50px;padding:6px 16px 6px 8px;">
+            <svg width="36" height="18" viewBox="0 0 36 18">
+                <rect width="36" height="18" rx="9" fill="#032541"/>
+                <text x="18" y="13" text-anchor="middle" font-family="Arial Black" font-weight="900" font-size="7.5" fill="#01b4e4">TMDB</text>
+            </svg>
+            <span style="font-size:16px;font-weight:900;color:${col};">${tmdb}</span>
+            <span style="color:#555;font-size:11px;">/10</span>
+            <span style="font-size:11px;color:${col};">${pct}%</span>
+        </div>`;
+    }
+    const titleEl = document.getElementById('movie-title');
+    titleEl.style.cssText = 'display:flex;align-items:center;flex-wrap:wrap;gap:12px;';
+    titleEl.appendChild(badge);
+});
+                (function(){
+    const ac  = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
+    const hex = ac.replace('#','').trim();
+    const r   = parseInt(hex.substring(0,2),16);
+    const g   = parseInt(hex.substring(2,4),16);
+    const b   = parseInt(hex.substring(4,6),16);
+
+    const descText = item.desc || 'کورتەی چیرۆک بەردەست نییە.';
+
+    document.getElementById('movie-desc').innerHTML = `
+    <div style="
+        position:relative;
+        background: linear-gradient(135deg, rgba(${r},${g},${b},0.08), rgba(${r},${g},${b},0.03));
+        border: 1px solid rgba(${r},${g},${b},0.2);
+        border-right: 3px solid rgba(${r},${g},${b},0.8);
+        border-radius: 16px;
+        padding: 12px 16px 12px 14px;
+        overflow: hidden;
+    ">
+        <!-- ڕووناکی گۆشە -->
+        <div style="
+            position:absolute; top:0; right:0;
+            width:80px; height:80px;
+            background: radial-gradient(circle at top right, rgba(${r},${g},${b},0.15), transparent 70%);
+            pointer-events:none;
+        "></div>
+
+        <!-- سەردێڕ -->
+        <div style="
+            display:flex; align-items:center; gap:8px;
+            margin-bottom:8px;
+        ">
+            <div style="
+                width:24px; height:24px; border-radius:7px;
+                background: rgba(${r},${g},${b},0.2);
+                border: 1px solid rgba(${r},${g},${b},0.4);
+                display:flex; align-items:center; justify-content:center;
+                flex-shrink:0;
+            ">
+                <i class="fas fa-align-right" style="color:rgba(${r},${g},${b},1); font-size:12px;"></i>
+            </div>
+            <span style="
+                font-size:12px; font-weight:800;
+                color:rgba(${r},${g},${b},0.9);
+                letter-spacing:1px;
+                text-transform:uppercase;
+            ">کورتەی چیرۆک</span>
+        </div>
+
+        <!-- نووسین -->
+        <p style="
+            color: rgba(255,255,255,0.82);
+           font-size: 13px;
+line-height: 1.8;
+            margin: 0;
+            font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+            text-align: right;
+        ">${descText}</p>
+    </div>`;
+})();
                document.getElementById('movie-type-display').innerText = item.type === 'drama' ? 'دراما' : item.type === 'chinese' ? 'چینی' : 'فلیم';
 // **زیادکردنی وەرگێر و تەکنیکار**
     this.renderCredits(item);
@@ -1554,7 +1910,7 @@ renderCredits: function(item) {
     const container = document.getElementById('credits-container');
     container.innerHTML = '';
     
-    let html = '<div class="credits-wrapper">';
+    let html = '<div class="credits-wrapper" style="display:flex; flex-direction:column; gap:10px;">';
     
     // بۆ وەرگێڕان (دەتوانێت چەند کەسێک بێت)
     if (item.translators && item.translators.length > 0) {
@@ -2095,7 +2451,7 @@ localStorage.setItem('hk-theme-b', b);
     localStorage.setItem('hk-btn-txt', btnTxt);
     let bs = document.getElementById('hk-btn-txt-style');
     if(!bs){ bs = document.createElement('style'); bs.id='hk-btn-txt-style'; document.head.appendChild(bs); }
-    bs.textContent = `.btn-modal-create,.apply-btn,.submit-rating-btn,#modal-submitFormBtn,#modal-proposal-submit-btn,#random-pick-btn,#random-watch-btn{color:${btnTxt}!important}`;
+    bs.textContent = `.btn-modal-create,.apply-btn,.submit-rating-btn,#modal-submitFormBtn,#modal-proposal-submit-btn,#random-pick-btn,#random-watch-btn,.play-hint{color:${btnTxt}!important}`;
 // نوێکردنەوەی ڕەنگی باجەکانی کارتەکان
 document.querySelectorAll('[data-tag="true"]').forEach(tag => {
     tag.style.background = `rgba(${r},${g},${b},0.18)`;
@@ -2153,8 +2509,7 @@ document.querySelectorAll('[data-tag="true"]').forEach(tag => {
             if(savedBtnTxt){
                 let bs = document.createElement('style');
                 bs.id='hk-btn-txt-style';
-                bs.textContent=`.btn-modal-create,.apply-btn,.submit-rating-btn,#modal-submitFormBtn,#modal-proposal-submit-btn,#random-pick-btn,#random-watch-btn{color:${savedBtnTxt}!important}`;
-                document.head.appendChild(bs);
+bs.textContent=`.btn-modal-create,.apply-btn,.submit-rating-btn,#modal-submitFormBtn,#modal-proposal-submit-btn,#random-pick-btn,#random-watch-btn,.play-hint{color:${savedBtnTxt}!important}`;                document.head.appendChild(bs);
             }
 
             // گۆڕینی blur/glow ی خوارەوەی پەیج
@@ -2296,6 +2651,29 @@ function quickRandom(type) {
 
     app.openPlayer(item);
 }
+
+
+const OMDB_KEY = '87e20d0a';
+const TMDB_KEY = '1e5953c4d635318acd9b1cb9c7010caa';
+
+app.fetchIMDB = async function(title) {
+    try {
+        const clean = title.replace(/\d{4}/g, '').replace(/[^a-zA-Z0-9\s]/g, '').trim();
+        const year = title.match(/\d{4}/)?.[0] || '';
+        const [omdbRes, tmdbRes] = await Promise.allSettled([
+            fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(clean)}&apikey=${OMDB_KEY}`).then(r => r.json()),
+            fetch(`https://api.themoviedb.org/3/search/multi?api_key=${TMDB_KEY}&query=${encodeURIComponent(clean)}${year ? '&year='+year : ''}&language=en-US`).then(r => r.json())
+        ]);
+        const imdb = (omdbRes.status === 'fulfilled' && omdbRes.value?.imdbRating && omdbRes.value.imdbRating !== 'N/A')
+            ? omdbRes.value.imdbRating : null;
+        let tmdb = null;
+        if (tmdbRes.status === 'fulfilled' && tmdbRes.value?.results?.length) {
+            const first = tmdbRes.value.results[0];
+            tmdb = first.vote_average ? (Math.round(first.vote_average * 10) / 10).toFixed(1) : null;
+        }
+        return { imdb, tmdb };
+    } catch(e) { return { imdb: null, tmdb: null }; }
+};
 app.init();
 
 
@@ -3009,8 +3387,8 @@ body {
 /* ستایلی وەرگێر و تەکنیکار */
 .credits-wrapper {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .credit-card {
@@ -5581,9 +5959,7 @@ function filterWorksModal(btn) {
     /* لابردنی بۆردەری کۆن چونکە ئێستا جوڵەکە دەبێتە بۆردەر */
     /* border: 1px solid ... (This is removed/replaced by the animation) */
     
-    /* سێبەر بۆ جوانی */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6),
-                0 0 50px rgba(140, 0, 255, 0.15);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
                 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     
@@ -5591,28 +5967,8 @@ function filterWorksModal(btn) {
     z-index: 1; 
 }
 
-/* ::before - بەرپرسیارە لە جوڵەی ڕەنگەکە (لە خوارەوە دەخولێتەوە) */
 .rating-wrapper::before {
-    content: '';
-    position: absolute;
-    /* قەبارەکەی گەورەتر دەکەین بۆ ئەوەی لە کاتی خولانەوەدا بۆشایی نەمێنێت */
-    width: 200%; 
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    
-    /* دیزاینی جوڵەکە: لێرە ڕەنگەکان دیاری دەکەیت */
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        rgba(140, 0, 255, 0) 60deg,  /* دەستپێک */
-        rgba(140, 0, 255, 1) 120deg, /* ڕەنگی تێری مۆر */
-        rgba(140, 0, 255, 0) 180deg, /* کاڵبوونەوە */
-        transparent 360deg
-    );
-    
-    animation: rotateBorder 4s linear infinite; /* خێرایی جوڵەکە */
-    z-index: -2; /* دەچێتە ژێر هەموو شتێک */
+    display: none;
 }
 
 /* ::after - بەرپرسیارە لە دروستکردنی باگراوندە جێگیرەکە */
