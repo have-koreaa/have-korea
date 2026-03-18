@@ -5790,20 +5790,24 @@ poster_designer: (() => {
     </div>
 
     <!-- ئامارەکان -->
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:20px;">
-        <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
-            <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='drama').length}</div>
-            <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">دراما</div>
-        </div>
-        <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
-            <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='movie').length}</div>
-            <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">فیلم</div>
-        </div>
-        <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
-            <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='chinese').length}</div>
-            <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">چینی</div>
-        </div>
+<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px;">
+    <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
+        <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='drama').length}</div>
+        <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">دراما</div>
     </div>
+    <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
+        <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='movie').length}</div>
+        <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">فیلم</div>
+    </div>
+    <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
+        <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='chinese').length}</div>
+        <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">چینی</div>
+    </div>
+    <div style="background:rgba(140,0,255,0.08); border:1px solid rgba(140,0,255,0.2); border-radius:14px; padding:14px 8px; text-align:center;">
+        <div style="font-size:22px; font-weight:900; color:#fff; margin-bottom:4px;">${database.filter(d=>d.type==='japanese').length}</div>
+        <div style="font-size:11px; color:#b366ff; font-weight:700; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">ژاپۆنی</div>
+    </div>
+</div>
 
     <!-- سۆشیاڵ میدیا -->
     <div style="display:flex; gap:12px;">
