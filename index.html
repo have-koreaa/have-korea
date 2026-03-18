@@ -237,11 +237,23 @@
 }
 
         /* بەشی گەڕان */
-        .search-box {
-            position: relative;
-            width: 35%;
-            transition: 0.3s;
-        }
+      .search-box {
+    position: relative;
+    width: 45%;
+    transition: 0.3s;
+}
+
+@media (min-width: 769px) and (max-width: 1400px) {
+    .search-box {
+        width: 55%;
+    }
+}
+
+@media (min-width: 1401px) {
+    .search-box {
+        width: 50%;
+    }
+}
 
         .search-input {
             width: 100%;
@@ -878,7 +890,10 @@
     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z" stroke="none" fill="currentColor"/></svg>
     <span>چینی</span>
 </button>
-
+<button class="bn-item" onclick="bnFilter('japanese', this)">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <span>ژاپۆنی</span>
+</button>
 <button class="bn-item" onclick="toggleColorPicker(event); this.classList.toggle('active')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"/>
@@ -1105,7 +1120,40 @@
         // ========================================================
         
         const database = [
-            
+            {
+    id: 12,
+    title: "City hunter 2024  ",
+    type: "japanese",
+    subtype: "movie",
+    genre: "ئەکشن",
+    desc: "کورتەی چیرۆک لێرەدا...",
+    image: "cityhunter.png",
+    translators: [
+        {
+            name: "کێڵوا",
+            avatar: "admin2.png"
+        }
+    ],
+    technician: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+    },
+    poster_designer: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+    },
+    episodes: [
+        {
+            ep: 1,
+            name: "تەواوی فیلم",
+            servers: [
+                { name: "vip have korea", link: "لینک" },
+                { name: "mixdrop", link: "لینک" },
+                { name: "streamtabe", link: "لینک" }
+            ]
+        }
+    ]
+},
     {
     id: 2,
     title: "S line 2025",
@@ -1552,7 +1600,8 @@ list.forEach(item => {
   const tagMap = {
     drama:   { label: 'Drama',   icon: 'fa-tv'     },
     movie:   { label: 'Movie',   icon: 'fa-film'   },
-    chinese: { label: 'Chinese', icon: 'fa-dragon' }
+    chinese: { label: 'Chinese', icon: 'fa-dragon' },
+japanese: { label: 'Japanese', icon: 'fa-sun' }
   };
   const t = tagMap[item.type] || tagMap.drama;
   return `<div data-tag="true" style="
@@ -1703,7 +1752,8 @@ list.forEach(item => {
     const typeMap = {
         drama:   { label:'دراما',  icon:'fa-tv',     color:'#7c3aed' },
         movie:   { label:'فلیم',   icon:'fa-film',   color:'#0369a1' },
-        chinese: { label:'چینی',   icon:'fa-dragon', color:'#b91c1c' }
+        chinese: { label:'چینی',   icon:'fa-dragon', color:'#b91c1c' },
+        japanese: { label:'ژاپۆنی', icon:'fa-sun', color:'#f59e0b' }
     };
 
     const genreIcons = {
@@ -1947,7 +1997,7 @@ line-height: 1.8;
         ">${descText}</p>
     </div>`;
 })();
-               document.getElementById('movie-type-display').innerText = item.type === 'drama' ? 'دراما' : item.type === 'chinese' ? 'چینی' : 'فلیم';
+               document.getElementById('movie-type-display').innerText = item.type === 'drama' ? 'دراما' : item.type === 'chinese' ? 'چینی' : item.type === 'japanese' ? 'ژاپۆنی' : 'فلیم';
 // **زیادکردنی وەرگێر و تەکنیکار**
     this.renderCredits(item);
 
@@ -2088,7 +2138,7 @@ filter: function(type, btnElement) {
     const filterNav = document.getElementById('filter-navbar');
     
     // فلتەری ژانر و ساڵ تەنها بۆ دراما، فیلم، و چینی نیشان بدە
-    if (type === 'drama' || type === 'movie' || type === 'chinese') {
+    if (type === 'drama' || type === 'movie' || type === 'chinese' || type === 'japanese') {
         filterNav.style.display = 'flex';
     } else {
         filterNav.style.display = 'none';
@@ -2132,12 +2182,17 @@ filter: function(type, btnElement) {
             <i class="fas fa-film"></i>
             <span>فیلم</span>
         `;
-    } else if (type === 'chinese') {
-        sectionHeader.innerHTML = `
-            <i class="fas fa-dragon"></i>
-            <span>چینی</span>
-        `;
-    }
+   } else if (type === 'chinese') {
+    sectionHeader.innerHTML = `
+        <i class="fas fa-dragon"></i>
+        <span>چینی</span>
+    `;
+} else if (type === 'japanese') {
+    sectionHeader.innerHTML = `
+        <i class="fas fa-sun"></i>
+        <span>ژاپۆنی</span>
+    `;
+}
 
     if(document.getElementById('player-modal').style.display === 'block') this.goHome();
 },
