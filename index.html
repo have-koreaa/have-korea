@@ -149,7 +149,7 @@
             background-origin: border-box;
             background-clip: content-box, border-box;
             
-            animation: spin-border 4s linear infinite, float-logo 3s ease-in-out infinite alternate;
+            
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 0 15px rgba(140, 0, 255, 0.3);
         }
@@ -200,7 +200,7 @@
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 0 15px rgba(140, 0, 255, 0.6));
-            animation: floatLogo 3s ease-in-out infinite;
+            
         }
 
         @keyframes floatLogo {
@@ -908,22 +908,39 @@
 
 
 </div>
-   <nav class="navbar">
-    <div class="logo" onclick="app.goHome()" style="display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none;flex-shrink:0;">
-        <img src="logologo.png" alt="Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(179,102,255,0.6);box-shadow:0 0 18px rgba(140,0,255,0.45);">
-        <div style="display:flex;flex-direction:column;line-height:1.2;">
-            <span style="font-size:17px;font-weight:800;color:#fff;letter-spacing:1.5px;">HAVE KOREA</span>
-          <span style="font-family:'Noto Naskh Arabic',serif;font-size:15px;font-weight:700;letter-spacing:0px;background:linear-gradient(90deg,#ffffff,#c499ff,#8c00ff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shineText 4s linear infinite;">هاڤێ کۆریا</span>
+  <nav class="navbar">
+   <div style="display:grid;grid-template-columns:50px 1fr 50px;align-items:center;width:100%;padding:0 4%;height:70px;">
+        
+        <button class="search-icon-btn" id="searchToggleBtn" onclick="toggleSearch()">
+            <svg class="icon-search" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="position:absolute;transition:all 0.3s;">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <svg class="icon-close" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="position:absolute;opacity:0;transform:rotate(-90deg);transition:all 0.3s;">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+
+        <div class="logo" onclick="app.goHome()" style="justify-self:center;display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none;flex-shrink:0;">
+            <img src="logologo.png" alt="Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(179,102,255,0.6);box-shadow:0 0 18px rgba(140,0,255,0.45);">
+            <div style="display:flex;flex-direction:column;line-height:1.2;">
+                <span style="font-size:17px;font-weight:800;color:#fff;letter-spacing:1.5px;">HAVE KOREA</span>
+                <span style="font-family:'Noto Naskh Arabic',serif;font-size:15px;font-weight:700;letter-spacing:0px;background:linear-gradient(90deg,#ffffff,#c499ff,#8c00ff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shineText 4s linear infinite;">هاڤێ کۆریا</span>
+            </div>
         </div>
     </div>
 
-    <div style="display:flex;align-items:center;gap:10px;">
-        <div class="search-box">
-            <input type="text" class="search-input" placeholder="گەڕان..." onkeyup="app.search(this.value)">
-            <i class="fas fa-search search-icon"></i>
+    <!-- سێرچ باری خوارەوە -->
+    <div class="search-bar-drop" id="searchBarDrop">
+        <div class="search-bar-inner">
+            <i class="fas fa-search" style="color:rgba(140,0,255,0.7);font-size:15px;flex-shrink:0;"></i>
+            <input type="text" id="searchInput" placeholder="گەڕان لە دراما و فیلمەکان..."
+                oninput="app.search(this.value)" autocomplete="off">
+            <button onclick="toggleSearch()" style="background:none;border:none;color:rgba(255,255,255,0.4);cursor:pointer;font-size:16px;padding:0;flex-shrink:0;">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-</div><!-- داخستنی div style="display:flex" -->
-</nav><!-- داخستنی navbar -->
+    </div>
+</nav>
 
 <div class="color-picker-panel" id="colorPickerPanel">
     <span class="color-label">🎨 هەڵبژاردنی ڕەنگی سایت</span>
@@ -1120,7 +1137,46 @@
         // ========================================================
         
         const database = [
+
+{
+   id: 14,
+ title: "Ms. Apocalypse 2024",
+  type: "movie",
+  genre: "دراما، کۆمێدی، ڕۆمانسی",
+  desc: "یۆنگ-می، ژمێریارێکی گۆشەگیرە کە لەلایەن هاوکارەکانیەوە گاڵتەی پێدەکرێت. کاتێک بۆی دەردەکەوێت ئەو کوڕەی کە بە نهێنی خۆشی دەوێت پارەی کۆمپانیاکە دەدزێت، هەوڵ دەدات تاوانەکەی بۆ بشارێتەوە، بەڵام لە کۆتاییدا خۆی دەستگیر دەکرێت. دوای ئازادبوونی لە زیندان، چاوی بە هاوسەری کوڕەکە دەکەوێت و پەیوەندییەکی سەیر و چاوەڕواننەکراو لە نێوانیاندا دروست دەبێت.",
+    image: "msappologe.png",
+
+    translators: [
+        {
+            name: "کێڵوا",
+            avatar: "admin2.png"
+        }
+    ],
+    technician: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+    },
+    poster_designer: {
+        name: "کێڵوا",
+        avatar: "admin2.png"
+    },
+
+        episodes: [
+            { 
+                ep: 1, 
+                name: "تەواوی فلیم", 
+                servers: [
+                    { name: "have korea vip", link: "" },
+                    { name: "streamtabe", link: "" },
+                    { name: "Mixdrop", link:"" }
+                ] 
+            }
+        ]
+    },
+
+
             {
+
     id: 12,
     title: "City hunter 2024  ",
     type: "japanese",
@@ -2923,8 +2979,36 @@ app.fetchIMDB = async function(title) {
     } catch(e) { return { imdb: null, tmdb: null }; }
 };
 
+let _searchOpen = false;
+function toggleSearch() {
+    _searchOpen = !_searchOpen;
+    const btn = document.getElementById('searchToggleBtn');
+    const bar = document.getElementById('searchBarDrop');
+    const inp = document.getElementById('searchInput');
 
+    if (_searchOpen) {
+        btn.classList.add('active');
+        bar.classList.add('open');
+        setTimeout(() => inp.focus(), 350);
+    } else {
+        btn.classList.remove('active');
+        bar.classList.remove('open');
+        inp.value = '';
+        app.search('');
+    }
+}
 
+document.addEventListener('click', function(e) {
+    const navbar = document.querySelector('.navbar');
+    if (_searchOpen && navbar && !navbar.contains(e.target)) {
+        _searchOpen = false;
+        document.getElementById('searchToggleBtn').classList.remove('active');
+        document.getElementById('searchBarDrop').classList.remove('open');
+        const inp = document.getElementById('searchInput');
+        inp.value = '';
+        app.search('');
+    }
+});
 
 app.init();
 
@@ -3886,6 +3970,94 @@ body {
 @media (max-width: 360px) {
     .person-works-grid { grid-template-columns: repeat(2, 1fr); }
 }
+.search-wrapper { display:flex; align-items:center; position:relative; }
+.search-icon-btn {
+  width:44px; height:44px; border-radius:50%;
+  background:rgba(140,0,255,0.15); border:1.5px solid rgba(140,0,255,0.4);
+  color:#b366ff; cursor:pointer; display:flex; align-items:center;
+  justify-content:center; transition:all 0.3s; flex-shrink:0; position:relative;
+}
+.search-icon-btn:hover { background:rgba(140,0,255,0.3); color:#fff; box-shadow:0 0 15px rgba(140,0,255,0.4); }
+.search-icon-btn.active { background:rgba(140,0,255,0.35); color:#fff; border-radius:50% 0 0 50%; border-color:rgba(179,102,255,0.9); }
+.search-icon-btn.active .icon-search { opacity:0; transform:rotate(90deg); }
+.search-icon-btn.active .icon-close { opacity:1 !important; transform:rotate(0deg) !important; }
+.search-input-expandable {
+  width:0; height:44px; padding:0;
+  background:rgba(140,0,255,0.07); border:1.5px solid rgba(140,0,255,0.4);
+  border-right:none; border-radius:0 22px 22px 0; color:#fff;
+  font-size:14px; font-family:Tahoma,sans-serif; outline:none;
+  opacity:0; overflow:hidden; direction:rtl;
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease, padding 0.3s ease;
+}
+.search-input-expandable::placeholder { color:rgba(255,255,255,0.35); }
+.search-input-expandable.open { width:260px; padding:0 18px; opacity:1; }
+@media(max-width:500px){ .search-input-expandable.open { width:180px; } }
+
+.navbar {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 0 !important;
+}
+
+
+.navbar > div:first-child {
+    width: 100%;
+    padding: 0 4%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+/* سێرچ باری خوارەوە */
+.search-bar-drop {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.4s ease,
+                opacity 0.3s ease;
+    opacity: 0;
+    background: rgba(10, 5, 20, 0.98);
+    border-top: 1px solid rgba(140, 0, 255, 0.15);
+}
+
+.search-bar-drop.open {
+    max-height: 70px;
+    opacity: 1;
+    padding: 10px 4%;
+}
+
+.search-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(140, 0, 255, 0.07);
+    border: 1px solid rgba(140, 0, 255, 0.3);
+    border-radius: 12px;
+    padding: 10px 16px;
+    width: 100%;
+}
+
+.search-bar-inner input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+    direction: rtl;
+    width: 100%;
+}
+
+.search-bar-inner input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* main-container مارجین */
+.main-container {
+    margin-top: 80px !important;
+}
 </style>
 
 <footer class="helin-footer">
@@ -4143,20 +4315,20 @@ body {
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; direction: rtl; }
 
     /* ========== دوگمەی کردنەوە ========== */
-    .vertical-bars-btn { 
-        position: fixed; 
-        top: 100px; 
-        left: 2%; 
-        z-index: 10001; 
-        background: rgba(140, 0, 255, 0.25); 
-        backdrop-filter: blur(20px); 
-        padding: 16px; 
-        border-radius: 16px; 
-        border: 1.5px solid rgba(140, 0, 255, 0.4); 
-        cursor: pointer; 
-        transition: all 0.4s ease; 
-        box-shadow: 0 4px 15px rgba(140, 0, 255, 0.2); 
-    }
+  .vertical-bars-btn { 
+    position: fixed; 
+    top: 15px; 
+    left: 15px; 
+    z-index: 10001; 
+    background: rgba(140, 0, 255, 0.25); 
+    backdrop-filter: blur(20px); 
+    padding: 10px; 
+    border-radius: 12px; 
+    border: 1.5px solid rgba(140, 0, 255, 0.4); 
+    cursor: pointer; 
+    transition: all 0.4s ease; 
+    box-shadow: 0 4px 15px rgba(140, 0, 255, 0.2); 
+}
     .vertical-bars-btn:hover { 
         transform: translateY(-3px); 
         box-shadow: 0 6px 25px rgba(140, 0, 255, 0.4); 
@@ -4166,6 +4338,11 @@ body {
         background: rgba(255, 50, 50, 0.25); 
         border-color: rgba(255, 50, 50, 0.5); 
     }
+
+
+
+
+    
     .bars-wrapper { 
         display: flex; 
         gap: 5px; 
@@ -4225,18 +4402,7 @@ body {
         letter-spacing: 2px; 
     }
 
-    /* ========== مۆبایل ========== */
-    @media (max-width: 768px) {
-        .vertical-bars-btn { top: 15px !important; left: 15px !important; padding: 14px !important; }
-        .vertical-bars-btn.active { top: 15px !important; }
-        .glass-sidebar { width: 280px; }
-        .menu-modal-box { padding: 50px 18px 25px; border-radius: 22px; max-height: 88vh; }
-        .menu-grid { gap: 12px; }
-        .menu-item { padding: 18px 8px 14px; border-radius: 16px; }
-        .menu-icon-wrap { width: 44px; height: 44px; font-size: 18px; }
-        .menu-item span { font-size: 11px; }
-    }
-
+   
     /* ========== گرید مێنیو ========== */
     .menu-grid {
         display: grid;
@@ -5787,7 +5953,7 @@ poster_designer: (() => {
                 <p style="color:#ccc; font-size:12px; line-height:1.8; margin:0; font-family:'Noto Kufi Arabic',Tahoma,sans-serif;">هاڤێ کۆریا؛ خێراترین و باشترین سەرچاوەی کوردی بۆ فیلم و دراما کۆرییەکان بە بەرزترین کوالێتی و ژێرنووسی پڕۆفیشناڵی کوردی.</p>
             </div>
         </div>
-    </div>
+    </div> 
 
     <!-- ئامارەکان -->
 <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px;">
