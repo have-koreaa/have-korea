@@ -1142,7 +1142,7 @@
    id: 14,
  title: "Ms. Apocalypse 2023",
   type: "movie",
-  genre: "دراما، کۆمێدی، ڕۆمانسی",
+  genre: "دراما، کۆمیدی، ڕۆمانسی",
   desc: "یۆنگ-می، ژمێریارێکی گۆشەگیرە کە لەلایەن هاوکارەکانیەوە گاڵتەی پێدەکرێت. کاتێک بۆی دەردەکەوێت ئەو کوڕەی کە بە نهێنی خۆشی دەوێت پارەی کۆمپانیاکە دەدزێت، هەوڵ دەدات تاوانەکەی بۆ بشارێتەوە، بەڵام لە کۆتاییدا خۆی دەستگیر دەکرێت. دوای ئازادبوونی لە زیندان، چاوی بە هاوسەری کوڕەکە دەکەوێت و پەیوەندییەکی سەیر و چاوەڕواننەکراو لە نێوانیاندا دروست دەبێت.",
     image: "msappologe.png",
 
@@ -3128,8 +3128,9 @@ body {
     font-size: 13px;
     font-weight: 800;
     margin-bottom: 16px;
-    letter-spacing: 1px;
-    
+    letter-spacing: 0px;
+        font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+
     background: linear-gradient(90deg, #fff, var(--accent-light), var(--accent-color), var(--accent-light), #fff);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -5087,6 +5088,13 @@ document.addEventListener('click', (e) => {
         کێڵوا
         <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
       </button>
+        <button class="works-person-btn" data-role="translator" data-name="ئیمان" data-avatar="nena.png" onclick="filterWorksModal(this)"
+        style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+        <img src="nena.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
+        ئیمان
+        <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+        
+      </button>
     </div>
     <div id="works-modal-grid" class="person-works-grid" style="padding:0;"></div>
   </div>
@@ -5640,6 +5648,7 @@ volunteer: (() => {
   const helin_count  = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='هێلین')).length; })();
   const sana_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='سەنا ئەحمەد')).length; })();
   const kelwa_count  = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='کێڵوا')).length; })();
+  const iman_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='ئیمان')).length; })();
 
   function makeCard(opts) {
     return `
@@ -5719,8 +5728,8 @@ volunteer: (() => {
 
   ${makeCard({ img:'admin1.png', name:'هێلین', count:helin_count,  mb:true,  star:true,  badges:['سەرپەرشتیار','وەرگێڕ'],  ig:'https://www.instagram.com/helin.jill?utm_source=qr&igsh=dnNsb2FnZXZxN3l2' })}
   ${makeCard({ img:'سانا.png',  name:'سەنا ئەحمەد', count:sana_count, mb:true, star:false, badges:['وەرگێڕی سەرەکی'], ig:'https://www.instagram.com/sana.sa_n4?igsh=MXh0azgzdXcwYjgxdg%3D%3D&utm_source=qr' })}
-  ${makeCard({ img:'admin2.png', name:'کێڵوا', count:kelwa_count, mb:false, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr' })}
-
+${makeCard({ img:'admin2.png', name:'کێڵوا', count:kelwa_count, mb:true, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr' })}
+  ${makeCard({ img:'nena.png', name:'ئیمان', count:iman_count, mb:false, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/emannn.404?igsh=MXhuZXJyc3A3Z2Jrbg==' })}
 </div>`;
 })(),
 technician: (() => {
