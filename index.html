@@ -921,7 +921,7 @@
         </button>
 
         <div class="logo" onclick="app.goHome()" style="justify-self:center;display:flex;align-items:center;gap:12px;cursor:pointer;text-decoration:none;flex-shrink:0;">
-            <img src="logologo.png" alt="Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(179,102,255,0.6);box-shadow:0 0 18px rgba(140,0,255,0.45);">
+            <img src="logo2.png" alt="Logo" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid rgba(179,102,255,0.6);box-shadow:0 0 18px rgba(140,0,255,0.45);">
             <div style="display:flex;flex-direction:column;line-height:1.2;">
                 <span style="font-size:17px;font-weight:800;color:#fff;letter-spacing:1.5px;">HAVE KOREA</span>
                 <span style="font-family:'Noto Naskh Arabic',serif;font-size:15px;font-weight:700;letter-spacing:0px;background:linear-gradient(90deg,#ffffff,#c499ff,#8c00ff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:shineText 4s linear infinite;">هاڤێ کۆریا</span>
@@ -1076,7 +1076,8 @@
         </div>
     </div>
 
-    <div class="movie-grid" id="grid"></div>
+  <div class="movie-grid" id="grid"></div>
+<div id="pagination-container" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:30px 0 10px;"></div>
 </div>
     <div id="player-modal">
         <div class="player-content">
@@ -1612,7 +1613,7 @@
                 // ڕێکخستنی داتا بەپێی ئایدی (لە گەورەوە بۆ بچووک)
                 this.data.sort((a, b) => b.id - a.id);
                 this.renderGrid(this.data);
-                
+
                 // ← هێنانی هەموو نمرەکان لە پشتەوە
                 this.prefetchAllRatings();
 
@@ -1625,8 +1626,7 @@
                 const allTitles = this.data.map(item => `${item.title} kurdish subtitle ژێرنووسی کوردی`).join(', ');
                 seoBox.innerHTML = `<h1>${allTitles}</h1>`;
                 document.body.appendChild(seoBox);
-                const helinFooter = document.querySelector('.helin-footer');
-if (helinFooter) helinFooter.classList.remove('hide-credits');
+                
                 // ----------------------------------------------------
             },
 
@@ -2213,16 +2213,7 @@ filter: function(type, btnElement) {
     // گۆڕینەوەی سەردێڕی بەش
     const sectionHeader = document.querySelector('.section-header');
     
-    // ✅ فووتەر: تەنها لە هەمووی پیشان دەدرێت، هێلین-کێڵوا شارەوە دەبێت لە ناڤبارەکانی تر
-    const helinFooter = document.querySelector('.helin-footer');
-    if (helinFooter) {
-        if (type === 'all') {
-            helinFooter.classList.remove('hide-credits');
-        } else {
-            helinFooter.classList.add('hide-credits');
-        }
-    }
-
+    
     if (type === 'all') {
         sectionHeader.innerHTML = `
             <i class="fas fa-bolt"></i>
@@ -2626,7 +2617,7 @@ document.querySelectorAll('.navbar, .bottom-navbar').forEach(el => {
 });
 
 // گۆڕینی ڕەنگی نووسینی دووەمیانە
-document.querySelectorAll('.credit-role, .result-label, .rating-subtitle, .home-random-sub, .managed-by').forEach(el => {
+document.querySelectorAll('.credit-role, .result-label, .rating-subtitle, .home-random-sub').forEach(el => {
     el.style.color = `rgba(${r}, ${g}, ${b}, 0.9)`;
 });
 
@@ -3009,7 +3000,113 @@ document.addEventListener('click', function(e) {
         app.search('');
     }
 });
+// ===== PAGINATION SYSTEM =====
+app.itemsPerPage = 20;
+app.currentPage = 1;
+app._currentList = [];
 
+const _origRenderGrid = app.renderGrid.bind(app);
+app.renderGrid = function(list) {
+    this._currentList = list;
+    this.currentPage = 1;
+    this._renderPage();
+};
+
+
+
+app._renderPage = function() {
+    const list = this._currentList;
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    const pageItems = list.slice(start, end);
+    _origRenderGrid(pageItems);
+    this._renderPagination(list.length);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+app._renderPagination = function(totalItems) {
+    const container = document.getElementById('pagination-container');
+    if (!container) return;
+    const totalPages = Math.ceil(totalItems / this.itemsPerPage);
+    if (totalPages <= 1) { container.innerHTML = ''; return; }
+
+    const ac = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#8c00ff';
+    const hex = ac.replace('#','').trim();
+    const r = parseInt(hex.substring(0,2),16);
+    const g = parseInt(hex.substring(2,4),16);
+    const b = parseInt(hex.substring(4,6),16);
+
+    const cur = this.currentPage;
+    let btns = '';
+
+    // دوگمەی پێشوو
+    btns += `<button class="pg-btn pg-arrow" ${cur===1?'disabled':''} onclick="app.goToPage(${cur-1})">
+        <i class="fas fa-chevron-right"></i> پێشوو
+    </button>`;
+
+    // ژمارەی پەڕەکان
+    let pages = [];
+    if (totalPages <= 5) {
+        for(let i=1;i<=totalPages;i++) pages.push(i);
+    } else {
+        pages.push(1);
+        if (cur > 3) pages.push('...');
+        for(let i=Math.max(2,cur-1); i<=Math.min(totalPages-1,cur+1); i++) pages.push(i);
+        if (cur < totalPages-2) pages.push('...');
+        pages.push(totalPages);
+    }
+
+    pages.forEach(p => {
+        if (p === '...') {
+            btns += `<span style="color:rgba(255,255,255,0.3);font-size:16px;padding:0 4px;">···</span>`;
+        } else {
+            const isActive = p === cur;
+            btns += `<button class="pg-btn ${isActive?'pg-active':''}" onclick="app.goToPage(${p})" style="${isActive?`background:rgba(${r},${g},${b},0.4);border-color:rgba(${r},${g},${b},0.9);color:#fff;box-shadow:0 0 15px rgba(${r},${g},${b},0.4);`:''}">${p}</button>`;
+        }
+    });
+
+    // دوگمەی دواتر
+    btns += `<button class="pg-btn pg-arrow" ${cur===totalPages?'disabled':''} onclick="app.goToPage(${cur+1})">
+        دواتر <i class="fas fa-chevron-left"></i>
+    </button>`;
+
+    
+
+    container.innerHTML = `
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;">${btns}</div>
+        `;
+};
+
+app.goToPage = function(page) {
+    const totalPages = Math.ceil(this._currentList.length / this.itemsPerPage);
+    if (page < 1 || page > totalPages) return;
+    this.currentPage = page;
+    this._renderPage();
+};
+
+// CSS زیادکردن
+const pgStyle = document.createElement('style');
+pgStyle.textContent = `
+.pg-btn {
+    min-width:42px; height:42px; border-radius:12px;
+    border:1.5px solid rgba(140,0,255,0.3);
+    background:rgba(140,0,255,0.08);
+    color:rgba(255,255,255,0.7);
+    cursor:pointer; font-size:14px; font-weight:700;
+    display:inline-flex; align-items:center; justify-content:center;
+    transition:all 0.25s ease; gap:6px;
+    font-family:'Noto Kufi Arabic',Tahoma,sans-serif;
+}
+.pg-btn:hover:not(:disabled) {
+    background:rgba(140,0,255,0.2);
+    border-color:rgba(140,0,255,0.6);
+    color:#fff; transform:translateY(-2px);
+    box-shadow:0 6px 15px rgba(140,0,255,0.2);
+}
+.pg-btn:disabled { opacity:0.3; cursor:not-allowed; transform:none; }
+.pg-arrow { padding:0 14px; }
+`;
+document.head.appendChild(pgStyle);
 app.init();
 
 
@@ -3229,11 +3326,6 @@ body {
         font-family: 'K24', 'Tahoma', sans-serif;
         overflow: hidden;
     }
-.hide-credits .managed-by,
-.hide-credits .helin-name,
-.hide-credits .footer-line {
-    display: none;
-}
 
     .helin-footer::before {
         content: '';
@@ -3249,68 +3341,7 @@ body {
 
     .footer-container { position: relative; z-index: 1; }
 
-    .managed-by {
-        display: block;
-        color: #a0a0b0;
-        font-size: 14px;
-        margin-bottom: 8px;
-        opacity: 0.8;
-    }
-
-   .helin-name {
-    font-family: 'K24', 'Arial', sans-serif; 
-    font-size: 42px; 
-    font-weight: bold;
-    display: inline-block;
-    direction: rtl;
-
-    /* بەکارهێنانی background-clip بە هەردوو شێوەکە بۆ پاڵپشتی هەموو وێبگەڕەکان */
-    background: linear-gradient(135deg, #ffffff 20%, #b388ff 50%, #7000ff 80%);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text; 
-    
-    -webkit-text-fill-color: transparent;
-    color: transparent; /* جێگرەوەیەک بۆ دڵنیایی */
-
-    /* ئەنیمەیشنەکان */
-    animation: shineText 4s linear infinite, float 3s ease-in-out infinite;
-
-    /* تێبینی: ئەگەر نووسینەکە ون بوو، ئەم دێڕەی خوارەوە لابدە */
-    filter: drop-shadow(0 0 15px rgba(112, 0, 255, 0.4));
-}
-
-/* پێویستە ئەنیمەیشنەکانیش پێناسە بکەیت بۆ ئەوەی کار بکەن */
-@keyframes shineText {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-    .footer-line {
-        width: 100px;
-        height: 3px;
-        background: linear-gradient(to right, transparent, #7000ff, transparent);
-        margin: 15px auto;
-        border-radius: 10px;
-        position: relative;
-    }
-
-    .footer-line::after {
-        content: '';
-        position: absolute;
-        width: 12px; height: 12px;
-        background: #fff;
-        border-radius: 50%;
-        top: -4.5px; left: 0;
-        box-shadow: 0 0 15px #fff;
-        animation: movePoint 3s linear infinite;
-    }
-
+   
     @keyframes shineText { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
     @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
     @keyframes movePoint { 0% { left: 0%; opacity: 0; } 50% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
@@ -4075,19 +4106,37 @@ body {
                     </div>
                 </div>
                 <div class="home-random-btns">
-                    <button class="home-rand-btn" onclick="quickRandom('all')"><i class="fas fa-globe"></i> هەمووی</button>
-                    <button class="home-rand-btn" onclick="quickRandom('drama')"><i class="fas fa-tv"></i> دراما</button>
-                    <button class="home-rand-btn" onclick="quickRandom('movie')"><i class="fas fa-film"></i> فیلم</button>
-                    <button class="home-rand-btn" onclick="quickRandom('chinese')"><i class="fas fa-dragon"></i> چینی</button>
+                  <button class="home-rand-btn" onclick="quickRandom('all')"><i class="fas fa-globe"></i> هەمووی</button>
+<button class="home-rand-btn" onclick="quickRandom('drama')"><i class="fas fa-tv"></i> دراما</button>
+<button class="home-rand-btn" onclick="quickRandom('movie')"><i class="fas fa-film"></i> فیلم</button>
+<button class="home-rand-btn" onclick="quickRandom('chinese')"><i class="fas fa-dragon"></i> چینی</button>
+<button class="home-rand-btn" onclick="quickRandom('japanese')"><i class="fas fa-sun"></i> ژاپۆنی</button>
                 </div>
             </div>
         </div>
+<div class="footer-divider"></div>
 
+        <div class="footer-logo-wrap">
+          <img src="logo2.png" alt="Have Korea Logo" class="footer-logo-img">
+        </div>
+
+        <p class="footer-tagline">
+          باشترین سەرچاوەی کوردی بۆ<br>
+          <span>دراما و فیلمی کۆری</span> بە ژێرنووسی پڕۆفیشناڵ
+        </p>
+
+        <div class="footer-socials">
+          <a href="https://www.tiktok.com/@have.korea" target="_blank" class="soc-btn soc-tiktok">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://www.instagram.com/have.korea" target="_blank" class="soc-btn soc-ig">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+
+        <p class="footer-copy">© 2025 <span>Have Korea</span> · هەموو مافێک پارێزراوە</p>
         <!-- هێلین - کێڵوا ئێستا خوارەوەیە -->
-        <span class="managed-by">بەڕێوەدەبردرێت لەلایەن</span>
-        <h2 class="helin-name">هێلین - کێڵوا</h2>
-        <div class="footer-line"></div>
-
+       
     </div>
 </footer>
 
@@ -4198,6 +4247,93 @@ body {
         box-shadow: 0 0 25px rgba(157, 78, 221, 0.6);
         transform: scale(1.05);
     }
+
+    .footer-logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.footer-logo-img {
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(140,0,255,0.6);
+    box-shadow: 0 0 25px rgba(140,0,255,0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.footer-logo-img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(140,0,255,0.7);
+}
+
+.footer-divider {
+    width: 120px; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(140,0,255,0.8), transparent);
+    margin: 10px auto 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.footer-divider::after {
+    content: '';
+    position: absolute;
+    width: 10px; height: 10px;
+    background: #b366ff;
+    border-radius: 50%;
+    top: -4px; left: 10%;
+    box-shadow: 0 0 12px rgba(179,102,255,0.9);
+    animation: dotMove 2.5s ease-in-out infinite;
+}
+
+@keyframes dotMove {
+    0%, 100% { left: 10%; opacity: 0.4; }
+    50% { left: 85%; opacity: 1; }
+}
+
+.footer-tagline {
+    font-family: 'Noto Kufi Arabic', Tahoma, sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    text-align: center;
+    margin: 0 auto 22px;
+}
+
+.footer-tagline span { color: #b366ff; font-weight: 700; }
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.soc-btn {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+}
+
+.soc-btn:hover { transform: translateY(-4px); color: #fff; }
+.soc-tiktok:hover { background: rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.3); }
+.soc-ig:hover { background: rgba(193,53,132,0.25); border-color: rgba(193,53,132,0.5); }
+
+.footer-copy {
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.footer-copy span { color: rgba(140,0,255,0.6); }
 </style>
 
 
@@ -4534,6 +4670,8 @@ body {
     .menu-modal-box::-webkit-scrollbar { width: 6px; }
     .menu-modal-box::-webkit-scrollbar-thumb { background: rgba(140,0,255,0.5); border-radius: 10px; }
 
+
+    
     .modal-x-btn {
         position: absolute;
         top: 15px;
@@ -5204,6 +5342,16 @@ random: (() => {
       display:flex;flex-direction:column;align-items:center;gap:6px;">
       <i class="fas fa-dragon" style="font-size:16px;"></i> چینی
     </button>
+
+<button class="random-type-btn" data-type="japanese" onclick="setRandomType(this)"
+  style="flex:1;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.7);padding:12px 6px;border-radius:12px;cursor:pointer;font-size:12px;
+  font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;
+  display:flex;flex-direction:column;align-items:center;gap:6px;">
+  <i class="fas fa-sun" style="font-size:16px;"></i> ژاپۆنی
+</button>
+
+    
   </div>
 
   <!-- کارتی ئەنجام -->
