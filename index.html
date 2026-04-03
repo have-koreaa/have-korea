@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap" rel="stylesheet">
     <title>هاڤێ کۆریا | have Korea - درامای کۆری بە ژێرنووسی کوردی</title>
     
     <meta name="description" content="هاڤێ کۆریا (have korea) - سایتی هاڤێ کۆریا، تایبەت بە نوێترین دراما و فیلمە کۆرییەکان بە باشترین کوالێتی و ژێرنووسی کوردی.">
@@ -2649,12 +2650,11 @@ if (playerModal) playerModal.style.background = `rgba(${Math.round(r*0.02)}, ${M
 const footerGlow = document.querySelector('.helin-footer::before');
 if (footerGlow) footerGlow.style.background = `rgba(${r}, ${g}, ${b}, 0.3)`;
 
-// گۆڕینی vertical-bars-btn
-const sidebarTrigger = document.getElementById('sidebar-trigger');
-if (sidebarTrigger) {
-    sidebarTrigger.style.background = `rgba(${r}, ${g}, ${b}, 0.25)`;
-    sidebarTrigger.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.4)`;
-}
+
+
+
+
+
 // گۆڕینی ڕەنگی ئایکۆنەکانی مینیو
 document.querySelectorAll('.menu-icon-wrap').forEach(el => {
     el.style.background = `linear-gradient(135deg, rgba(${r}, ${g}, ${b}, 0.3), rgba(${r}, ${g}, ${b}, 0.15))`;
@@ -3364,6 +3364,9 @@ body {
     margin-top: -80px; /* ← ئەمە زیاد بکە */
     transition: all 0.3s ease;
 }
+
+
+
 .filter-toggle-btn {
     position: relative;
     background: linear-gradient(135deg, rgba(140, 0, 255, 0.2), rgba(179, 102, 255, 0.15));
@@ -4132,13 +4135,19 @@ body {
           <a href="https://www.instagram.com/have.korea" target="_blank" class="soc-btn soc-ig">
             <i class="fab fa-instagram"></i>
           </a>
+          <a href="https://t.me/havekorea" target="_blank" class="soc-btn soc-telegram">
+  <i class="fab fa-telegram"></i>
+</a>
         </div>
-
-        <p class="footer-copy">© 2025 <span>Have Korea</span> · هەموو مافێک پارێزراوە</p>
-        <!-- هێلین - کێڵوا ئێستا خوارەوەیە -->
-       
-    </div>
+<p class="footer-copy">هەموو مافێک پارێزراوە · <span style="font-family: 'Rajdhani', sans-serif;">Have Korea</span> 2026 ©</p>
 </footer>
+
+
+
+
+
+
+
 
    
 </script>
@@ -4301,8 +4310,7 @@ body {
     margin: 0 auto 22px;
 }
 
-.footer-tagline span { color: #b366ff; font-weight: 700; }
-
+.footer-tagline span { color: #b366ff; font-weight: 900; font-family: 'Vazirmatn', sans-serif; font-size: 16px; letter-spacing: 0.3px; }
 .footer-socials {
     display: flex;
     justify-content: center;
@@ -4325,7 +4333,7 @@ body {
 .soc-btn:hover { transform: translateY(-4px); color: #fff; }
 .soc-tiktok:hover { background: rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.3); }
 .soc-ig:hover { background: rgba(193,53,132,0.25); border-color: rgba(193,53,132,0.5); }
-
+.soc-telegram:hover { background: rgba(0, 136, 204, 0.25); border-color: rgba(0, 136, 204, 0.5); }
 .footer-copy {
     font-size: 11px;
     color: rgba(255,255,255,0.2);
@@ -4452,19 +4460,20 @@ body {
     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; direction: rtl; }
 
     /* ========== دوگمەی کردنەوە ========== */
-  .vertical-bars-btn { 
+.vertical-bars-btn { 
     position: fixed; 
     top: 15px; 
     left: 15px; 
     z-index: 10001; 
-    background: rgba(140, 0, 255, 0.25); 
+    background: rgba(140, 0, 255, 0.1); 
     backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px);
     padding: 10px; 
-    border-radius: 12px; 
-    border: 1.5px solid rgba(140, 0, 255, 0.4); 
+    border-radius: 50%; 
+    border: 1px solid rgba(140, 0, 255, 0.2); 
     cursor: pointer; 
     transition: all 0.4s ease; 
-    box-shadow: 0 4px 15px rgba(140, 0, 255, 0.2); 
+    box-shadow: 0 4px 15px rgba(140, 0, 255, 0.1); 
 }
     .vertical-bars-btn:hover { 
         transform: translateY(-3px); 
@@ -5233,6 +5242,20 @@ document.addEventListener('click', (e) => {
         <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
         
       </button>
+      <button class="works-person-btn" data-role="translator" data-name="ئاسیا" data-avatar="asia.png" onclick="filterWorksModal(this)"
+  style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+  <img src="asia.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
+  ئاسیا
+  <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+</button>
+
+<button class="works-person-btn" data-role="translator" data-name="شایەن" data-avatar="shaian.png" onclick="filterWorksModal(this)"
+  style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
+  <img src="shaian.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
+  شایەن
+  <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
+</button>
+
     </div>
     <div id="works-modal-grid" class="person-works-grid" style="padding:0;"></div>
   </div>
@@ -5795,8 +5818,10 @@ volunteer: (() => {
 
   const helin_count  = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='هێلین')).length; })();
   const sana_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='سەنا ئەحمەد')).length; })();
+  const shaian_count = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='شایەن')).length; })();
   const kelwa_count  = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='کێڵوا')).length; })();
   const iman_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='ئیمان')).length; })();
+const asia_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='ئاسیا')).length; })();
 
   function makeCard(opts) {
     return `
@@ -5876,8 +5901,10 @@ volunteer: (() => {
 
   ${makeCard({ img:'admin1.png', name:'هێلین', count:helin_count,  mb:true,  star:true,  badges:['سەرپەرشتیار','وەرگێڕ'],  ig:'https://www.instagram.com/helin.jill?utm_source=qr&igsh=dnNsb2FnZXZxN3l2' })}
   ${makeCard({ img:'سانا.png',  name:'سەنا ئەحمەد', count:sana_count, mb:true, star:false, badges:['وەرگێڕی سەرەکی'], ig:'https://www.instagram.com/sana.sa_n4?igsh=MXh0azgzdXcwYjgxdg%3D%3D&utm_source=qr' })}
+  ${makeCard({ img:'shaian.png', name:'شایەن', count:shaian_count, mb:true, star:true, badges:['سەرپەرشتیاری گشتی'], ig:'' })}
 ${makeCard({ img:'admin2.png', name:'کێڵوا', count:kelwa_count, mb:true, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr' })}
-  ${makeCard({ img:'nena.png', name:'ئیمان', count:iman_count, mb:false, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/emannn.404?igsh=MXhuZXJyc3A3Z2Jrbg==' })}
+  ${makeCard({ img:'nena.png', name:'ئیمان', count:iman_count, mb:true, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/emannn.404?igsh=MXhuZXJyc3A3Z2Jrbg==' })}
+  ${makeCard({ img:'asia.png', name:'ئاسیا', count:asia_count, mb:false, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/asia_asiaa7?igsh=dHkweWozNzh0NW9p' })}
 </div>`;
 })(),
 technician: (() => {
