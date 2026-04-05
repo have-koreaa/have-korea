@@ -1108,7 +1108,7 @@
     border-radius:50px;
     padding:6px 14px 6px 10px;">
     <i class="fas fa-play-circle" style="color:var(--accent-color);font-size:13px;filter:drop-shadow(0 0 6px var(--accent-color));"></i>
-    <span style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.7);letter-spacing:1px;">ئەلقە</span>
+    <span style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.7);letter-spacing:0px;">ئەلقە</span>
 </div>
     </div>
     <div id="episode-list" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
@@ -1122,7 +1122,7 @@
     border-radius:50px;
     padding:6px 14px 6px 10px;">
     <i class="fas fa-server" style="color:var(--accent-color);font-size:13px;filter:drop-shadow(0 0 6px var(--accent-color));"></i>
-    <span style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.7);letter-spacing:1px;">سێرڤەر</span>
+    <span style="font-size:12px;font-weight:800;color:rgba(255,255,255,0.7);letter-spacing:0px;">سێرڤەر</span>
 </div>
     </div>
     <div id="server-list" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
@@ -1378,7 +1378,7 @@
     type: "movie",
     genre: "کۆمیدی - خەیاڵی - خێزانی - دراما",
     desc: " باوک و کچێکی کۆری بەهۆی ڕووداوێکی هاتوچۆوە جەستەیان دەگۆڕێت و بڕیار دەدەن ژیانی یەکتری تاقیبکەنەوە. بڕیار دەدەن دایکیان بەم بابەتە نەزانێت، بۆیە کچەکە لەجیاتی باوکی دەچێتە سەر کار و باوکەکەش لەجیاتی کچەکەی دەچێتە قوتابخانە.",
-    image: "dady.png",
+    image: "dady1.png",
 
     translators: [
         {
@@ -1970,7 +1970,7 @@ japanese: { label: 'Japanese', icon: 'fa-sun' }
             font-size: 11px;
             font-weight: 700;
             color: rgba(255,255,255,0.3);
-            letter-spacing: 1px;
+            letter-spacing:0px;
             text-transform: uppercase;
         }
         .gn-section-label i {
@@ -2035,12 +2035,12 @@ japanese: { label: 'Japanese', icon: 'fa-sun' }
             ">
                 <i class="fas fa-align-right" style="color:rgba(${r},${g},${b},1); font-size:12px;"></i>
             </div>
-            <span style="
-                font-size:12px; font-weight:800;
-                color:rgba(${r},${g},${b},0.9);
-                letter-spacing:1px;
-                text-transform:uppercase;
-            ">کورتەی چیرۆک</span>
+          <span style="
+    font-size:12px; font-weight:800;
+    color:rgba(${r},${g},${b},0.9);
+    letter-spacing:0px;
+    font-family:'Noto Kufi Arabic', sans-serif;
+">کورتەی چیرۆک</span>
         </div>
 
         <!-- نووسین -->
@@ -5249,10 +5249,10 @@ document.addEventListener('click', (e) => {
   <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
 </button>
 
-<button class="works-person-btn" data-role="translator" data-name="شایەن" data-avatar="shaian.png" onclick="filterWorksModal(this)"
+<button class="works-person-btn" data-role="translator" data-name="شاین" data-avatar="shaian.png" onclick="filterWorksModal(this)"
   style="display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1.5px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:50px;cursor:pointer;font-size:12px;font-weight:700;font-family:Tahoma,sans-serif;transition:all 0.3s ease;">
   <img src="shaian.png" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.3);">
-  شایەن
+  شاین
   <span class="works-count-badge" style="background:rgba(255,255,255,0.15);color:#fff;font-size:10px;font-weight:800;padding:2px 7px;border-radius:20px;">0</span>
 </button>
 
@@ -5818,7 +5818,7 @@ volunteer: (() => {
 
   const helin_count  = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='هێلین')).length; })();
   const sana_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='سەنا ئەحمەد')).length; })();
-  const shaian_count = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='شایەن')).length; })();
+  const shaian_count = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='شاین')).length; })();
   const kelwa_count  = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='کێڵوا')).length; })();
   const iman_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='ئیمان')).length; })();
 const asia_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; return db.filter(d=>d.translators&&d.translators.some(t=>t.name==='ئاسیا')).length; })();
@@ -5864,13 +5864,12 @@ const asia_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; 
               <span style="background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.65);font-size:10px;font-weight:700;padding:3px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.1);">${b}</span>`
             ).join('')}
           </div>
-
-          <a href="${opts.ig}" target="_blank"
-            style="display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:9px;background:rgba(193,53,132,0.1);border:1px solid rgba(193,53,132,0.25);color:rgba(255,255,255,0.7);font-size:11px;font-weight:700;text-decoration:none;transition:all 0.25s ease;"
-            onmouseover="this.style.background='rgba(193,53,132,0.28)';this.style.borderColor='rgba(193,53,132,0.55)';this.style.color='#fff';this.style.transform='translateY(-1px)'"
-            onmouseout="this.style.background='rgba(193,53,132,0.1)';this.style.borderColor='rgba(193,53,132,0.25)';this.style.color='rgba(255,255,255,0.7)';this.style.transform='translateY(0)'">
-            <i class="fab fa-instagram" style="color:#e1306c;font-size:13px;"></i> Instagram
-          </a>
+${opts.ig ? `<a href="${opts.ig}" target="_blank"
+  style="display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:9px;background:rgba(193,53,132,0.1);border:1px solid rgba(193,53,132,0.25);color:rgba(255,255,255,0.7);font-size:11px;font-weight:700;text-decoration:none;transition:all 0.25s ease;"
+  onmouseover="this.style.background='rgba(193,53,132,0.28)';this.style.borderColor='rgba(193,53,132,0.55)';this.style.color='#fff';this.style.transform='translateY(-1px)'"
+  onmouseout="this.style.background='rgba(193,53,132,0.1)';this.style.borderColor='rgba(193,53,132,0.25)';this.style.color='rgba(255,255,255,0.7)';this.style.transform='translateY(0)'">
+  <i class="fab fa-instagram" style="color:#e1306c;font-size:13px;"></i> Instagram
+</a>` : ''}
         </div>
       </div>
     </div>`;
@@ -5901,7 +5900,7 @@ const asia_count   = (()=>{ const db=typeof database!=='undefined'?database:[]; 
 
   ${makeCard({ img:'admin1.png', name:'هێلین', count:helin_count,  mb:true,  star:true,  badges:['سەرپەرشتیار','وەرگێڕ'],  ig:'https://www.instagram.com/helin.jill?utm_source=qr&igsh=dnNsb2FnZXZxN3l2' })}
   ${makeCard({ img:'سانا.png',  name:'سەنا ئەحمەد', count:sana_count, mb:true, star:false, badges:['وەرگێڕی سەرەکی'], ig:'https://www.instagram.com/sana.sa_n4?igsh=MXh0azgzdXcwYjgxdg%3D%3D&utm_source=qr' })}
-  ${makeCard({ img:'shaian.png', name:'شایەن', count:shaian_count, mb:true, star:true, badges:['سەرپەرشتیاری گشتی'], ig:'' })}
+  ${makeCard({ img:'shaian.png', name:'شاین', count:shaian_count, mb:true, star:true, badges:['سەرپەرشتیاری گشتی'], ig:null })}
 ${makeCard({ img:'admin2.png', name:'کێڵوا', count:kelwa_count, mb:true, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/y9u7x?igsh=bHprcHh3MnBjM2ti&utm_source=qr' })}
   ${makeCard({ img:'nena.png', name:'ئیمان', count:iman_count, mb:true, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/emannn.404?igsh=MXhuZXJyc3A3Z2Jrbg==' })}
   ${makeCard({ img:'asia.png', name:'ئاسیا', count:asia_count, mb:false, star:false, badges:['وەرگێڕ'], ig:'https://www.instagram.com/asia_asiaa7?igsh=dHkweWozNzh0NW9p' })}
